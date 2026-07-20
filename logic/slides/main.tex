@@ -1,0 +1,602 @@
+% !TEX program = xelatex
+% ============================================================================
+%  POSN Computer Qualification — Logic Slide Deck
+%  Topic: ตรรกศาสตร์พื้นฐาน (Basic Logic)
+% ============================================================================
+
+\documentclass[11pt, aspectratio=169]{beamer}
+
+% --- Load shared preamble ---
+\input{../../preamble.tex}
+
+% --- Document info ---
+\title[ตรรกศาสตร์]{ตรรกศาสตร์พื้นฐาน}
+\subtitle{Basic Logic — ประพจน์, ตัวเชื่อม, ตัวบ่งปริมาณ, การอ้างเหตุผล}
+\author[None W. (Yuan)]{None W. (Yuan)}
+\date{}
+
+\begin{document}
+
+% ===========================================================================
+%  TITLE SLIDE
+% ===========================================================================
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ===========================================================================
+%  OUTLINE
+% ===========================================================================
+\begin{frame}{สารบัญ (Outline)}
+  \tableofcontents
+\end{frame}
+
+% ===========================================================================
+%  ก่อนเรียน (Prerequisites)
+% ===========================================================================
+\begin{frame}{ก่อนเรียน (Prerequisites)}
+  \begin{explanation}[สิ่งที่ควรรู้ก่อนเรียน]
+    \begin{itemize}
+      \item \textbf{เซต} — การดำเนินการของเซต ($\cup$, $\cap$, $'$) ซึ่งเชื่อมโยงกับตัวเชื่อมทางตรรกศาสตร์
+    \end{itemize}
+  \end{explanation}
+
+  \begin{intuition}[ตรรกศาสตร์คืออะไร?]
+    ตรรกศาสตร์คือการศึกษา \highlight{การให้เหตุผล} — อะไรจริง อะไรเท็จ
+    และการสรุปผลจากสิ่งที่รู้
+
+    \medskip
+    เป็นพื้นฐานของการเขียนโปรแกรม (if-else, conditions), การพิสูจน์ทางคณิตศาสตร์,
+    และการแก้ปัญหาการจับโกหก!
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 1: ประพจน์และตัวเชื่อม
+% ===========================================================================
+\section{ประพจน์และตัวเชื่อม (Propositions \& Connectives)}
+
+\subsection{ประพจน์}
+
+\begin{frame}{ประพจน์คืออะไร?}
+  \begin{explanation}[นิยาม: ประพจน์ (Proposition)]
+    \textbf{ประพจน์} คือประโยคบอกเล่าหรือปฏิเสธที่มีค่าความจริงเป็น \highlight{จริง (T)} หรือ \highlight{เท็จ (F)} อย่างใดอย่างหนึ่งเท่านั้น
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \textbf{เป็นประพจน์}
+      \begin{itemize}
+        \item $1 + 1 = 2$ \quad (จริง)
+        \item กรุงเทพเป็นเมืองหลวงของไทย \quad (จริง)
+        \item $2 > 5$ \quad (เท็จ)
+      \end{itemize}
+
+    \column{0.5\textwidth}
+      \textbf{ไม่เป็นประพจน์}
+      \begin{itemize}
+        \item ``ไปไหนมา?'' (คำถาม)
+        \item ``กรุณาปิดประตู'' (คำสั่ง)
+        \item ``$x + 1 = 3$'' (มีตัวแปรอิสระ — ไม่ทราบจริง/เท็จ)
+      \end{itemize}
+  \end{columns}
+\end{frame}
+
+\subsection{ตัวเชื่อม (Logical Connectives)}
+
+\begin{frame}{นิเสธ (Negation) — NOT}
+  \begin{explanation}[นิยาม]
+    \textbf{นิเสธ} ของ $p$ ($\lnot p$ หรือ $\sim p$) มีค่าความจริง \highlight{ตรงข้าม}กับ $p$
+
+    \medskip
+    \begin{center}
+      \begin{tabular}{c|c}
+        $p$ & $\lnot p$ \\
+        \hline
+        T & F \\
+        F & T
+      \end{tabular}
+    \end{center}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $p$: ``วันนี้ฝนตก''
+
+    $\lnot p$: ``วันนี้ฝนไม่ตก''
+
+    \medskip
+    ถ้า $p$ เป็นจริง (ฝนตกจริง) $\rightarrow$ $\lnot p$ เป็นเท็จ
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวเชื่อม ``และ'' (Conjunction) — AND}
+  \begin{explanation}[นิยาม]
+    $p \land q$ (อ่านว่า ``$p$ และ $q$'') เป็นจริง \highlight{ก็ต่อเมื่อทั้ง $p$ และ $q$ เป็นจริงทั้งคู่}
+
+    \medskip
+    \begin{center}
+      \begin{tabular}{cc|c}
+        $p$ & $q$ & $p \land q$ \\
+        \hline
+        T & T & T \\
+        T & F & F \\
+        F & T & F \\
+        F & F & F
+      \end{tabular}
+    \end{center}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $p$: ``ฉันมีเงิน'' (T), \quad $q$: ``ร้านเปิด'' (F)
+
+    $p \land q$: ``ฉันมีเงิน \textbf{และ} ร้านเปิด'' $\rightarrow$ F (เพราะ $q$ เป็น F)
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวเชื่อม ``หรือ'' (Disjunction) — OR}
+  \begin{explanation}[นิยาม]
+    $p \lor q$ (อ่านว่า ``$p$ หรือ $q$'') เป็นเท็จ \highlight{ก็ต่อเมื่อทั้ง $p$ และ $q$ เป็นเท็จทั้งคู่}
+
+    \medskip
+    \begin{center}
+      \begin{tabular}{cc|c}
+        $p$ & $q$ & $p \lor q$ \\
+        \hline
+        T & T & T \\
+        T & F & T \\
+        F & T & T \\
+        F & F & F
+      \end{tabular}
+    \end{center}
+  \end{explanation}
+
+  \begin{intuition}[ข้อสังเกต]
+    ในตรรกศาสตร์ ``หรือ'' หมายถึง \highlight{หรืออย่างน้อยหนึ่งอย่าง}
+    (ไม่ใช่ ``หรืออย่างใดอย่างหนึ่งเท่านั้น'' เหมือนในชีวิตประจำวัน)
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{ตัวเชื่อม ``ถ้า...แล้ว...'' (Implication) — IF-THEN}
+  \begin{explanation}[นิยาม]
+    $p \to q$ (อ่านว่า ``ถ้า $p$ แล้ว $q$'') เป็นเท็จ \highlight{ก็ต่อเมื่อ $p$ จริง แต่ $q$ เท็จ}
+
+    \medskip
+    \begin{center}
+      \begin{tabular}{cc|c}
+        $p$ & $q$ & $p \to q$ \\
+        \hline
+        T & T & T \\
+        T & F & F \\
+        F & T & T \\
+        F & F & T
+      \end{tabular}
+    \end{center}
+  \end{explanation}
+
+  \begin{intuition}[จำง่าย ๆ]
+    ``ถ้าสัญญาแล้วต้องทำ'' — ผิดสัญญาก็ต่อเมื่อ \highlight{สัญญา (T) แต่ไม่ทำ (F)} เท่านั้น
+
+    ถ้าไม่ได้สัญญา ($p$ = F) แล้วทำ ($q$ = T) ก็ไม่ผิดสัญญา
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{ตัวเชื่อม ``ก็ต่อเมื่อ'' (Biconditional) — IFF}
+  \begin{explanation}[นิยาม]
+    $p \leftrightarrow q$ (อ่านว่า ``$p$ ก็ต่อเมื่อ $q$'') เป็นจริง \highlight{เมื่อ $p$ และ $q$ มีค่าความจริงเหมือนกัน}
+
+    \medskip
+    \begin{center}
+      \begin{tabular}{cc|c}
+        $p$ & $q$ & $p \leftrightarrow q$ \\
+        \hline
+        T & T & T \\
+        T & F & F \\
+        F & T & F \\
+        F & F & T
+      \end{tabular}
+    \end{center}
+  \end{explanation}
+
+  \begin{intuition}[ความหมาย]
+    $p \leftrightarrow q$ เทียบเท่ากับ $(p \to q) \land (q \to p)$
+
+    ``$p$ เป็นจริง \textbf{ก็ต่อเมื่อ} $q$ เป็นจริง'' = ทั้งคู่จริงพร้อมกัน หรือเท็จพร้อมกัน
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{สรุปตารางค่าความจริง}
+  \begin{center}
+    \begin{tabular}{cc|c|c|c|c|c}
+      $p$ & $q$ & $\lnot p$ & $p \land q$ & $p \lor q$ & $p \to q$ & $p \leftrightarrow q$ \\
+      \hline
+      T & T & F & T & T & T & T \\
+      T & F & F & F & T & F & F \\
+      F & T & T & F & T & T & F \\
+      F & F & T & F & F & T & T
+    \end{tabular}
+  \end{center}
+
+  \begin{intuition}[วิธีจำ]
+    \begin{itemize}
+      \item $\land$ (และ): เป็นจริงแค่กรณีเดียว — T,T
+      \item $\lor$ (หรือ): เป็นเท็จแค่กรณีเดียว — F,F
+      \item $\to$ (ถ้า...แล้ว): เป็นเท็จแค่กรณีเดียว — T,F
+      \item $\leftrightarrow$ (ก็ต่อเมื่อ): เหมือนกัน = จริง, ต่างกัน = เท็จ
+    \end{itemize}
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 2: การสมมูลกันของประพจน์ (Logical Equivalence)
+% ===========================================================================
+\section{การสมมูลกันของประพจน์ (Logical Equivalence)}
+
+\begin{frame}{ประพจน์ที่สมมูลกัน}
+  \begin{explanation}[นิยาม]
+    ประพจน์สองรูป \textbf{สมมูลกัน} ($P \equiv Q$) ก็ต่อเมื่อ
+    \highlight{มีค่าความจริงเหมือนกันในทุกกรณี}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง: Contrapositive]
+    $p \to q \;\equiv\; \lnot q \to \lnot p$
+
+    \medskip
+    \begin{center}
+      \begin{tabular}{cc|c|c}
+        $p$ & $q$ & $p \to q$ & $\lnot q \to \lnot p$ \\
+        \hline
+        T & T & T & T \\
+        T & F & F & F \\
+        F & T & T & T \\
+        F & F & T & T
+      \end{tabular}
+    \end{center}
+
+    ค่าความจริงตรงกันทุกกรณี $\rightarrow$ สมมูลกัน $\checkmark$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{กฎที่สำคัญ}
+  \begin{explanation}[กฎเดอมอร์แกน (De Morgan's Laws)]
+    \begin{enumerate}
+      \item $\lnot (p \land q) \equiv \lnot p \lor \lnot q$
+      \item $\lnot (p \lor q) \equiv \lnot p \land \lnot q$
+    \end{enumerate}
+  \end{explanation}
+
+  \begin{explanation}[กฎอื่น ๆ]
+    \begin{itemize}
+      \item \textbf{Double Negation}: $\lnot (\lnot p) \equiv p$
+      \item \textbf{Implication}: $p \to q \equiv \lnot p \lor q$
+      \item \textbf{Contrapositive}: $p \to q \equiv \lnot q \to \lnot p$
+    \end{itemize}
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{ตรรกศาสตร์กับเซต}
+  \begin{intuition}[เชื่อมโยงระหว่างตรรกศาสตร์กับเซต]
+    \[
+    \begin{array}{c|c}
+      \textbf{ตรรกศาสตร์} & \textbf{เซต} \\
+      \hline
+      \lnot \text{ (นิเสธ)} & ' \text{ (คอมพลีเมนต์)} \\
+      \land \text{ (และ)} & \cap \text{ (อินเตอร์เซกชัน)} \\
+      \lor \text{ (หรือ)} & \cup \text{ (ยูเนียน)} \\
+      T & U \text{ (เอกภพสัมพัทธ์)} \\
+      F & \emptyset \text{ (เซตว่าง)}
+    \end{array}
+    \]
+
+    \medskip
+    กฎเดอมอร์แกนใช้ได้เหมือนกันทั้งสองระบบ!
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 3: ตัวบ่งปริมาณ (Quantifiers)
+% ===========================================================================
+\section{ตัวบ่งปริมาณ (Quantifiers)}
+
+\begin{frame}{ตัวบ่งปริมาณคืออะไร?}
+  \begin{explanation}[นิยาม]
+    \textbf{ตัวบ่งปริมาณ} ใช้กับประโยคเปิด (ประโยคที่มีตัวแปร) เพื่อบอกขอบเขตของตัวแปร
+
+    \medskip
+    \begin{itemize}
+      \item $\forall x\; P(x)$ = \highlight{``สำหรับทุก $x$, $P(x)$ เป็นจริง''}
+      \item $\exists x\; P(x)$ = \highlight{``มี $x$ อย่างน้อย 1 ตัว ที่ $P(x)$ เป็นจริง''}
+    \end{itemize}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    \begin{itemize}
+      \item $\forall x \in \R:\; x^2 \geq 0$ \quad (จริง — กำลังสองของจำนวนจริง $\geq 0$ เสมอ)
+      \item $\exists x \in \Z:\; x^2 = 4$ \quad (จริง — $x = 2$ หรือ $x = -2$)
+      \item $\forall x \in \R:\; x^2 = 4$ \quad (เท็จ — ไม่ใช่ทุกจำนวนจริงที่ยกกำลังสองแล้วได้ 4)
+    \end{itemize}
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{นิเสธของตัวบ่งปริมาณ}
+  \begin{explanation}[กฎการกระจายนิเสธ]
+    \begin{enumerate}
+      \item $\lnot (\forall x\; P(x)) \;\equiv\; \exists x\; \lnot P(x)$
+      \item $\lnot (\exists x\; P(x)) \;\equiv\; \forall x\; \lnot P(x)$
+    \end{enumerate}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    นิเสธของ ``นกทุกตัวบินได้'' คืออะไร?
+
+    \medskip
+    ประโยคเดิม: $\forall x\; (x \text{ บินได้})$ \quad ($x$ = นก)
+
+    นิเสธ: $\lnot \forall x\; (x \text{ บินได้}) \equiv \exists x\; \lnot(x \text{ บินได้})$
+
+    \medskip
+    ``\textbf{มี}นกอย่างน้อย 1 ตัวที่\textbf{บินไม่ได้}'' \quad (เช่น นกกระจอกเทศ)
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 4: การอ้างเหตุผล (Rules of Inference)
+% ===========================================================================
+\section{การอ้างเหตุผล (Rules of Inference)}
+
+\begin{frame}{Modus Ponens และ Modus Tollens}
+  \begin{explanation}[Modus Ponens (การยืนยัน)]
+    \[
+      \begin{array}{c}
+        p \to q \\
+        p \\
+        \hline
+        \therefore\; q
+      \end{array}
+    \]
+
+    ``ถ้า $p$ แล้ว $q$'' และ $p$ เป็นจริง $\rightarrow$ สรุปว่า $q$ เป็นจริง
+  \end{explanation}
+
+  \begin{explanation}[Modus Tollens (การปฏิเสธ)]
+    \[
+      \begin{array}{c}
+        p \to q \\
+        \lnot q \\
+        \hline
+        \therefore\; \lnot p
+      \end{array}
+    \]
+
+    ``ถ้า $p$ แล้ว $q$'' และ $q$ เป็นเท็จ $\rightarrow$ สรุปว่า $p$ เป็นเท็จ
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: Modus Ponens \& Modus Tollens}
+  \begin{exambox}[Modus Ponens]
+    \textbf{เหตุ:}
+    \begin{enumerate}
+      \item ถ้าฝนตก แล้วถนนจะเปียก \quad ($p \to q$)
+      \item ฝนตก \quad ($p$)
+    \end{enumerate}
+    \textbf{ผล:} ถนนเปียก \quad ($q$) \quad $\checkmark$
+  \end{exambox}
+
+  \begin{exambox}[Modus Tollens]
+    \textbf{เหตุ:}
+    \begin{enumerate}
+      \item ถ้าเป็นนกเพนกวิน แล้วบินไม่ได้ \quad ($p \to q$)
+      \item เจ้านี่บินได้ \quad ($\lnot q$)
+    \end{enumerate}
+    \textbf{ผล:} เจ้านี่ไม่ใช่นกเพนกวิน \quad ($\lnot p$) \quad $\checkmark$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ระวัง! การอ้างเหตุผลที่ผิด}
+  \begin{exambox}[ตัวอย่างการอ้างเหตุผลที่ \textbf{ไม่} สมเหตุสมผล]
+    \textbf{Converse Error (ยืนยันผล):}
+    \begin{enumerate}
+      \item ถ้าฝนตก แล้วถนนเปียก \quad ($p \to q$)
+      \item ถนนเปียก \quad ($q$)
+    \end{enumerate}
+    สรุปว่า ฝนตก \quad \textbf{ผิด!}
+
+    \medskip
+    (ถนนอาจเปียกเพราะรถน้ำผ่าน ไม่จำเป็นต้องฝนตก)
+
+    \medskip
+    \textbf{Inverse Error (ปฏิเสธเหตุ):}
+    \begin{enumerate}
+      \item ถ้าฝนตก แล้วถนนเปียก \quad ($p \to q$)
+      \item ฝนไม่ตก \quad ($\lnot p$)
+    \end{enumerate}
+    สรุปว่า ถนนไม่เปียก \quad \textbf{ผิด!}
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+  \begin{exambox}[ข้อสอบปี 67 ข้อ 17]
+    ถ้าวันนี้ร้อน และอบอ้าว แล้วฝนตก ถ้าวันนี้ฝนไม่ตก ข้อใดถูกต้อง
+  \end{exambox}
+
+  \begin{solbox}[วิธีทำ]
+    ให้ $p = $ วันนี้ร้อน และอบอ้าว $q = $ วันนี้ฝนตก \newline
+    จากข้อนี้เหตุ (สิ่งที่เกิดขึ้นแล้ว) คือ 
+    \begin{enumerate}
+      \item $p \rightarrow q$
+      \item $\lnot q$
+    \end{enumerate}
+    จาก Modus Tollens ผลคือ $\lnot p$ ซึ่งเมื่อใช้กฎของ De Morgan จะได้เป็น \textbf{วันนี้ไม่ร้อน หรือ ไม่อบอ้าว}
+  \end{solbox}
+\end{frame}
+
+\begin{frame}{วิธีทำโจทย์การอ้างเหตุผล}
+  \begin{explanation}[วิธีทำโจทย์การอ้างเหตุผล]
+    \begin{enumerate}
+      \item สร้างประพจน์ใหม่ ดังนี้ ถ้า เหตุทั้งหมดมาต่อกันด้วย \textbf{และ $\wedge$} แล้ว ผล \newline
+      (เหตุ$_1$ $\wedge$ เหตุ$_2$ $\wedge \cdots  \wedge $ เหตุ$_n$) $\rightarrow$ ผล
+      \item พิสูจน์ว่าประพจน์นี้เป็น \textbf{สัจนิรันดร์ (Tautology)} คือมีค่าความจริงเป็นจริงเสมอ
+      \begin{itemize}
+        \item ถ้าเป็น \textbf{สัจนิรันดร์} สมเหตุสมผล 
+        \item ถ้า \textbf{ไม่เป็นสัจนิรันดร์} ไม่สมเหตุสมผล
+      \end{itemize}
+      \item วิธีการพิสูจน์สัจนิรันดร์คือไม่ว่าประพจน์ย่อยจะมีค่าความจริงแบบใด ประพจน์ใหม่จะมีค่าความจริงเป็นจริงเสมอ
+    \end{enumerate}
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{วิธีทำโจทย์การอ้างเหตุผล}
+  \begin{intuition}[วิธีทำโจทย์การอ้างเหตุผลแบบเร็ว]
+    \begin{enumerate}
+      \item ให้เหตุทั้งหมดมีค่าความจริงเป็น \textbf{จริง}
+      \item จากนั้นหาค่าความจริงของประพจน์ย่อยแต่ละประพจน์เท่าที่หาได้
+      \item จากนั้นตรวจสอบว่าค่าความจริงของผลจากค่าความจริงของประพจน์ย่อยที่ได้จากเหตุ 
+      \begin{itemize}
+        \item ถ้าเป็น \textbf{จริง} สมเหตุสมผล 
+        \item ถ้าเป็น \textbf{เท็จ} ไม่สมเหตุสมผล
+        \item ถ้าไม่ทราบค่าความจริง ไม่สามารถสรุปได้ด้วยวิธีนี้ \textbf{*}
+      \end{itemize}
+    \end{enumerate}
+  \end{intuition}
+
+  \begin{exambox}[*]
+    บางกรณีไม่ต้องทราบค่าความจริงทั้งหมดก็สรุปได้ เช่น ถ้าเหตุเป็น ถ้าฝนตกแล้วถนนเปียก แล้วผลเป็น ถ้าฝนตกแล้วถนนเปียก ต้องใช้วิธีการหาสัจนิรันดร์
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การอ้างเหตุผลหลายเหตุ}
+  \begin{exambox}[โจทย์]
+    พิจารณาการอ้างเหตุผลต่อไปนี้สมเหตุสมผลหรือไม่
+
+    \textbf{เหตุ:}
+    \begin{enumerate}
+      \item ถ้าฝนตก แล้วถนนเปียก \quad ($p \to q$)
+      \item ถ้าถนนเปียก แล้วการจราจรติด \quad ($q \to r$)
+      \item ฝนตก \quad ($p$)
+    \end{enumerate}
+    \textbf{ผล:} การจราจรติด \quad ($r$)
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การอ้างเหตุผลหลายเหตุ (ต่อ)}
+  \begin{solbox}[วิธีทำ — แบบที่ 1: ใช้ Modus Ponens]
+    \begin{align*}
+      &(1)\; p \to q    &&\text{(เหตุข้อ 1)} \\
+      &(2)\; q \to r    &&\text{(เหตุข้อ 2)} \\
+      &(3)\; p          &&\text{(เหตุข้อ 3)} \\
+      &(4)\; q          &&\text{(จาก (1) และ (3) ด้วย Modus Ponens)} \\
+      &(5)\; r          &&\text{(จาก (2) และ (4) ด้วย Modus Ponens)}
+    \end{align*}
+
+    ได้ $r$ ตรงกับผล $\rightarrow$ \textbf{สมเหตุสมผล} $\checkmark$
+  \end{solbox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การอ้างเหตุผลหลายเหตุ (ต่อ)}
+  \begin{solbox}[วิธีทำ — แบบที่ 2: สัจนิรันดร์]
+    สร้างประพจน์: $[(p \to q) \land (q \to r) \land p] \to r$
+
+    ตรวจสอบโดยให้เหตุเป็นจริงทั้งหมด:
+    \begin{itemize}
+      \item $p$ เป็นจริง
+      \item $p \to q$ เป็นจริง และ $p$ เป็นจริง $\rightarrow$ $q$ ต้องเป็นจริง
+      \item $q \to r$ เป็นจริง และ $q$ เป็นจริง $\rightarrow$ $r$ ต้องเป็นจริง
+    \end{itemize}
+    เมื่อเหตุเป็นจริง ผล ($r$) ก็เป็นจริงเสมอ $\rightarrow$ \textbf{สมเหตุสมผล} $\checkmark$
+  \end{solbox}
+
+  \begin{intuition}[Hypothetical Syllogism]
+    จาก $p \to q$ และ $q \to r$ สามารถสรุป $p \to r$ ได้ทันที
+    (กฎการถ่ายทอด — Transitivity of Implication)
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 5: ปัญหาการจับโกหก (Liar Puzzles)
+% ===========================================================================
+\section{ปัญหาการจับโกหก (Liar Puzzles)}
+
+\begin{frame}{แนวคิดการแก้ปัญหาจับโกหก}
+  \begin{explanation}[หลักการ]
+    ในปัญหาจับโกหก เรามีบุคคลที่:
+    \begin{itemize}
+      \item พูด\textbf{จริง}เสมอ (Truth-teller) — ทุกประโยคที่พูดมีค่าเป็น T
+      \item พูด\textbf{เท็จ}เสมอ (Liar) — ทุกประโยคที่พูดมีค่าเป็น F
+    \end{itemize}
+
+    \medskip
+    \textbf{วิธีแก้:} \highlight{สมมติให้แต่ละคนเป็นคนพูดจริง (หรือพูดเท็จ)}
+    แล้วตรวจสอบความขัดแย้ง
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่างคลาสสิก]
+    A พูดว่า ``ฉันพูดเท็จ''
+
+    \medskip
+    \begin{itemize}
+      \item ถ้า A พูดจริง $\rightarrow$ ประโยค ``ฉันพูดเท็จ'' เป็นจริง $\rightarrow$ ขัดแย้ง!
+      \item ถ้า A พูดเท็จ $\rightarrow$ ประโยค ``ฉันพูดเท็จ'' เป็นเท็จ $\rightarrow$ A พูดจริง $\rightarrow$ ขัดแย้ง!
+    \end{itemize}
+
+    นี่คือ \textbf{Paradox} — เป็นไปไม่ได้ทั้งสองกรณี!
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: จับโกหก}
+  \begin{exambox}[โจทย์]
+    มี 2 คน: A และ B
+
+    A พูดว่า ``พวกเราทั้งคู่เป็นคนพูดเท็จ''
+
+    จงระบุว่า A และ B เป็นคนประเภทใด?
+  \end{exambox}
+
+  \begin{solbox}[วิธีทำ]
+    \textbf{กรณี 1: A พูดจริง}
+    \begin{itemize}
+      \item ``ทั้งคู่เป็นคนพูดเท็จ'' เป็นจริง $\rightarrow$ A พูดเท็จ \textbf{ขัดแย้ง!}
+    \end{itemize}
+    ดังนั้น A \textbf{ต้อง}เป็นคนพูดเท็จ
+  \end{solbox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: จับโกหก (ต่อ)}
+  \begin{solbox}[วิธีทำ (ต่อ)]
+    \textbf{กรณี 2: A พูดเท็จ}
+    \begin{itemize}
+      \item ``ทั้งคู่เป็นคนพูดเท็จ'' เป็นเท็จ
+      \item ดังนั้นมีอย่างน้อย 1 คนที่พูดจริง
+      \item A พูดเท็จแล้ว $\rightarrow$ B ต้องพูดจริง
+    \end{itemize}
+
+    \textbf{สรุป:} A เป็นคนพูดเท็จ, B เป็นคนพูดจริง
+  \end{solbox}
+
+  \begin{intuition}[เทคนิค]
+    วิธีแก้ปัญหาจับโกหก: \highlight{สมมติทีละกรณี} แล้วหาข้อขัดแย้ง
+    กรณีไหนไม่ขัดแย้ง = คำตอบที่ถูกต้อง
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SUMMARY
+% ===========================================================================
+\section{สรุป}
+
+\begin{frame}{สรุปเนื้อหา}
+  \begin{explanation}[สิ่งที่ได้เรียนรู้]
+    \begin{enumerate}
+      \item \textbf{ประพจน์}: ประโยคที่มีค่าความจริง T/F
+      \item \textbf{ตัวเชื่อม}: $\lnot$ (ไม่), $\land$ (และ), $\lor$ (หรือ), $\to$ (ถ้า...แล้ว), $\leftrightarrow$ (ก็ต่อเมื่อ)
+      \item \textbf{การสมมูล}: De Morgan, Contrapositive, Implication
+      \item \textbf{ตัวบ่งปริมาณ}: $\forall$ (สำหรับทุก), $\exists$ (มีอย่างน้อยหนึ่ง)
+      \item \textbf{การอ้างเหตุผล}: Modus Ponens, Modus Tollens
+      \item \textbf{ปัญหาจับโกหก}: สมมติ + ตรวจสอบความขัดแย้ง
+    \end{enumerate}
+  \end{explanation}
+
+  \begin{center}
+    \large เอกสารนี้เป็นส่วนหนึ่งของเนื้อหาเตรียมสอบ \textbf{สอวน. คอมพิวเตอร์}
+  \end{center}
+\end{frame}
+
+\end{document}

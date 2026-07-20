@@ -1,0 +1,410 @@
+% !TEX program = xelatex
+% ============================================================================
+%  POSN Computer Qualification — Analytic Geometry & Vectors
+%  Topic: เรขาคณิตวิเคราะห์และเวกเตอร์
+% ============================================================================
+
+\documentclass[11pt, aspectratio=169]{beamer}
+
+\input{../../../preamble.tex}
+
+\title[เรขาคณิตวิเคราะห์]{เรขาคณิตวิเคราะห์และเวกเตอร์}
+\subtitle{Analytic Geometry \& Vectors — ระนาบพิกัด, ระยะทาง, ความชัน, เส้นตรง, มุม, เวกเตอร์}
+\author[None W. (Yuan)]{None W. (Yuan)}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]\titlepage\end{frame}
+\begin{frame}{สารบัญ (Outline)}\tableofcontents\end{frame}
+
+\begin{frame}{ก่อนเรียน (Prerequisites)}
+  \begin{explanation}[สิ่งที่ควรรู้ก่อนเรียน]
+    \begin{itemize}
+      \item \textbf{จำนวนจริง} — การดำเนินการพื้นฐาน, รากที่สอง, ค่าสัมบูรณ์
+      \item \textbf{สมการ} — การแก้สมการเชิงเส้น, การจัดรูปสมการ
+    \end{itemize}
+  \end{explanation}
+
+  \begin{intuition}[เรขาคณิตวิเคราะห์คืออะไร?]
+    การนำ \highlight{พีชคณิต} มาใช้กับ \highlight{เรขาคณิต}
+    — ใช้พิกัดและสมการอธิบายรูปเรขาคณิต
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 1: ระบบพิกัดฉาก
+% ===========================================================================
+\section{ระบบพิกัดฉาก (Coordinate System)}
+
+\begin{frame}{ระนาบพิกัด (Coordinate Plane)}
+  \begin{explanation}[องค์ประกอบ]
+    \begin{itemize}
+      \item \textbf{แกนนอน} ($x$-axis) และ \textbf{แกนตั้ง} ($y$-axis)
+      \item \textbf{จุดกำเนิด} $O(0, 0)$ — จุดตัดของสองแกน
+      \item \textbf{จุด} $(x, y)$ — บอกตำแหน่งบนระนาบ ($x$ = แกนนอน, $y$ = แกนตั้ง)
+      \item ระนาบแบ่งออกเป็น 4 จตุภาค (Quadrants I, II, III, IV)
+    \end{itemize}
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{ระนาบพิกัด — ตัวอย่าง}
+  \centering
+  \begin{tikzpicture}[scale=1.1]
+    \draw[->, thick] (-2.5,0) -- (2.5,0) node[right] {$x$};
+    \draw[->, thick] (0,-2.2) -- (0,2.5) node[above] {$y$};
+    \node at (0,0) [below left] {$O$};
+    \node at (1.5,1.3) {\textbf{I}};
+    \node at (-1.5,1.3) {\textbf{II}};
+    \node at (-1.5,-1.3) {\textbf{III}};
+    \node at (1.5,-1.3) {\textbf{IV}};
+
+    \fill[boxBlue] (1.5,1) circle (2.5pt) node[above right] {$(2,1.5)$};
+    \fill[boxOrange] (-1.8,1) circle (2.5pt) node[left] {$(-2,1)$};
+    \fill[boxGreen] (-1,-1) circle (2.5pt) node[left] {$(-1,-1)$};
+    \fill[boxPurple] (1.2,-1) circle (2.5pt) node[right] {$(1,-1)$};
+  \end{tikzpicture}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 2: ระยะทางและจุดกึ่งกลาง
+% ===========================================================================
+\section{ระยะทางและจุดกึ่งกลาง (Distance \& Midpoint)}
+
+\begin{frame}{ระยะทางระหว่างจุดสองจุด}
+  \begin{explanation}[สูตรระยะทาง] (มาจากทฤษฎีบทพีทาโกรัส!)
+    ระยะทางระหว่าง $P_1(x_1, y_1)$ และ $P_2(x_2, y_2)$:
+    \[
+      d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+    \]
+  \end{explanation}
+
+  \centering
+  \begin{tikzpicture}[scale=1.1]
+    \draw[->, gray] (-0.5,0) -- (4.5,0) node[right] {$x$};
+    \draw[->, gray] (0,-0.5) -- (0,3.5) node[above] {$y$};
+    \fill[boxBlue] (1,1) circle (2pt) node[below left] {$P_1$};
+    \fill[boxBlue] (3.5,2.8) circle (2pt) node[above right] {$P_2$};
+    \draw[boxBlue, thick] (1,1) -- (3.5,2.8);
+    \draw[dashed, boxOrange] (1,1) -- (3.5,1) node[midway, below] {$\Delta x$};
+    \draw[dashed, boxGreen] (3.5,1) -- (3.5,2.8) node[midway, right] {$\Delta y$};
+  \end{tikzpicture}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ระยะทาง}
+  \begin{exambox}[โจทย์ 1]
+    ระยะทางระหว่าง $A(2,3)$ และ $B(5,7)$
+    
+    \medskip
+    $d = \sqrt{(5-2)^2 + (7-3)^2}
+        = \sqrt{3^2 + 4^2}
+        = \sqrt{9 + 16} = 5$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ระยะทาง (ต่อ)}
+  \begin{exambox}[โจทย์ 2]
+    ระยะทางระหว่าง $C(-1,2)$ และ $D(3,-1)$ 
+
+    \medskip
+    $d = \sqrt{(3-(-1))^2 + (-1-2)^2}
+        = \sqrt{4^2 + (-3)^2}
+        = \sqrt{16 + 9} = 5$
+  \end{exambox}
+
+  \begin{intuition}[สังเกต]
+    ระยะทางระหว่าง $A$ ถึง $B$ และ $C$ ถึง $D$ เท่ากัน ($= 5$)
+    แต่คู่ของจุดอยู่คนละตำแหน่ง — ระยะทางขึ้นกับ \highlight{ผลต่าง} ของพิกัดเท่านั้น
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{จุดกึ่งกลาง (Midpoint)}
+  \begin{explanation}[สูตรจุดกึ่งกลาง]
+    จุดกึ่งกลาง $M$ ระหว่าง $P_1(x_1, y_1)$ และ $P_2(x_2, y_2)$:
+    \[
+      M = \left(\frac{x_1 + x_2}{2},\; \frac{y_1 + y_2}{2}\right)
+    \]
+  \end{explanation}
+
+  \centering
+  \begin{tikzpicture}[scale=0.8]
+    \draw[->, gray] (-0.5,0) -- (4.5,0) node[right] {$x$};
+    \draw[->, gray] (0,-0.5) -- (0,3.5) node[above] {$y$};
+    \fill[boxBlue] (1,1) circle (2pt) node[below] {$P_1$};
+    \fill[boxBlue] (3.5,2.8) circle (2pt) node[above] {$P_2$};
+    \fill[boxOrange] (2.25,1.9) circle (2.5pt) node[below right] {$M$};
+    \draw[boxBlue, thick] (1,1) -- (3.5,2.8);
+  \end{tikzpicture}
+
+  % \begin{exambox}[ตัวอย่าง]
+  %   $P_1(1,3)$, $P_2(5,7)$ \quad $\rightarrow$ \quad
+  %   $M = \left(\frac{1+5}{2}, \frac{3+7}{2}\right) = (3, 5)$
+  % \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: จุดกึ่งกลาง}
+  \begin{exambox}[โจทย์]
+    จงหาจุดกึ่งกลางระหว่าง $A(-2, 4)$ และ $B(6, -2)$
+  \end{exambox}
+
+  \begin{solbox}[วิธีทำ]
+    $M = \left(\dfrac{-2+6}{2}, \dfrac{4+(-2)}{2}\right) = (2, 1)$
+  \end{solbox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 3: ความชันและมุม
+% ===========================================================================
+\section{ความชันและมุม (Slope \& Angle)}
+
+\begin{frame}{ความชันของเส้นตรง (Slope)}
+  \begin{explanation}[นิยาม]
+    \textbf{ความชัน} $m$ ของเส้นตรงที่ผ่าน $P_1(x_1,y_1)$ และ $P_2(x_2,y_2)$:
+    \[
+      m = \frac{y_2 - y_1}{x_2 - x_1} = \frac{\text{การเปลี่ยนแปลงในแนวตั้ง}}{\text{การเปลี่ยนแปลงในแนวนอน}}
+    \]
+    (เมื่อ $x_1 \neq x_2$)
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.25\textwidth}
+      \centering
+      \textbf{บวก} \quad $m > 0$ \\[0.5em]
+      \begin{tikzpicture}[scale=0.7]
+        \draw[->, gray] (-1.5,0)--(1.5,0); \draw[->, gray] (0,-1)--(0,1.5);
+        \draw[boxBlue, thick] (-1,-0.5) -- (1,1);
+      \end{tikzpicture}
+    \column{0.25\textwidth}
+      \centering
+      \textbf{ลบ} \quad $m < 0$ \\[0.5em]
+      \begin{tikzpicture}[scale=0.7]
+        \draw[->, gray] (-1.5,0)--(1.5,0); \draw[->, gray] (0,-1)--(0,1.5);
+        \draw[boxOrange, thick] (-1,1) -- (1,-0.5);
+      \end{tikzpicture}
+    \column{0.25\textwidth}
+      \centering
+      \textbf{ศูนย์} \quad $m = 0$ \\[0.5em]
+      \begin{tikzpicture}[scale=0.7]
+        \draw[->, gray] (-1.5,0)--(1.5,0); \draw[->, gray] (0,-1)--(0,1.5);
+        \draw[boxGreen, thick] (-1.3,0.8) -- (1.3,0.8);
+      \end{tikzpicture}
+    \column{0.25\textwidth}
+      \centering
+      \textbf{ไม่นิยาม} \\[0.5em]
+      \begin{tikzpicture}[scale=0.7]
+        \draw[->, gray] (-1.5,0)--(1.5,0); \draw[->, gray] (0,-1)--(0,1.5);
+        \draw[boxPurple, thick] (0.8,-0.8) -- (0.8,1.3);
+      \end{tikzpicture}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{มุมระหว่างเส้นตรง (Angle Between Lines)}
+  \begin{explanation}[สูตรมุมระหว่างเส้นตรงสองเส้น]
+    ให้ $m_1, m_2$ เป็นความชันของเส้นตรงสองเส้น ($m_1m_2 \neq -1$):
+    \[
+      \tan \theta = \left|\frac{m_1 - m_2}{1 + m_1m_2}\right|
+    \]
+  \end{explanation}
+
+  \begin{explanation}[เส้นขนานและเส้นตั้งฉาก]
+    \begin{itemize}
+      \item \textbf{ขนาน:} $m_1 = m_2$ \quad (มุมระหว่างเส้น $= 0^\circ$)
+      \item \textbf{ตั้งฉาก:} $m_1 \cdot m_2 = -1$ \quad (มุมระหว่างเส้น $= 90^\circ$)
+    \end{itemize}
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง}
+  \begin{exambox}[ตัวอย่าง: เส้นตั้งฉาก]
+    เส้นที่ 1 มีความชัน $m_1 = 2$
+
+    เส้นตั้งฉากต้องมีความชัน $m_2 = -\frac{1}{2}$
+
+    เพราะ $2 \times (-\frac{1}{2}) = -1$ \quad $\checkmark$
+  \end{exambox}
+
+  \begin{exambox}[โจทย์]
+    เส้นตรงที่ผ่าน $(1,2)$ และตั้งฉากกับ $y = 2x + 1$
+    ความชันของเส้นที่ต้องการ $= -\frac{1}{2}$
+
+    ใช้ point-slope: $y - 2 = -\frac{1}{2}(x - 1)$
+
+    $y = -\frac{1}{2}x + \frac{5}{2}$
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 4: สมการเส้นตรง
+% ===========================================================================
+\section{สมการเส้นตรง (Equations of Lines)}
+
+\begin{frame}{รูปแบบของสมการเส้นตรง}
+  \begin{explanation}[รูปแบบ Point-Slope]
+    เส้นตรงที่ผ่าน $(x_1, y_1)$ ด้วยความชัน $m$:
+    \[
+      y - y_1 = m(x - x_1)
+    \]
+  \end{explanation}
+
+  \begin{explanation}[รูปแบบ Slope-Intercept]
+    \[
+      y = mx + c
+    \]
+    $m$ = ความชัน, \quad $c$ = ระยะตัดแกน $y$ (เมื่อ $x = 0$)
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{รูปแบบของสมการเส้นตรง}
+  \begin{explanation}[รูปแบบทั่วไป (General Form)]
+    \[
+      Ax + By + C = 0
+    \]
+    โดยที่ $A, B, C$ เป็นค่าคงที่ และ $A, B$ ไม่เป็นศูนย์พร้อมกัน
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การหาสมการเส้นตรง}
+  \begin{exambox}[โจทย์]
+    เส้นตรงผ่าน $(2, 3)$ และ $(4, 7)$
+    \textbf{1. หาความชัน:}
+    $m = \dfrac{7-3}{4-2} = \dfrac{4}{2} = 2$
+
+    \textbf{2. ใช้ point-slope กับจุด $(2, 3)$:}
+    $y - 3 = 2(x - 2)$
+    $y - 3 = 2x - 4$
+
+    \textbf{3. จัดรูป Slope-Intercept:}
+    $y = 2x - 1$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{กราฟของ $y = 2x - 1$}
+  \centering
+  \begin{tikzpicture}[scale=0.6]
+    \draw[->, gray] (-1,0) -- (5,0) node[right] {$x$};
+    \draw[->, gray] (0,-2) -- (0,7) node[above] {$y$};
+    \draw[boxBlue, thick] (-0.5,-2) -- (4,7);
+    \fill[boxBlue] (2,3) circle (2pt) node[below] {$(2,3)$};
+    \fill[boxBlue] (4,7) circle (2pt) node[right] {$(4,7)$};
+    \fill[boxOrange] (0,-1) circle (2pt) node[below right] {$c=-1$};
+  \end{tikzpicture}
+
+  เส้นตัดแกน $y$ ที่ $c = -1$, \; ความชัน $m = 2$
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การหาสมการเส้นตรง (ต่อ)}
+  \begin{exambox}[โจทย์]
+    เส้นตรงขนานกับ $y = 3x + 2$ และผ่าน $(0, 5)$
+    ความชันเท่ากัน: $m = 3$
+
+    ผ่าน $(0,5)$ — ระยะตัดแกน $y = 5$
+
+    \textbf{คำตอบ:} $y = 3x + 5$
+  \end{exambox}
+
+  \begin{exambox}[โจทย์]
+    เส้นตรงตั้งฉากกับ $y = \frac{1}{3}x - 1$ และผ่าน $(1, 2)$
+    $m_{\text{ตั้งฉาก}} = -3$
+
+    $y - 2 = -3(x - 1)$
+
+    $y = -3x + 5$
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 5: เวกเตอร์
+% ===========================================================================
+\section{เวกเตอร์ (Vectors)}
+
+\begin{frame}{เวกเตอร์คืออะไร?}
+  \begin{explanation}[นิยาม]
+    \textbf{เวกเตอร์} คือปริมาณที่มีทั้ง \highlight{ขนาด} และ \highlight{ทิศทาง}
+    เขียนแทนด้วย $\vec{v}$ หรือลูกศรจากจุดเริ่มไปจุดปลาย
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \centering
+      \begin{tikzpicture}[scale=1.2]
+        \draw[->, gray] (-0.5,0)--(3,0) node[right] {$x$};
+        \draw[->, gray] (0,-0.5)--(0,2.5) node[above] {$y$};
+        \draw[->, boxBlue, ultra thick] (0.0,0.0) -- (2.0,1.5)
+          node[midway, above left] {$\vec{v} = (2, 1.5)$};
+        \fill[boxBlue] (0,0) circle (1pt);
+        \fill[boxBlue] (2,1.5) circle (1pt);
+      \end{tikzpicture}
+
+    \column{0.5\textwidth}
+      \textbf{การเขียนเวกเตอร์:}
+      \begin{itemize}
+        \item $\vec{v} = (x, y)$ — พิกัด
+        \item \textbf{ขนาด:} $|\vec{v}| = \sqrt{x^2 + y^2}$
+        \item \textbf{ทิศทาง:} มุมจากแกน $x$ บวก
+      \end{itemize}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{การดำเนินการของเวกเตอร์}
+  \begin{explanation}[การบวกเวกเตอร์]
+    $\vec{u} + \vec{v} = (u_1 + v_1,\; u_2 + v_2)$
+
+    (นำพิกัดที่ตรงกันมาบวกกัน)
+  \end{explanation}
+
+  \begin{explanation}[การคูณด้วยสเกลาร์]
+    $k\vec{v} = (k \cdot v_1,\; k \cdot v_2)$
+
+    \begin{itemize}
+      \item $k > 0$: เวกเตอร์ยาวขึ้นในทิศทางเดิม
+      \item $k < 0$: เวกเตอร์ยาวขึ้นในทิศทางตรงข้าม
+    \end{itemize}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $\vec{u} = (3, 1)$, $\vec{v} = (-1, 2)$
+
+    $\vec{u} + \vec{v} = (2, 3)$ \qquad $2\vec{u} = (6, 2)$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{เวกเตอร์กับระยะทาง}
+  \begin{explanation}[ระยะทางแบบยุคลีเดียน (Euclidean Distance)]
+    ระยะทางระหว่าง $\vec{a}$ และ $\vec{b}$ = ขนาดของ $\vec{a} - \vec{b}$:
+    \[
+      d = |\vec{a} - \vec{b}| = \sqrt{(a_1-b_1)^2 + (a_2-b_2)^2}
+    \]
+    (เหมือนกับสูตรระยะทางระหว่างสองจุด!)
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $\vec{a} = (1, 2)$, $\vec{b} = (4, 6)$
+
+    $\vec{a} - \vec{b} = (-3, -4)$
+
+    $d = \sqrt{(-3)^2 + (-4)^2} = \sqrt{9 + 16} = 5$
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SUMMARY
+% ===========================================================================
+\section{สรุป}
+
+\begin{frame}{สรุปเนื้อหา}
+  \begin{explanation}[สิ่งที่ได้เรียนรู้]
+    \begin{enumerate}
+      \item \textbf{ระยะทาง}: $d = \sqrt{(x_2-x_1)^2 + (y_2-y_1)^2}$
+      \item \textbf{จุดกึ่งกลาง}: $M = \left(\frac{x_1+x_2}{2}, \frac{y_1+y_2}{2}\right)$
+      \item \textbf{ความชัน}: $m = \frac{y_2-y_1}{x_2-x_1}$, \; ขนาน $m_1=m_2$, \; ตั้งฉาก $m_1m_2=-1$
+      \item \textbf{มุมระหว่างเส้น}: $\tan\theta = \left|\frac{m_1-m_2}{1+m_1m_2}\right|$
+      \item \textbf{สมการเส้นตรง}: Point-slope, Slope-Intercept, General Form
+      \item \textbf{เวกเตอร์}: $\vec{v} = (x,y)$, $|\vec{v}| = \sqrt{x^2+y^2}$, การบวก, สเกลาร์คูณ
+    \end{enumerate}
+  \end{explanation}
+  \begin{center}
+    \large เอกสารนี้เป็นส่วนหนึ่งของเนื้อหาเตรียมสอบ \textbf{สอวน. คอมพิวเตอร์}
+  \end{center}
+\end{frame}
+
+\end{document}

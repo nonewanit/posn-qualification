@@ -1,0 +1,805 @@
+% !TEX program = xelatex
+% ============================================================================
+%  POSN Computer Qualification — Real Numbers Slide Deck
+%  Topic: จำนวนจริง (Real Numbers)
+% ============================================================================
+
+\documentclass[11pt, aspectratio=169]{beamer}
+
+% --- Load shared preamble ---
+\input{../../preamble.tex}
+
+% --- Document info ---
+\title[จำนวนจริง]{จำนวนจริง}
+\subtitle{Real Numbers — ระบบจำนวน, เศษส่วน, ทศนิยม, สัดส่วน, สมบัติ, ค่าสัมบูรณ์, เลขยกกำลัง}
+\author[None W. (Yuan)]{None W. (Yuan)}
+\date{}
+
+\begin{document}
+
+% ===========================================================================
+%  TITLE SLIDE
+% ===========================================================================
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ===========================================================================
+%  OUTLINE
+% ===========================================================================
+\begin{frame}{สารบัญ (Outline)}
+  \tableofcontents
+\end{frame}
+
+% ===========================================================================
+%  ก่อนเรียน (Prerequisites)
+% ===========================================================================
+\begin{frame}{ก่อนเรียน (Prerequisites)}
+  \begin{explanation}[สิ่งที่ควรรู้ก่อนเรียน]
+    \begin{itemize}
+      \item \textbf{การดำเนินการพื้นฐาน} — บวก ลบ คูณ หาร
+      \item \textbf{เซต} — ความเข้าใจเกี่ยวกับสมาชิกของเซต
+    \end{itemize}
+  \end{explanation}
+
+  \begin{intuition}[จำนวนจริงคืออะไร?]
+    จำนวนจริงคือจำนวนทุกชนิดที่เราพบในชีวิตประจำวัน — จำนวนนับ, จำนวนเต็ม,
+    เศษส่วน, ทศนิยม, และจำนวนอตรรกยะอย่าง $\sqrt{2}, \pi$
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 1: ระบบจำนวนจริง
+% ===========================================================================
+\section{ระบบจำนวนจริง (Number System)}
+
+\begin{frame}{ระบบจำนวนจริง}
+  \begin{explanation}[แผนภาพระบบจำนวน]
+    \textbf{จำนวนนับ} $\N = \{1, 2, 3, \ldots\}$
+
+    \textbf{จำนวนเต็ม} $\Z = \{\ldots, -2, -1, 0, 1, 2, \ldots\}$
+
+    \textbf{จำนวนตรรกยะ} $\Q = \{\frac{a}{b} \mid a, b \in \Z, b \neq 0\}$
+
+    \textbf{จำนวนจริง} $\R$ — รวมทั้งตรรกยะและอตรรกยะ
+
+    \medskip
+    \highlight{$\N \subset \Z \subset \Q \subset \R$}
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{จำนวนตรรกยะ vs อตรรกยะ}
+  \begin{explanation}[จำนวนตรรกยะ (Rational)]
+    เขียนในรูป \highlight{$\frac{a}{b}$} โดย $a, b \in \Z$ และ $b \neq 0$
+    \begin{itemize}
+      \item ทศนิยมรู้จบ: $0.5 = \frac{1}{2}$, $0.125 = \frac{1}{8}$
+      \item ทศนิยมซ้ำ: $0.\overline{3} = \frac{1}{3}$, $0.\overline{142857} = \frac{1}{7}$
+    \end{itemize}
+  \end{explanation}
+
+  \begin{explanation}[จำนวนอตรรกยะ (Irrational)]
+    \textbf{ไม่สามารถ}เขียนในรูป $\frac{a}{b}$ ได้
+    \begin{itemize}
+      \item $\sqrt{2}, \sqrt{3}, \sqrt{5}, \ldots$
+      \item $\pi \approx 3.14159\ldots$
+      \item $e \approx 2.71828\ldots$
+    \end{itemize}
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{กรณีพิเศษ: ทศนิยมซ้ำ $0.\overline{1}$}
+  \begin{exambox}[ตัวอย่าง: เขียน $0.111\ldots$ เป็นเศษส่วน]
+    ให้ $x = 0.111\ldots$
+    \begin{align*}
+      10x &= 1.111\ldots \\
+      x   &= 0.111\ldots \\
+      \hline
+      9x  &= 1 \quad \Rightarrow \quad x = \tfrac{1}{9}
+    \end{align*}
+  \end{exambox}
+
+  \begin{intuition}[เทคนิคการแปลงทศนิยมซ้ำ]
+    \begin{itemize}
+      \item ถ้าซ้ำ 1 หลัก $\rightarrow$ คูณด้วย $10^1 = 10$ แล้วลบ
+      \item ถ้าซ้ำ 2 หลัก $\rightarrow$ คูณด้วย $10^2 = 100$ แล้วลบ
+      \item ถ้าซ้ำ $n$ หลัก $\rightarrow$ คูณด้วย $10^{\,n}$ แล้วลบ
+    \end{itemize}
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{กรณีพิเศษ: อตรรกยะยกกำลังอาจเป็นตรรกยะ}
+  \begin{exambox}[ตัวอย่างสุดคลาสสิก: $(\sqrt{2}^{\sqrt{2}})^{\sqrt{2}}$]
+    พิจารณา $(\sqrt{2}^{\sqrt{2}})^{\sqrt{2}}$
+
+    \medskip
+    ใช้สมบัติ $(a^b)^c = a^{bc}$:
+    \[
+      (\sqrt{2}^{\sqrt{2}})^{\sqrt{2}} = \sqrt{2}^{\sqrt{2} \cdot \sqrt{2}} = \sqrt{2}^{\,2} = 2
+    \]
+
+    \medskip
+    $\sqrt{2}$ เป็นอตรรกยะ, $\sqrt{2}^{\sqrt{2}}$ อาจเป็นอตรรกยะหรือไม่ก็ได้
+
+    แต่ผลลัพธ์ $2$ เป็นจำนวนตรรกยะแน่นอน!
+
+    \medskip
+    \highlight{บทเรียน:} อตรรกยะยกกำลังอตรรกยะ สามารถให้ผลเป็นตรรกยะได้
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 2: เศษส่วน
+% ===========================================================================
+\section{เศษส่วน (Fractions)}
+
+\begin{frame}{ประเภทของเศษส่วน}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+      \textbf{เศษส่วนแท้ (Proper Fraction)}
+      \begin{itemize}
+        \item ตัวเศษ < ตัวส่วน
+        \item ค่าน้อยกว่า 1
+        \item เช่น $\frac{2}{3}, \frac{5}{8}, \frac{1}{4}$
+      \end{itemize}
+
+      \medskip
+      \textbf{เศษส่วนเกิน (Improper Fraction)}
+      \begin{itemize}
+        \item ตัวเศษ > ตัวส่วน
+        \item ค่ามากกว่า 1
+        \item เช่น $\frac{7}{4}, \frac{5}{3}, \frac{11}{5}$
+      \end{itemize}
+
+    \column{0.48\textwidth}
+      \textbf{จำนวนคละ (Mixed Number)}
+      \begin{itemize}
+        \item จำนวนเต็ม + เศษส่วนแท้
+        \item เช่น $2\frac{1}{3}, 1\frac{3}{4}$
+      \end{itemize}
+
+      \medskip
+      \textbf{การแปลง:}
+      \[
+        2\tfrac{1}{3} = \frac{2 \times 3 + 1}{3} = \frac{7}{3}
+      \]
+      \[
+        \frac{11}{4} = 2\tfrac{3}{4} \quad (11 \div 4 = 2 \text{ เศษ } 3)
+      \]
+  \end{columns}
+\end{frame}
+
+\begin{frame}{การดำเนินการของเศษส่วน — บวกและลบ}
+  \begin{exambox}[การบวก/ลบ — ต้องทำส่วนให้เท่ากันก่อน]
+    \[
+      \frac{1}{3} + \frac{1}{4} = \frac{4}{12} + \frac{3}{12} = \frac{7}{12}
+    \]
+    \[
+      \frac{5}{6} - \frac{1}{2} = \frac{5}{6} - \frac{3}{6} = \frac{2}{6} = \frac{1}{3}
+    \]
+  \end{exambox}
+
+  \begin{intuition}[ขั้นตอน]
+    \begin{enumerate}
+      \item หา ค.ร.น. ของตัวส่วน
+      \item ทำตัวส่วนให้เท่ากัน
+      \item บวก/ลบ ตัวเศษ (ตัวส่วนคงเดิม)
+      \item ทำเป็นเศษส่วนอย่างต่ำ
+    \end{enumerate}
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{การดำเนินการของเศษส่วน — คูณและหาร}
+  \begin{exambox}[การคูณ/หาร]
+    \[
+      \frac{2}{3} \times \frac{4}{5} = \frac{2 \times 4}{3 \times 5} = \frac{8}{15}
+    \]
+    \[
+      \frac{2}{3} \div \frac{4}{5} = \frac{2}{3} \times \frac{5}{4} = \frac{10}{12} = \frac{5}{6}
+    \]
+  \end{exambox}
+
+  \begin{intuition}[เคล็ดลับ]
+    \begin{itemize}
+      \item \textbf{คูณ:} เศษ $\times$ เศษ, ส่วน $\times$ ส่วน
+      \item \textbf{หาร:} กลับเศษเป็นส่วนของตัวหาร แล้วเปลี่ยนเป็นคูณ
+    \end{itemize}
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{การทำให้เศษส่วนเป็นอย่างต่ำ}
+  \begin{explanation}[วิธีทำ]
+    \textbf{หารทั้งเศษและส่วนด้วย ห.ร.ม.} (GCD — ตัวหารร่วมมาก)
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    \begin{align*}
+      \frac{24}{36} &= \frac{24 \div 12}{36 \div 12} = \frac{2}{3} \quad (\text{ห.ร.ม. ของ 24, 36 คือ 12}) \\[1em]
+      \frac{45}{60} &= \frac{45 \div 15}{60 \div 15} = \frac{3}{4} \quad (\text{ห.ร.ม. ของ 45, 60 คือ 15})
+    \end{align*}
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 3: ทศนิยมและร้อยละ
+% ===========================================================================
+\section{ทศนิยมและร้อยละ (Decimals \& Percentages)}
+
+\begin{frame}{ตัวอย่าง: การแปลง}
+  \begin{columns}[T]
+    \column{0.33\textwidth}
+      \centering
+      \textbf{เศษส่วน $\to$ ทศนิยม}
+      \[
+        \frac{1}{2} = 0.5
+      \]
+      \[
+        \frac{3}{4} = 0.75
+      \]
+      \[
+        \frac{1}{3} = 0.333\ldots
+      \]
+
+    \column{0.33\textwidth}
+      \centering
+      \textbf{ทศนิยม $\to$ ร้อยละ}
+      \[
+        0.5 \times 100\% = 50\%
+      \]
+      \[
+        0.25 \times 100\% = 25\%
+      \]
+      \[
+        1.5 \times 100\% = 150\%
+      \]
+
+    \column{0.33\textwidth}
+      \centering
+      \textbf{ร้อยละ $\to$ เศษส่วน}
+      \[
+        50\% = \frac{50}{100} = \frac{1}{2}
+      \]
+      \[
+        25\% = \frac{25}{100} = \frac{1}{4}
+      \]
+      \[
+        10\% = \frac{10}{100} = \frac{1}{10}
+      \]
+  \end{columns}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 4: อัตราส่วนและสัดส่วน
+% ===========================================================================
+\section{อัตราส่วนและสัดส่วน (Ratios \& Proportions)}
+
+\begin{frame}{อัตราส่วน (Ratio)}
+  \begin{explanation}[นิยาม]
+    \textbf{อัตราส่วน} $a : b$ คือการเปรียบเทียบปริมาณ $a$ ต่อ $b$
+    เขียนเป็น $\frac{a}{b}$ ก็ได้ (อ่านว่า ``$a$ ต่อ $b$'')
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    \begin{itemize}
+      \item ในห้องมีชาย 15 คน หญิง 10 คน
+      \par อัตราส่วน ชาย : หญิง = $15 : 10 = 3 : 2$
+      \item น้ำเชื่อมใช้น้ำตาล 2 ส่วน น้ำ 5 ส่วน
+      \par อัตราส่วน น้ำตาล : น้ำ = $2 : 5$
+      \item แผนที่มาตราส่วน $1 : 50{,}000$
+      \par 1 ซม. ในแผนที่ = 50,000 ซม. ในความเป็นจริง
+    \end{itemize}
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{สัดส่วน (Proportion)}
+  \begin{explanation}[นิยาม]
+    \textbf{สัดส่วน} คือการเท่ากันของสองอัตราส่วน: \quad $a : b = c : d$
+
+    \medskip
+    เขียนอีกแบบ: $\dfrac{a}{b} = \dfrac{c}{d}$
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง: การหาค่าตัวแปรในสัดส่วน]
+    จงหา $x$ เมื่อ $3 : 5 = x : 20$
+
+    \medskip
+    \textbf{วิธีทำ:} $\dfrac{3}{5} = \dfrac{x}{20}$
+
+    คูณไขว้: $3 \times 20 = 5 \times x$
+
+    $60 = 5x$ \quad $\Rightarrow$ \quad $x = 12$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{สัดส่วนตรงและสัดส่วนผกผัน}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+      \textbf{สัดส่วนตรง (Direct Proportion)}
+      \begin{itemize}
+        \item $y \propto x$
+        \item $y = kx$ ($k$ = ค่าคงที่)
+        \item $x$ เพิ่ม $\rightarrow$ $y$ เพิ่ม
+        \item เช่น ระยะทางกับเวลา (ความเร็วคงที่)
+      \end{itemize}
+
+      \begin{exambox}[ตัวอย่าง]
+        ขนม 3 ชิ้น 15 บาท \\
+        ขนม 5 ชิ้น = ? บาท \\[0.3em]
+        $\frac{3}{15} = \frac{5}{x}$ \\
+        $x = 25$ บาท
+      \end{exambox}
+
+    \column{0.48\textwidth}
+      \textbf{สัดส่วนผกผัน (Inverse Proportion)}
+      \begin{itemize}
+        \item $y \propto \frac{1}{x}$
+        \item $y = \frac{k}{x}$ ($k$ = ค่าคงที่)
+        \item $x$ เพิ่ม $\rightarrow$ $y$ ลด
+        \item เช่น ความเร็วกับเวลา (ระยะทางคงที่)
+      \end{itemize}
+
+      \begin{exambox}[ตัวอย่าง]
+        คน 4 คน ทำงานเสร็จใน 6 วัน \\
+        คน 8 คน = ? วัน \\[0.3em]
+        $4 \times 6 = 8 \times x$ \\
+        $x = 3$ วัน
+      \end{exambox}
+  \end{columns}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 5: สมบัติของจำนวนจริง
+% ===========================================================================
+\section{สมบัติของจำนวนจริง (Properties of Real Numbers)}
+
+\begin{frame}{สมบัติการสลับที่และการเปลี่ยนหมู่}
+  \begin{explanation}[สมบัติการสลับที่ (Commutative)]
+    \[
+      a + b = b + a \qquad\qquad a \times b = b \times a
+    \]
+  \end{explanation}
+
+  \begin{explanation}[สมบัติการเปลี่ยนหมู่ (Associative)]
+    \[
+      (a + b) + c = a + (b + c) \qquad\qquad (a \times b) \times c = a \times (b \times c)
+    \]
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    \begin{itemize}
+      \item Commutative: $3 + 5 = 5 + 3 = 8$, \quad $4 \times 7 = 7 \times 4 = 28$
+      \item Associative: $(2 + 3) + 4 = 2 + (3 + 4) = 9$
+    \end{itemize}
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{สมบัติการแจกแจง (Distributive)}
+  \begin{explanation}[สมบัติการแจกแจง]
+    \[
+      a \times (b + c) = a \times b + a \times c
+    \]
+    ใช้ได้ทั้งจากซ้ายและขวา: $(b + c) \times a = b \times a + c \times a$
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    \begin{align*}
+      3 \times (4 + 5) &= 3 \times 4 + 3 \times 5 \\
+      3 \times 9 &= 12 + 15 \\
+      27 &= 27 \quad \checkmark
+    \end{align*}
+
+    \textbf{ใช้กลับด้าน:} $2x + 3x = (2+3)x = 5x$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{สมบัติเอกลักษณ์ (Identity)}
+  \begin{explanation}[สมบัติเอกลักษณ์]
+    \textbf{เอกลักษณ์} คือค่าที่เมื่อนำไปดำเนินการกับจำนวนใด ๆ แล้ว \highlight{ได้จำนวนนั้นกลับคืนมา}
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+      \textbf{เอกลักษณ์การบวก: 0}
+      \begin{itemize}
+        \item $a + 0 = a$
+        \item $0 + a = a$
+        \item \textbf{เหตุผล:} การ ``บวก 0'' คือการไม่เพิ่มอะไรเลย
+      \end{itemize}
+
+      \begin{exambox}[ตัวอย่าง]
+        $7 + 0 = 7$ \\
+        $0 + (-3) = -3$ \\
+        $x + 0 = x$
+      \end{exambox}
+
+    \column{0.48\textwidth}
+      \textbf{เอกลักษณ์การคูณ: 1}
+      \begin{itemize}
+        \item $a \times 1 = a$
+        \item $1 \times a = a$
+        \item \textbf{เหตุผล:} การ ``คูณ 1'' คือการไม่เปลี่ยนขนาด
+      \end{itemize}
+
+      \begin{exambox}[ตัวอย่าง]
+        $5 \times 1 = 5$ \\
+        $1 \times (-2) = -2$ \\
+        $\frac{1}{2} \times 1 = \frac{1}{2}$
+      \end{exambox}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{สมบัติอินเวอร์ส (Inverse)}
+  \begin{explanation}[สมบัติอินเวอร์ส]
+    \textbf{อินเวอร์ส} คือค่าที่เมื่อนำไปดำเนินการกับจำนวนใด ๆ แล้ว \highlight{ได้เอกลักษณ์กลับคืนมา}
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+      \textbf{อินเวอร์สการบวก: $-a$}
+      \begin{itemize}
+        \item $a + (-a) = 0$
+        \item $(-a) + a = 0$
+        \item เรียก $-a$ ว่า \highlight{จำนวนตรงข้าม}
+      \end{itemize}
+
+      \begin{exambox}[ตัวอย่าง]
+        $5 + (-5) = 0$ \\
+        $(-3) + 3 = 0$ \\
+        $-\frac{1}{2} + \frac{1}{2} = 0$
+      \end{exambox}
+
+    \column{0.48\textwidth}
+      \textbf{อินเวอร์สการคูณ: $\frac{1}{a}$}
+      \begin{itemize}
+        \item $a \times \frac{1}{a} = 1$ \; ($a \neq 0$)
+        \item เรียก $\frac{1}{a}$ ว่า \highlight{ส่วนกลับ}
+        \item \textbf{0 ไม่มีอินเวอร์สการคูณ!}
+      \end{itemize}
+
+      \begin{exambox}[ตัวอย่าง]
+        $4 \times \frac{1}{4} = 1$ \\
+        $(-2) \times (-\frac{1}{2}) = 1$ \\
+        $\frac{2}{3} \times \frac{3}{2} = 1$
+      \end{exambox}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ตัวดำเนินการใหม่ $\star$}
+  \begin{explanation}[นิยามตัวดำเนินการ $\star$]
+    กำหนด $a \star b = a + 2b$ (ตัวอย่างตัวดำเนินการใหม่ที่ไม่ใช่ $+$ หรือ $\times$)
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \textbf{ตรวจสอบสมบัติการสลับที่:}
+      \begin{align*}
+        a \star b &= a + 2b \\
+        b \star a &= b + 2a
+      \end{align*}
+      $a + 2b \neq b + 2a$ 
+
+      \medskip
+      \highlight{$\star$ ไม่มีสมบัติการสลับที่}
+
+    \column{0.5\textwidth}
+      \textbf{ตรวจสอบสมบัติการเปลี่ยนหมู่:}
+      \begin{align*}
+        (a \star b) \star c &= (a+2b) \star c \\
+        &= a + 2b + 2c \\
+        a \star (b \star c) &= a \star (b+2c) \\
+        &= a + 2b + 4c
+      \end{align*}
+      แตกต่างกัน!
+
+      \medskip
+      \highlight{$\star$ ไม่มีสมบัติการเปลี่ยนหมู่}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ตัวดำเนินการ $\star$ (ต่อ)}
+  \begin{exambox}[ตรวจสอบสมบัติการแจกแจง]
+    \textbf{แจกแจงทางซ้าย:} $a \star (b + c) = a + 2(b+c) = a + 2b + 2c$
+
+    $(a \star b) + (a \star c) = (a+2b) + (a+2c) = 2a + 2b + 2c$
+
+    \medskip
+    $a \star (b+c) \neq (a \star b) + (a \star c)$ โดยทั่วไป
+
+    \highlight{$\star$ ไม่มีสมบัติการแจกแจง}
+  \end{exambox}
+
+  \begin{intuition}[บทเรียนจาก $\star$]
+    \begin{itemize}
+      \item ตัวดำเนินการที่เราคุ้นเคย ($+, \times$) มีสมบัติมากมาย
+      \item แต่ตัวดำเนินการใหม่ที่เรานิยามขึ้นเอง \textbf{อาจไม่มีสมบัติเหล่านี้}
+      \item ต้อง \highlight{ตรวจสอบทีละสมบัติ} — อย่าคิดว่าเป็นจริงเสมอไป!
+    \end{itemize}
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{ตรวจสอบ: $\star$ มีเอกลักษณ์และอินเวอร์สไหม?}
+  \begin{exambox}[เอกลักษณ์ของ $\star$]
+    \textbf{เอกลักษณ์การบวก:} $a \star e = a$ หมายถึง $a + 2e = a \Rightarrow 2e = 0 \Rightarrow e = 0$
+
+    $a \star 0 = a + 2(0) = a$ \quad $\checkmark$
+
+    แต่ $0 \star a = 0 + 2a \neq a$ \quad $\times$ \;(ไม่สลับที่!)
+
+    \medskip
+    \highlight{$\star$ ไม่มีเอกลักษณ์ที่แท้จริง} เพราะ $\star$ ไม่มีสมบัติการสลับที่
+  \end{exambox}
+
+  \begin{exambox}[อินเวอร์สของ $\star$]
+    ไม่สามารถหาอินเวอร์สได้ ถ้าไม่มีเอกลักษณ์ที่แน่นอน
+
+    \medskip
+    \highlight{บทเรียน:} สมบัติทั้งหลายเชื่อมโยงกัน —
+    ถ้าไม่มีสมบัติการสลับที่ ก็ส่งผลต่อสมบัติอื่น ๆ ด้วย
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 6: ค่าสัมบูรณ์
+% ===========================================================================
+\section{ค่าสัมบูรณ์ (Absolute Value)}
+
+\begin{frame}{ค่าสัมบูรณ์คืออะไร?}
+  \begin{explanation}[นิยาม]
+    \textbf{ค่าสัมบูรณ์} ของ $x$ ($|x|$) คือ \highlight{ระยะห่างจาก 0} บนเส้นจำนวน
+
+    \[
+      |x| =
+      \begin{cases}
+        x,  & \text{ถ้า } x \geq 0 \\
+        -x, & \text{ถ้า } x < 0
+      \end{cases}
+    \]
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $|5| = 5$ \qquad $|-3| = 3$ \qquad $|0| = 0\qquad |2 - 7| = |-5| = 5$ \quad (ระยะห่างของ 2 และ 7)
+  \end{exambox}
+
+  \begin{intuition}[คิดง่าย ๆ]
+    ค่าสัมบูรณ์ = \highlight{ค่าบวกของจำนวนนั้น} (หรือศูนย์)
+    — มันคือการถามว่า ``ห่างจาก 0 เท่าไหร่?''
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{สมบัติของค่าสัมบูรณ์}
+  \begin{explanation}[สมบัติที่สำคัญ]
+    \begin{enumerate}
+      \item $|a| \geq 0$ \quad (ค่าสัมบูรณ์ไม่เป็นลบเสมอ)
+      \item $|a| = |-a|$
+      \item $|ab| = |a| \cdot |b|$
+      \item $|a + b| \leq |a| + |b|$ \quad (อสมการสามเหลี่ยม — Triangle Inequality)
+      \item $\sqrt{a^2} = |a|$ \quad (\textbf{ระวัง!} ไม่ใช่ $a$ เฉย ๆ)
+    \end{enumerate}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่างการใช้สมบัติ]
+    \begin{itemize}
+      \item $|3 \times (-4)| = |3| \times |-4| = 3 \times 4 = 12$
+      \item $|3 + (-5)| = |-2| = 2 \leq |3| + |-5| = 8$ \quad $\checkmark$
+    \end{itemize}
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{การแก้สมการค่าสัมบูรณ์}
+  \begin{explanation}[หลักการแก้สมการ]
+    $|x| = a$ ($a \geq 0$)
+    \[
+      |x| = a \quad \iff \quad x = a \;\; \text{หรือ} \;\; x = -a
+    \]
+    \textbf{หมายเหตุ:} ถ้า $a < 0$ แสดงว่า \textbf{ไม่มีคำตอบ} เพราะค่าสัมบูรณ์ $\geq 0$ เสมอ
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การแก้สมการค่าสัมบูรณ์}
+  \begin{exambox}[โจทย์ 1]
+    $|x - 3| = 5$
+    \[
+      x - 3 = 5 \quad \text{หรือ} \quad x - 3 = -5
+    \]
+    \[
+      x = 8 \quad \text{หรือ} \quad x = -2
+    \]
+  \end{exambox}
+
+  \begin{exambox}[โจทย์ 2]
+    $|2x + 1| = 7$
+    \[
+      2x + 1 = 7 \;\; \Rightarrow \;\; 2x = 6 \;\; \Rightarrow \;\; x = 3
+    \]
+    \[
+      2x + 1 = -7 \;\; \Rightarrow \;\; 2x = -8 \;\; \Rightarrow \;\; x = -4
+    \]
+    \textbf{คำตอบ:} $x = 3$ หรือ $x = -4$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{การแก้อสมการค่าสัมบูรณ์}
+  \begin{explanation}[หลักการแก้อสมการ]
+    \textbf{แบบที่ 1:} $|x| < a$ \quad ($a > 0$)
+    \[
+      -a < x < a
+    \]
+    (ระยะห่างจาก 0 น้อยกว่า $a$)
+
+    \textbf{แบบที่ 2:} $|x| > a$ \quad ($a > 0$)
+    \[
+      x < -a \quad \textbf{หรือ} \quad x > a
+    \]
+    (ระยะห่างจาก 0 มากกว่า $a$)
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: อสมการ $|x - 2| \leq 4$}
+  \begin{exambox}[โจทย์: $|x - 2| \leq 4$]
+    \[
+      -4 \leq x - 2 \leq 4
+    \]
+    \[
+      -2 \leq x \leq 6
+    \]
+    \textbf{คำตอบ:} $x \in [-2, 6]$
+  \end{exambox}
+
+  \begin{intuition}[ความหมาย]
+    $x$ ห่างจาก 2 ไม่เกิน 4 หน่วย $\rightarrow$ ระยะจาก 2 ถึง -2 คือ 4, ระยะจาก 2 ถึง 6 คือ 4
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: อสมการ $|3x + 1| > 5$}
+  \begin{exambox}[โจทย์: $|3x + 1| > 5$]
+    \[
+      3x + 1 < -5 \quad \text{หรือ} \quad 3x + 1 > 5
+    \]
+    \[
+      x < -2 \quad \text{หรือ} \quad x > \frac{4}{3}
+    \]
+    \textbf{คำตอบ:} $x \in (-\infty, -2) \cup (\frac{4}{3}, \infty)$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{แนวทางการแก้โจทย์ค่าสัมบูรณ์}
+  \begin{intuition}[ขั้นตอนการแก้โจทย์ค่าสัมบูรณ์]
+    \begin{enumerate}
+      \item \textbf{จัดรูป}ให้อยู่ในรูป $|\text{นิพจน์}| = a$, $|\text{นิพจน์}| < a$, หรือ $|\text{นิพจน์}| > a$
+      \item \textbf{แยกกรณี}ตามนิยาม:
+      \begin{itemize}
+        \item $|X| = a \;\rightarrow\; X = a$ หรือ $X = -a$
+        \item $|X| < a \;\rightarrow\; -a < X < a$
+        \item $|X| > a \;\rightarrow\; X < -a$ หรือ $X > a$
+      \end{itemize}
+      \item \textbf{แก้}สมการ/อสมการในแต่ละกรณี และ \textbf{ตรวจคำตอบ}
+    \end{enumerate}
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+  \begin{exambox}[ข้อสอบจริงปี 68 ข้อ 14]
+    อะไรคือคำตอบของสมการ $\left\lvert 2x-3\right\rvert = 5x+6$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+  \begin{solbox}
+    \begin{align*}
+      |2x-3| &= 5x+6 \quad \text{โดยมีเงื่อนไขว่า } 5x+6 \geq 0 \implies x \geq -\frac{6}{5} \\
+      \textbf{กรณีที่ 1:} \quad 2x-3 &= 5x+6 \\
+      -3x &= 9 \\
+      x &= -3 \quad \text{(ใช้ไม่ได้เพราะขัดกับเงื่อนไข } x \geq -1.2\text{)} \\
+      \textbf{กรณีที่ 2:} \quad -(2x-3) &= 5x+6 \\
+      -2x+3 &= 5x+6 \\
+      -7x &= 3 \\
+      x &= -\frac{3}{7} \quad \text{(ใช้ได้เพราะสอดคล้องกับเงื่อนไข } x \geq -1.2\text{)} \\
+    \end{align*}
+  \end{solbox}
+\end{frame}
+% ===========================================================================
+%  SECTION 7: เลขยกกำลังและราก
+% ===========================================================================
+\section{เลขยกกำลังและราก (Exponents \& Radicals)}
+
+\begin{frame}{เลขยกกำลัง (Exponents)}
+  \begin{explanation}[นิยาม]
+    $a^n$ = $a$ คูณกัน $n$ ครั้ง \quad ($n \in \N$)
+
+    \medskip
+    \begin{itemize}
+      \item $a^1 = a$
+      \item $a^0 = 1$ \quad ($a \neq 0$)
+      \item $a^{-n} = \dfrac{1}{a^n}$ \quad ($a \neq 0$)
+    \end{itemize}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $2^3 = 2 \times 2 \times 2 = 8$ \qquad
+    $5^0 = 1$
+
+    $10^{-1} = \frac{1}{10} = 0.1$ \qquad
+    $2^{-3} = \frac{1}{2^3} = \frac{1}{8}$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{สมบัติของเลขยกกำลัง}
+  \begin{explanation}[กฎของเลขยกกำลัง]
+    \[
+    \begin{array}{c|c}
+      \textbf{กฎ} & \textbf{ตัวอย่าง} \\
+      \hline
+      a^m \cdot a^n = a^{m+n}         & 2^3 \cdot 2^4 = 2^7 = 128 \\[0.4em]
+      \dfrac{a^m}{a^n} = a^{m-n}     & \dfrac{2^5}{2^2} = 2^3 = 8 \\[0.4em]
+      (a^m)^n = a^{mn}               & (2^3)^2 = 2^6 = 64 \\[0.4em]
+      (ab)^n = a^n \cdot b^n         & (2 \times 3)^2 = 2^2 \times 3^2 = 4 \times 9 = 36 \\[0.4em]
+      \left(\dfrac{a}{b}\right)^n = \dfrac{a^n}{b^n} & \left(\dfrac{2}{3}\right)^2 = \dfrac{4}{9}
+    \end{array}
+    \]
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{ราก (Radicals)}
+  \begin{explanation}[นิยาม]
+    $\sqrt[n]{a}$ คือจำนวนที่ยกกำลัง $n$ แล้วได้ $a$
+
+    \medskip
+    $\sqrt{a}$ = $\sqrt[2]{a}$ (รากที่สอง) \quad — \quad $(\sqrt{a})^2 = a$ \; ($a \geq 0$)
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $\sqrt{9} = 3$ \quad เพราะ $3^2 = 9$
+
+    $\sqrt[3]{8} = 2$ \quad เพราะ $2^3 = 8$
+
+    $\sqrt{16} = 4$ \quad (ไม่ใช่ $\pm 4$ — รากที่สองที่เป็นบวก)
+
+    \medskip
+    \textbf{ระวัง!} $\sqrt{x^2} = |x|$ ไม่ใช่ $x$ เฉย ๆ
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{สมบัติของราก}
+  \begin{explanation}[กฎของราก]
+    \[
+    \begin{array}{c|c}
+      \textbf{กฎ} & \textbf{ตัวอย่าง} \\
+      \hline
+      \sqrt[n]{ab} = \sqrt[n]{a} \cdot \sqrt[n]{b} & \sqrt{12} = \sqrt{4 \times 3} = 2\sqrt{3} \\[0.4em]
+      \sqrt[n]{\dfrac{a}{b}} = \dfrac{\sqrt[n]{a}}{\sqrt[n]{b}} & \sqrt{\dfrac{4}{9}} = \dfrac{2}{3} \\[0.4em]
+      \sqrt[m]{\sqrt[n]{a}} = \sqrt[mn]{a} & \sqrt{\sqrt{16}} = \sqrt[4]{16} = 2
+    \end{array}
+    \]
+  \end{explanation}
+
+  \begin{exambox}[การเขียนรากเป็นเลขยกกำลัง]
+    $\sqrt[n]{a} = a^{1/n}$ \qquad $\sqrt[n]{a^m} = a^{m/n}$
+
+    \medskip
+    ตัวอย่าง: $\sqrt[3]{x^2} = x^{2/3}$ \qquad $\sqrt{x} = x^{1/2}$
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SUMMARY
+% ===========================================================================
+\section{สรุป}
+
+\begin{frame}{สรุปเนื้อหา}
+  \begin{explanation}[สิ่งที่ได้เรียนรู้]
+    \begin{enumerate}
+      \item \textbf{ระบบจำนวน}: $\N \subset \Z \subset \Q \subset \R$ — ตรรกยะ vs อตรรกยะ
+      \item \textbf{เศษส่วน}: การบวก ลบ คูณ หาร และการทำให้เป็นอย่างต่ำ
+      \item \textbf{ร้อยละ \& สัดส่วน}: การแปลงระหว่างเศษส่วน-ทศนิยม-ร้อยละ, สัดส่วนตรงและผกผัน
+      \item \textbf{สมบัติของ $\R$}: Commutative, Associative, Distributive, Identity, Inverse
+      \item \textbf{ตัวดำเนินการใหม่}: ต้องตรวจสอบสมบัติทีละข้อ — อย่าคิดว่าเป็นจริงเสมอ
+      \item \textbf{ค่าสัมบูรณ์}: $|x| = $ ระยะห่างจาก 0, การแก้สมการและอสมการ
+      \item \textbf{เลขยกกำลัง \& ราก}: $a^m \cdot a^n = a^{m+n}$, $\sqrt{x^2} = |x|$
+    \end{enumerate}
+  \end{explanation}
+
+  \begin{center}
+    \large เอกสารนี้เป็นส่วนหนึ่งของเนื้อหาเตรียมสอบ \textbf{สอวน. คอมพิวเตอร์}
+  \end{center}
+\end{frame}
+
+\end{document}

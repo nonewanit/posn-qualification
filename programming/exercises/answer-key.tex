@@ -1,0 +1,38 @@
+% !TEX program = xelatex
+\documentclass[16pt, a4paper]{article}
+\input{../../exercise-preamble.tex}
+
+% --- Code font: Courier New (monospace) ---
+\setmonofont{Courier New}[
+  Path       = ../../fonts/CourierNew/,
+  Extension  = .ttf,
+  UprightFont = cour,
+  Scale       = 0.8
+]
+\newcommand{\py}[1]{\texttt{#1}}
+
+% --- Bordered code block (use \\ for line breaks inside code) ---
+\newsavebox{\codeboxbox}
+\newenvironment{codeblock}{%
+  \begin{center}
+  \begin{lrbox}{\codeboxbox}
+  \begin{minipage}[t]{0.92\textwidth}
+  \ttfamily\footnotesize
+  \raggedright
+}{%
+  \end{minipage}
+  \end{lrbox}
+  \fbox{\usebox{\codeboxbox}}
+  \end{center}
+  \par\medskip
+}
+
+\renewcommand{\problem}[2]{%
+  \filbreak\refstepcounter{qnum}\par\medskip
+  \noindent\textbf{\theqnum.} #2\par\medskip
+}
+\begin{document}
+\exerciseheader{เฉลย: การโปรแกรมเบื้องต้น ภาษาไพธอน}
+\vspace{0.5cm}
+\input{problems.tex}
+\end{document}

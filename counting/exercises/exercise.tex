@@ -1,0 +1,36 @@
+% !TEX program = xelatex
+% ============================================================================
+%  POSN Computer Qualification — Exercise: การนับเบื้องต้น
+%  Problems with blank space for student calculations.
+% ============================================================================
+
+\documentclass[16pt, a4paper]{article}
+
+% --- Load shared exercise preamble ---
+\input{../../exercise-preamble.tex}
+
+% --- Redefine \problem: show question + blank space for calculation ---
+\renewcommand{\problem}[2]{%
+  \filbreak
+  \refstepcounter{qnum}
+  \par\medskip
+  \noindent\textbf{\theqnum.} #1
+  \par
+  \vspace{4cm}
+  \hrule
+  \vspace{0.3cm}
+}
+
+\begin{document}
+
+\exerciseheader{แบบฝึกหัด: การนับเบื้องต้น}
+\vspace{-0.3cm}
+\begin{center}
+  {\large เนื้อหาประกอบการสอบคัดเลือกเข้าค่าย 1 สอวน. วิชาคอมพิวเตอร์}
+\end{center}
+\vspace{0.5cm}
+
+% --- Include all problems ---
+\input{problems.tex}
+
+\end{document}

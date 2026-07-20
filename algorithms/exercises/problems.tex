@@ -1,0 +1,469 @@
+% ============================================================================
+%  Problems: ขั้นตอนวิธี (Algorithms)
+%  Level 1: Basic (8) — Level 2: POSN (8) — Level 3: Fill-in (5)
+%  Shared by exercise.tex and answer-key.tex
+% ============================================================================
+
+% --- Level 1: พื้นฐาน (Basic — 8 ข้อ) ---
+\examsection{ตอนที่ 1: พื้นฐาน — การติดตาม Pseudo Code (8 ข้อ)}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ผลลัพธ์คืออะไร?
+
+  \begin{pseudocode}
+    \textbf{1.)} ให้ $x = 15$ \\
+    \textbf{2.)} ให้ $y = 8$ \\
+    \textbf{3.)} ถ้า $x > y$ แล้ว \\
+    .\qquad \textbf{3.1)} $z = x - y$ \\
+    \textbf{4.)} มิฉะนั้น \\
+    .\qquad \textbf{4.1)} $z = y - x$ \\
+    \textbf{5.)} พิมพ์ $z$
+  \end{pseudocode}
+}{
+  $7$
+
+  ($x=15 > y=8$ เป็นจริง $\to$ $z = 15-8 = 7$)
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ผลลัพธ์คืออะไร?
+
+  \begin{pseudocode}
+    \textbf{1.)} ให้ $i = 1$ \\
+    \textbf{2.)} ให้ $s = 0$ \\
+    \textbf{3.)} ทำซ้ำเมื่อ $i \leq 5$ \\
+    .\qquad \textbf{3.1)} $s = s + i$ \\
+    .\qquad \textbf{3.2)} $i = i + 1$ \\
+    \textbf{4.)} พิมพ์ $s$
+  \end{pseudocode}
+}{
+  $15$
+
+  ($1+2+3+4+5 = 15$)
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ผลลัพธ์คืออะไร?
+
+  \begin{pseudocode}
+    \textbf{1.)} ให้ $n = 20$ \\
+    \textbf{2.)} ให้ $c = 0$ \\
+    \textbf{3.)} ทำซ้ำเมื่อ $n > 0$ \\
+    .\qquad \textbf{3.1)} $n = n - 3$ \\
+    .\qquad \textbf{3.2)} $c = c + 1$ \\
+    \textbf{4.)} พิมพ์ $c$
+  \end{pseudocode}
+}{
+  $7$
+
+  ($n$: 20$\to$17$\to$14$\to$11$\to$8$\to$5$\to$2$\to$-1, 7 รอบ)
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ผลลัพธ์คืออะไร?
+
+  \begin{pseudocode}
+    \textbf{1.)} ให้ $a = 10$ \\
+    \textbf{2.)} ให้ $b = 3$ \\
+    \textbf{3.)} ให้ $c = a // b$ \\
+    \textbf{4.)} ให้ $r =$ เศษที่เหลือจากการหาร $a$ ด้วย $b$ \\
+    \textbf{5.)} พิมพ์ $c, r$
+  \end{pseudocode}
+}{
+  $3, 1$
+
+  ($10//3 = 3$, $10 \bmod 3 = 1$)
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ผลลัพธ์คืออะไร?
+
+  \begin{pseudocode}
+    \textbf{1.)} ให้ $x = 25$ \\
+    \textbf{2.)} ถ้า $x \bmod 2 = 0$ แล้ว \\
+    .\qquad \textbf{2.1)} พิมพ์ ``even'' \\
+    \textbf{3.)} มิฉะนั้น \\
+    .\qquad \textbf{3.1)} พิมพ์ ``odd''
+  \end{pseudocode}
+}{
+  \texttt{odd}
+
+  ($25 \bmod 2 = 1 \neq 0 \to$ odd)
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ผลลัพธ์คืออะไร?
+
+  \begin{pseudocode}
+    \textbf{1.)} ให้ $i = 0$ \\
+    \textbf{2.)} ให้ $s = 0$ \\
+    \textbf{3.)} ทำซ้ำเมื่อ $i < 4$ \\
+    .\qquad \textbf{3.1)} ถ้า $i \bmod 2 = 0$ แล้ว \\
+    .\qquad\quad \textbf{3.1.1)} $s = s + i$ \\
+    .\qquad \textbf{3.2)} $i = i + 1$ \\
+    \textbf{4.)} พิมพ์ $s$
+  \end{pseudocode}
+}{
+  $2$
+
+  ($i=0$: even $\to s=0$; $i=1$: skip; $i=2$: even $\to s=2$; $i=3$: skip)
+
+  (ผลรวมเลขคู่ $0+2 = 2$)
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ การเปรียบเทียบ $i \leq 3$ ในขั้นตอนที่ 3 ถูกตรวจสอบทั้งหมดกี่ครั้ง?
+
+  \begin{pseudocode}
+    \textbf{1.)} ให้ $i = 1$ \\
+    \textbf{2.)} ให้ $s = 0$ \\
+    \textbf{3.)} ทำซ้ำเมื่อ $i \leq 3$ \\
+    .\qquad \textbf{3.1)} $s = s + i$ \\
+    .\qquad \textbf{3.2)} $i = i + 1$ \\
+    \textbf{4.)} พิมพ์ $s$
+  \end{pseudocode}
+}{
+  $4$ ครั้ง
+
+  ($i=1$: True, $i=2$: True, $i=3$: True, $i=4$: False $\to$ รวม 4 ครั้ง)
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ขั้นตอน 3.1 ถูกประมวลผลทั้งหมดกี่ครั้ง?
+
+  \begin{pseudocode}
+    \textbf{1.)} ให้ $i = 1$ \\
+    \textbf{2.)} ทำซ้ำเมื่อ $i \leq 3$ \\
+    .\qquad \textbf{2.1)} $j = 1$ \\
+    .\qquad \textbf{2.2)} ทำซ้ำเมื่อ $j \leq 2$ \\
+    .\qquad\quad \textbf{2.2.1)} พิมพ์ $i, j$ \\
+    .\qquad\quad \textbf{2.2.2)} $j = j + 1$ \\
+    .\qquad \textbf{2.3)} $i = i + 1$
+  \end{pseudocode}
+}{
+  $6$ ครั้ง
+
+  (loop นอก $i$ วน 3 รอบ $\times$ loop ใน $j$ วน 2 รอบ $= 6$)
+}
+
+% --- Level 2: ระดับ สอวน. (POSN Level — 8 ข้อ) ---
+\examsection{ตอนที่ 2: ระดับข้อสอบ สอวน. (8 ข้อ)}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ถ้า $n = 12$ จะพิมพ์ค่าใด?
+
+  \begin{pseudocode}
+    \textbf{1.)} รับค่า $n$ \\
+    \textbf{2.)} ให้ $c = 0$ \\
+    \textbf{3.)} ทำซ้ำเมื่อ $n > 1$ \\
+    .\qquad \textbf{3.1)} ถ้า $n \bmod 2 = 0$ แล้ว \\
+    .\qquad\quad \textbf{3.1.1)} $n = n // 2$ \\
+    .\qquad \textbf{3.2)} มิฉะนั้น \\
+    .\qquad\quad \textbf{3.2.1)} $n = 3 \times n + 1$ \\
+    .\qquad \textbf{3.3)} $c = c + 1$ \\
+    \textbf{4.)} พิมพ์ $c$
+  \end{pseudocode}
+}{
+  $9$
+
+  ($12\to6\to3\to10\to5\to16\to8\to4\to2\to1$, 9 รอบ)
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ถ้า $x = 7$ และ $y = 3$ จะพิมพ์ค่าใด?
+
+  \begin{pseudocode}
+    \textbf{1.)} รับค่า $x, y$ \\
+    \textbf{2.)} ให้ $r =$ เศษที่เหลือจากการหาร $x$ ด้วย $y$ \\
+    \textbf{3.)} ทำซ้ำเมื่อ $r \neq 0$ \\
+    .\qquad \textbf{3.1)} $x = y$ \\
+    .\qquad \textbf{3.2)} $y = r$ \\
+    .\qquad \textbf{3.3)} $r =$ เศษที่เหลือจากการหาร $x$ ด้วย $y$ \\
+    \textbf{4.)} พิมพ์ $y$
+  \end{pseudocode}
+}{
+  $1$
+
+  (Euclidean Algorithm: GCD(7,3): $r=7\%3=1$, $x=3, y=1, r=3\%1=0$ $\to$ พิมพ์ $y=1$)
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ถ้า $A = [8, 3, 5, 1, 9]$ จะพิมพ์ค่าใด?
+
+  \begin{pseudocode}
+    \textbf{1.)} ให้ $A = [8, 3, 5, 1, 9]$ \\
+    \textbf{2.)} ให้ $mx = A[1]$ \\
+    \textbf{3.)} ให้ $i = 2$ \\
+    \textbf{4.)} ทำซ้ำเมื่อ $i \leq 5$ \\
+    .\qquad \textbf{4.1)} ถ้า $A[i] > mx$ แล้ว \\
+    .\qquad\quad \textbf{4.1.1)} $mx = A[i]$ \\
+    .\qquad \textbf{4.2)} $i = i + 1$ \\
+    \textbf{5.)} พิมพ์ $mx$
+  \end{pseudocode}
+}{
+  $9$
+
+  (หาค่าสูงสุด: 8,3$\to$8, 5$\to$8, 1$\to$8, 9$\to$9)
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ปรากฏว่าโปรแกรม \textbf{ไม่หยุดทำงาน} (infinite loop) เพราะเหตุใด?
+
+  \begin{pseudocode}
+    \textbf{1.)} ให้ $i = 1$ \\
+    \textbf{2.)} ทำซ้ำเมื่อ $i \neq 10$ \\
+    .\qquad \textbf{2.1)} พิมพ์ $i$ \\
+    .\qquad \textbf{2.2)} $i = i + 2$
+  \end{pseudocode}
+}{
+  เพราะ $i$ เริ่มที่ $1$ เพิ่มทีละ $2$ จะได้ค่า $1, 3, 5, 7, 9, 11, \ldots$
+  (เลขคี่ทั้งหมด)
+
+  $i$ \textbf{ไม่มีทางเท่ากับ 10} (เลขคู่) — เงื่อนไข $i \neq 10$ จึงเป็นจริงตลอด $\to$ วนไม่หยุด
+
+  \textbf{ควรแก้เป็น:} $i \leq 10$
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ขั้นตอน 3.1 ถูกประมวลผลกี่ครั้ง เมื่อ $N = 4$?
+
+  \begin{pseudocode}
+    \textbf{1.)} รับค่า $N$ \\
+    \textbf{2.)} ให้ $i = 1$ \\
+    \textbf{3.)} ทำซ้ำเมื่อ $i \leq N$ \\
+    .\qquad \textbf{3.1)} ให้ $j = i$ \\
+    .\qquad \textbf{3.2)} ทำซ้ำเมื่อ $j \leq N$ \\
+    .\qquad\quad \textbf{3.2.1)} พิมพ์ $i, j$ \\
+    .\qquad\quad \textbf{3.2.2)} $j = j + 1$ \\
+    .\qquad \textbf{3.3)} $i = i + 1$
+  \end{pseudocode}
+}{
+  $4$ ครั้ง
+
+  (ขั้น 3.1 อยู่ใน loop นอกเท่านั้น: $i=1,2,3,4$ $\to$ 4 ครั้ง)
+
+  (ขั้น 3.2.1 อยู่ใน loop ใน: $4+3+2+1 = 10$ ครั้ง — แต่โจทย์ถามแค่ 3.1)
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ถ้า $data = [12, 7, 9, 15, 4]$ จะพิมพ์ค่าใด?
+
+  \begin{pseudocode}
+    \textbf{1.)} ให้ $data = [12, 7, 9, 15, 4]$ \\
+    \textbf{2.)} ให้ $i = 1$ \\
+    \textbf{3.)} ให้ $c = 0$ \\
+    \textbf{4.)} ทำซ้ำเมื่อ $i \leq 5$ \\
+    .\qquad \textbf{4.1)} ถ้า $data[i] \bmod 3 = 0$ แล้ว \\
+    .\qquad\quad \textbf{4.1.1)} $c = c + 1$ \\
+    .\qquad \textbf{4.2)} $i = i + 1$ \\
+    \textbf{5.)} พิมพ์ $c$
+  \end{pseudocode}
+}{
+  $3$
+
+  (12\%3=0 $\checkmark$, 7\%3=1 $\times$, 9\%3=0 $\checkmark$, 15\%3=0 $\checkmark$, 4\%3=1 $\times$ $\to$ 3 ตัว)
+}
+
+\problem{
+  จากขั้นตอนวิธีต่อไปนี้ ถ้า $n = 16$ จะพิมพ์ค่าใด?
+
+  \begin{pseudocode}
+    \textbf{1.)} รับค่า $n$ \\
+    \textbf{2.)} ให้ $r = 0$ \\
+    \textbf{3.)} ทำซ้ำเมื่อ $n > 0$ \\
+    .\qquad \textbf{3.1)} $r = r \times 10 +$ (เศษที่เหลือจากการหาร $n$ ด้วย $10$) \\
+    .\qquad \textbf{3.2)} $n = n // 10$ \\
+    \textbf{4.)} พิมพ์ $r$
+  \end{pseudocode}
+}{
+  $61$
+
+  ($n=16$: $r=0\times10+6=6$, $n=1$; $r=6\times10+1=61$, $n=0$ $\to$ พิมพ์ 61 — กลับหลักเลข)
+}
+
+\problem{
+  ข้อใดให้ผลลัพธ์ \textbf{เหมือนกับ} ขั้นตอนวิธีต่อไปนี้?
+
+  \begin{pseudocode}
+    \textbf{1.)} รับค่า $x$ \\
+    \textbf{2.)} ถ้า $x \bmod 2 = 0$ แล้ว \\
+    .\qquad \textbf{2.1)} ถ้า $x \bmod 3 = 0$ แล้ว \\
+    .\qquad\quad \textbf{2.1.1)} พิมพ์ ``A'' \\
+    .\qquad \textbf{2.2)} มิฉะนั้น พิมพ์ ``B'' \\
+    \textbf{3.)} มิฉะนั้น พิมพ์ ``C''
+  \end{pseudocode}
+
+  \begin{enumerate}
+    \item[ก.] ถ้า $x$ เป็นเลขคู่ พิมพ์ ``A'' มิฉะนั้น พิมพ์ ``C''
+    \item[ข.] ถ้า $x$ หารด้วย $6$ ลงตัว พิมพ์ ``A'' มิฉะนั้น ถ้า $x$ เป็นเลขคู่ พิมพ์ ``B'' มิฉะนั้น พิมพ์ ``C''
+    \item[ค.] ถ้า $x$ หารด้วย $6$ ลงตัว พิมพ์ ``B'' มิฉะนั้น พิมพ์ ``A''
+    \item[ง.] ถ้า $x \bmod 2 = 0$ และ $x \bmod 3 = 0$ พิมพ์ ``B''
+  \end{enumerate}
+}{
+  \textbf{ข.}
+
+  (A: $x$ หารด้วย 6 ลงตัว (ทั้ง 2 และ 3); B: เลขคู่แต่หาร 3 ไม่ลงตัว; C: เลขคี่)
+}
+
+% --- Level 3: Fill-in (5 ข้อ) ---
+\examsection{ตอนที่ 3: ระดับเติมคำตอบ (5 ข้อ)}
+
+\problem{
+  \textbf{โจทย์ข้อที่ 1: การทำงานของ Stack}
+
+  \textbf{Stack} คือโครงสร้างข้อมูลแบบ ``เข้าก่อน-ออกหลัง'' (LIFO: Last-In First-Out)
+  เหมือนการวางจานซ้อนกัน — จานที่วางทีหลังจะถูกหยิบก่อน
+
+  การดำเนินการมี 2 อย่าง:
+  \begin{itemize}
+    \item \textbf{Push X}: วางค่า $X$ ลงบนสุดของ Stack
+    \item \textbf{Pop}: หยิบค่าบนสุดของ Stack ออก
+  \end{itemize}
+
+  กำหนดให้เริ่มต้น Stack ว่างเปล่า และดำเนินการตามคำสั่งต่อไปนี้:
+
+  \begin{center}
+  \begin{tabular}{ll}
+    1) Push 7 & 6) Push 2 \\
+    2) Push 4 & 7) Pop \\
+    3) Push 9 & 8) Push 1 \\
+    4) Pop    & 9) Push 3 \\
+    5) Push 5 & 10) Push 8 \\
+  \end{tabular}
+  \end{center}
+
+  หลังจากทำครบทั้ง 10 คำสั่ง \textbf{ค่า 4 ตัวที่ลึกที่สุดใน Stack} (จากลึกสุด $\to$ ตื้นสุด) คืออะไร?
+
+  \textit{(ตอบเป็นตัวเลข 4 หลัก เช่น ถ้า Stack มี 7,4,9,5 จากล่างขึ้นบน ตอบ 7495)}
+}{
+  $7451$
+
+  (Stack ล่างสุด$\to$บนสุด: [7,4,5,1,3,8] — 4 ตัวลึกสุดคือ 7,4,5,1)
+}
+
+\problem{
+  \textbf{โจทย์ข้อที่ 2: การเชื่อมต่อด้วยระยะทางน้อยที่สุด}
+
+  หมู่บ้าน 5 แห่ง ต้องการเดินสายไฟฟ้าเชื่อมถึงกัน (โดยอาจผ่านหมู่บ้านอื่น)
+  โดยมีค่าใช้จ่ายในการเดินสายระหว่างหมู่บ้านแต่ละคู่ดังนี้:
+
+  \begin{center}
+  \begin{tabular}{c|c}
+    \textbf{คู่หมู่บ้าน} & \textbf{ค่าใช้จ่าย (หน่วย)} \\
+    \hline
+    A -- B & 4 \\
+    A -- C & 3 \\
+    A -- D & 8 \\
+    B -- C & 1 \\
+    B -- E & 6 \\
+    C -- D & 5 \\
+    C -- E & 2 \\
+    D -- E & 7 \\
+  \end{tabular}
+  \end{center}
+
+  จงหาค่าใช้จ่าย \textbf{น้อยที่สุด} ที่สามารถเชื่อมทุกหมู่บ้านเข้าด้วยกัน
+  (ทุกหมู่บ้านต้องเชื่อมถึงกัน โดยอาจผ่านหมู่บ้านอื่น)
+
+  \textit{(ตอบเป็นตัวเลข 2 หลัก)}
+}{
+  $11$
+
+  (MST ด้วย Kruskal: เลือกเส้นสั้นสุดก่อนไม่ให้เกิดวง:
+  B-C(1), C-E(2), A-C(3), C-D(5) = 11
+  (A-B(4) ข้ามเพราะเกิดวง A-C-B-A))
+}
+
+\problem{
+  \textbf{โจทย์ข้อที่ 3: โปรโมชันซื้อหนังสือ}
+
+  ร้านหนังสือแห่งหนึ่งมีโปรโมชัน \textbf{``ซื้อ 2 เล่ม แถม 1 เล่ม''}
+  (ไม่จำกัดจำนวนครั้ง) — เมื่อซื้อหนังสือ 2 เล่ม สามารถเลือกหนังสือ 1 เล่มรับฟรี
+  โดยหนังสือที่รับฟรีต้องมีราคา \textbf{ไม่เกิน} เล่มที่ถูกที่สุดใน 2 เล่มที่ซื้อ
+
+  หนังสือในร้านมีราคาดังนี้: \textbf{350, 280, 420, 300, 390, 250, 410, 360} บาท
+
+  ถ้าต้องการซื้อหนังสือทั้ง 8 เล่ม จงหาจำนวนเงิน \textbf{น้อยที่สุด} ที่ต้องจ่าย
+
+  \textit{(ตอบเป็นตัวเลข 4 หลัก)}
+}{
+  $2070$
+
+  (จัดกลุ่ม 3 เล่มจากแพงสุด: ซื้อ 420+410 แถม 390, ซื้อ 360+350 แถม 300,
+  จ่ายอีก 280+250 = 2070)
+}
+
+\problem{
+  \textbf{โจทย์ข้อที่ 4: Maximum Subsequence Sum}
+
+  กำหนดแถวลำดับของจำนวนเต็ม:
+
+  \[ -2, \; 3, \; -1, \; 5, \; -4, \; 2, \; -3, \; 1 \]
+
+  \textbf{Subsequence} คือการเลือกสมาชิกที่อยู่ \textbf{ติดกัน} (consecutive)
+  ส่วนหนึ่งของแถวลำดับ
+
+  \textbf{Maximum Subsequence Sum} คือผลรวมของ Subsequence ที่มีค่ามากที่สุด
+
+  จงหา Maximum Subsequence Sum ของแถวลำดับนี้
+
+  \textit{(ตอบเป็นตัวเลข 1 หลัก — ถ้าค่าที่ได้เป็นเลข 2 หลักให้ตอบ 2 หลัก)}
+}{
+  $7$
+
+  (ติดตาม Kadane-style:
+  -2 $\to$ -2 (start)
+  3 $\to$ 3 (new start, better than -2+3=1)
+  -1 $\to$ 3 + (-1) = 2 (continue)
+  5 $\to$ 2 + 5 = 7 (continue, best so far)
+  -4 $\to$ 7 + (-4) = 3 (continue)
+  2 $\to$ 3 + 2 = 5
+  -3 $\to$ 5 + (-3) = 2
+  1 $\to$ 2 + 1 = 3
+
+  Maximum = 7 (subsequence: 3, -1, 5)
+}
+
+\problem{
+  \textbf{โจทย์ข้อที่ 5: การบวกเลขด้วยอัลกอริทึม}
+
+  กำหนดขั้นตอนวิธีสำหรับการบวกเลขสองจำนวนที่เขียนในรูปสตริงของเลข 0 และ 1 ดังนี้:
+
+  \begin{pseudocode}
+    \textbf{1.)} รับค่า $A$ และ $B$ (สตริงของ 0 และ 1 ความยาวเท่ากัน) \\
+    \textbf{2.)} ให้ $carry = 0$ \\
+    \textbf{3.)} ให้ $result =$ สตริงว่าง \\
+    \textbf{4.)} ให้ $i =$ ความยาวของ $A$ \\
+    \textbf{5.)} ทำซ้ำเมื่อ $i \geq 1$ \\
+    .\qquad \textbf{5.1)} ให้ $bitA =$ ค่าตัวเลขของ $A[i]$ \\
+    .\qquad \textbf{5.2)} ให้ $bitB =$ ค่าตัวเลขของ $B[i]$ \\
+    .\qquad \textbf{5.3)} ให้ $sum = bitA + bitB + carry$ \\
+    .\qquad \textbf{5.4)} ถ้า $sum \geq 2$ แล้ว \\
+    .\qquad\quad \textbf{5.4.1)} $carry = 1$ \\
+    .\qquad\quad \textbf{5.4.2)} $sum = sum - 2$ \\
+    .\qquad \textbf{5.5)} มิฉะนั้น \\
+    .\qquad\quad \textbf{5.5.1)} $carry = 0$ \\
+    .\qquad \textbf{5.6)} นำ $sum$ ไปต่อหน้า $result$ \\
+    .\qquad \textbf{5.7)} $i = i - 1$ \\
+    \textbf{6.)} ถ้า $carry = 1$ แล้ว \\
+    .\qquad \textbf{6.1)} นำ $1$ ไปต่อหน้า $result$ \\
+    \textbf{7.)} แสดงผล $result$
+  \end{pseudocode}
+
+  ถ้า $A = \text{``1011''}$ และ $B = \text{``1101''}$ จงหาผลลัพธ์ $result$
+
+  \textit{(ตอบเป็นสตริงของเลข 0 และ 1)}
+}{
+  \texttt{11000}
+
+  (ไล่จากขวาไปซ้าย:
+  i=4: 1+1+0=2 $\to$ sum=0, carry=1
+  i=3: 1+0+1=2 $\to$ sum=0, carry=1
+  i=2: 0+1+1=2 $\to$ sum=0, carry=1
+  i=1: 1+1+1=3 $\to$ sum=1, carry=1
+  carry=1 $\to$ prefix 1
+
+  result = 1 + 1 + 0 + 0 + 0 = 11000
+
+  Check decimal: 1011$_2$=11, 1101$_2$=13, 11+13=24=11000$_2$ ✓)
+}

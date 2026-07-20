@@ -1,0 +1,12 @@
+% !TEX program = xelatex
+\documentclass[16pt, a4paper]{article}
+\input{../../../exercise-preamble.tex}
+\renewcommand{\problem}[2]{%
+  \filbreak\refstepcounter{qnum}\par\medskip
+  \noindent\textbf{\theqnum.} #2\par\medskip
+}
+\begin{document}
+\exerciseheader{เฉลย: รูปสามมิติ}
+\vspace{0.5cm}
+\input{problems.tex}
+\end{document}

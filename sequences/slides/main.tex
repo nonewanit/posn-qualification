@@ -1,0 +1,288 @@
+% !TEX program = xelatex
+% ============================================================================
+%  POSN Computer Qualification — Sequences Slide Deck
+%  Topic: ลำดับ (Sequences)
+% ============================================================================
+
+\documentclass[11pt, aspectratio=169]{beamer}
+
+% --- Load shared preamble ---
+\input{../../preamble.tex}
+
+% --- Document info ---
+\title[ลำดับ]{ลำดับ}
+\subtitle{Sequences — ลำดับเลขคณิต, ลำดับเรขาคณิต, ลำดับฟิโบนักชี}
+\author[None W. (Yuan)]{None W. (Yuan)}
+\date{}
+
+\begin{document}
+
+% ===========================================================================
+%  TITLE SLIDE
+% ===========================================================================
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+% ===========================================================================
+%  OUTLINE
+% ===========================================================================
+\begin{frame}{สารบัญ (Outline)}
+  \tableofcontents
+\end{frame}
+
+% ===========================================================================
+%  ก่อนเรียน (Prerequisites)
+% ===========================================================================
+\begin{frame}{ก่อนเรียน (Prerequisites)}
+  \begin{explanation}[สิ่งที่ควรรู้ก่อนเรียน]
+    \begin{itemize}
+      \item \textbf{จำนวนจริง} — การดำเนินการพื้นฐาน, เลขยกกำลัง
+      \item \textbf{ฟังก์ชัน} — แนวคิดของฟังก์ชันที่มีโดเมนเป็นจำนวนนับ
+    \end{itemize}
+  \end{explanation}
+
+  \begin{intuition}[ลำดับคืออะไร?]
+    \textbf{ลำดับ} คือฟังก์ชันที่มีโดเมนเป็นจำนวนเต็มบวก $\{1, 2, 3, \ldots\}$
+    เรียก $a_n$ ว่า \highlight{พจน์ที่ $n$} ของลำดับ
+
+    \medskip
+    เขียนแทนด้วย $a_1, a_2, a_3, \ldots$ หรือ $\{a_n\}$
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 1: ลำดับเลขคณิต (Arithmetic Sequence)
+% ===========================================================================
+\section{ลำดับเลขคณิต (Arithmetic Sequence)}
+
+\subsection{นิยามและสูตร}
+
+\begin{frame}{ลำดับเลขคณิตคืออะไร?}
+  \begin{explanation}[นิยาม]
+    \textbf{ลำดับเลขคณิต} คือลำดับที่ \highlight{ผลต่างระหว่างพจน์ที่อยู่ติดกันมีค่าคงที่}
+    เรียกค่าคงที่นี้ว่า \textbf{ผลต่างร่วม} (common difference) เขียนแทนด้วย $d$
+
+    \medskip
+    $d = a_{n+1} - a_n$ \quad (ค่าคงที่ สำหรับทุก $n$)
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $2, 5, 8, 11, 14, \ldots$
+
+    \medskip
+    $d = 5 - 2 = 3, \quad 8 - 5 = 3, \quad 11 - 8 = 3, \ldots$
+
+    \medskip
+    เป็นลำดับเลขคณิตที่มี $a_1 = 2$, $d = 3$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{เลขคณิต vs เรขาคณิต: จำง่าย ๆ}
+  \begin{intuition}[จำง่าย ๆ]
+    \begin{itemize}
+      \item \textbf{เลขคณิต} = \highlight{บวกเพิ่มทีละเท่า ๆ กัน} (หรือลบออก)
+
+      \quad เช่น $3, 7, 11, 15, \ldots$ (บวก 4 ตลอด)
+
+      \item \textbf{เรขาคณิต} = \highlight{คูณเพิ่มทีละเท่า ๆ กัน} (หรือหาร)
+
+      \quad เช่น $3, 6, 12, 24, \ldots$ (คูณ 2 ตลอด)
+    \end{itemize}
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{พจน์ทั่วไปของลำดับเลขคณิต}
+  \begin{explanation}[สูตรพจน์ที่ $n$]
+    \[
+      a_n = a_1 + (n-1)d
+    \]
+
+    \textbf{ความหมาย:} เริ่มจาก $a_1$ แล้วบวก $d$ เพิ่มอีก $(n-1)$ ครั้ง
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง: หาพจน์ที่ 20]
+    จงหาพจน์ที่ 20 ของลำดับ $3, 7, 11, 15, \ldots$
+
+    \medskip
+    $a_1 = 3$, $d = 4$
+
+    $a_{20} = 3 + (20-1) \times 4 = 3 + 76 = 79$
+  \end{exambox}
+\end{frame}
+
+% \begin{frame}{ผลบวกของพจน์ในลำดับเลขคณิต}
+%   \begin{explanation}[สูตรผลบวก $n$ พจน์แรก]
+%     \[
+%       S_n = \frac{n}{2}\bigl(a_1 + a_n\bigr)
+%     \]
+
+%     หรือเขียนในรูปของ $a_1$ และ $d$:
+%     \[
+%       S_n = \frac{n}{2}\bigl[2a_1 + (n-1)d\bigr]
+%     \]
+%   \end{explanation}
+
+%   \begin{exambox}[ตัวอย่าง]
+%     จงหาผลบวกของ $1 + 2 + 3 + \cdots + 100$
+
+%     \medskip
+%     $a_1 = 1$, $a_{100} = 100$, $n = 100$
+
+%     $S_{100} = \frac{100}{2}(1 + 100) = 50 \times 101 = 5050$
+%   \end{exambox}
+% \end{frame}
+
+% ===========================================================================
+%  SECTION 2: ลำดับเรขาคณิต (Geometric Sequence)
+% ===========================================================================
+\section{ลำดับเรขาคณิต (Geometric Sequence)}
+
+\subsection{นิยามและสูตร}
+
+\begin{frame}{ลำดับเรขาคณิตคืออะไร?}
+  \begin{explanation}[นิยาม]
+    \textbf{ลำดับเรขาคณิต} คือลำดับที่ \highlight{อัตราส่วนระหว่างพจน์ที่อยู่ติดกันมีค่าคงที่}
+    เรียกค่าคงที่นี้ว่า \textbf{อัตราส่วนร่วม} (common ratio) เขียนแทนด้วย $r$
+
+    \medskip
+    $r = \dfrac{a_{n+1}}{a_n}$ \quad (ค่าคงที่ สำหรับทุก $n$)
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $3, 6, 12, 24, 48, \ldots$
+
+    \medskip
+    $r = \dfrac{6}{3} = 2, \quad \dfrac{12}{6} = 2, \quad \dfrac{24}{12} = 2, \ldots$
+
+    \medskip
+    เป็นลำดับเรขาคณิตที่มี $a_1 = 3$, $r = 2$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{พจน์ทั่วไปของลำดับเรขาคณิต}
+  \begin{explanation}[สูตรพจน์ที่ $n$]
+    \[
+      a_n = a_1 \cdot r^{\,n-1}
+    \]
+
+    \textbf{ความหมาย:} เริ่มจาก $a_1$ แล้วคูณด้วย $r$ อีก $(n-1)$ ครั้ง
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง: หาพจน์ที่ 6]
+    จงหาพจน์ที่ 6 ของลำดับ $2, 6, 18, 54, \ldots$
+
+    \medskip
+    $a_1 = 2$, $r = 3$
+
+    $a_6 = 2 \times 3^{5} = 2 \times 243 = 486$
+  \end{exambox}
+\end{frame}
+
+% \begin{frame}{ผลบวกของพจน์ในลำดับเรขาคณิต}
+%   \begin{explanation}[สูตรผลบวก $n$ พจน์แรก]
+%     \[
+%       S_n = \frac{a_1(1 - r^n)}{1 - r} \qquad (r \neq 1)
+%     \]
+
+%     หรือเขียนอีกแบบ: \quad
+%     $S_n = \dfrac{a_1(r^n - 1)}{r - 1}$
+%   \end{explanation}
+
+%   \begin{exambox}[ตัวอย่าง]
+%     จงหาผลบวก 5 พจน์แรกของลำดับ $3, 6, 12, 24, \ldots$
+
+%     \medskip
+%     $a_1 = 3$, $r = 2$, $n = 5$
+
+%     $S_5 = \dfrac{3(1 - 2^5)}{1 - 2}
+%          = \dfrac{3(1 - 32)}{-1}
+%          = \dfrac{3 \times (-31)}{-1}
+%          = 93$
+%   \end{exambox}
+% \end{frame}
+
+\begin{frame}{เปรียบเทียบ: เลขคณิต vs เรขาคณิต}
+  \begin{columns}[T]
+    \column{0.48\textwidth}
+      \textbf{ลำดับเลขคณิต (Arithmetic)}
+      \begin{itemize}
+        \item \highlight{บวก} เพิ่มทีละ $d$
+        \item $a_n = a_1 + (n-1)d$
+        % \item $S_n = \frac{n}{2}(a_1 + a_n)$
+        \item เช่น $2, 5, 8, 11, \ldots$
+      \end{itemize}
+
+    \column{0.48\textwidth}
+      \textbf{ลำดับเรขาคณิต (Geometric)}
+      \begin{itemize}
+        \item \highlight{คูณ} เพิ่มทีละ $r$
+        \item $a_n = a_1 \cdot r^{\,n-1}$
+        % \item $S_n = \frac{a_1(1-r^n)}{1-r}$
+        \item เช่น $2, 6, 18, 54, \ldots$
+      \end{itemize}
+  \end{columns}
+
+  \begin{intuition}[จุดแตกต่างสำคัญ]
+    เลขคณิต = เพิ่มแบบ \textbf{เส้นตรง} (linear) \quad
+    เรขาคณิต = เพิ่มแบบ \textbf{เอกซ์โพเนนเชียล} (exponential)
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 3: ลำดับฟิโบนักชี (Fibonacci Sequence)
+% ===========================================================================
+\section{ลำดับฟิโบนักชี (Fibonacci Sequence)}
+
+\begin{frame}{ลำดับฟิโบนักชีคืออะไร?}
+  \begin{explanation}[นิยาม]
+    \textbf{ลำดับฟิโบนักชี} คือลำดับที่แต่ละพจน์ (ตั้งแต่พจน์ที่ 3 เป็นต้นไป)
+    เท่ากับ \highlight{ผลบวกของสองพจน์ก่อนหน้า}
+
+    \medskip
+    $F_1 = 1, \quad F_2 = 1$
+
+    $F_n = F_{n-1} + F_{n-2}$ \quad สำหรับ $n \geq 3$
+  \end{explanation}
+
+  \begin{exambox}[10 พจน์แรกของลำดับฟิโบนักชี]
+    \[
+      1, 1, 2, 3, 5, 8, 13, 21, 34, 55, \ldots
+    \]
+
+    \medskip
+    \begin{itemize}
+      \item $F_3 = F_2 + F_1 = 1 + 1 = 2$
+      \item $F_4 = F_3 + F_2 = 2 + 1 = 3$
+      \item $F_5 = F_4 + F_3 = 3 + 2 = 5$
+    \end{itemize}
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SUMMARY
+% ===========================================================================
+\section{สรุป}
+
+\begin{frame}{สรุปเนื้อหา}
+  \begin{explanation}[สิ่งที่ได้เรียนรู้]
+    \begin{enumerate}
+      \item \textbf{ลำดับเลขคณิต}: ผลต่างร่วม $d$ คงที่
+        \quad $a_n = a_1 + (n-1)d$
+        % \quad $S_n = \frac{n}{2}(a_1 + a_n)$
+
+      \item \textbf{ลำดับเรขาคณิต}: อัตราส่วนร่วม $r$ คงที่
+        \quad $a_n = a_1 \cdot r^{\,n-1}$
+        % \quad $S_n = \frac{a_1(1-r^n)}{1-r}$
+
+      \item \textbf{ลำดับฟิโบนักชี}: $F_1 = 1, F_2 = 1$,
+        $F_n = F_{n-1} + F_{n-2}$
+    \end{enumerate}
+  \end{explanation}
+
+  \begin{center}
+    \large เอกสารนี้เป็นส่วนหนึ่งของเนื้อหาเตรียมสอบ \textbf{สอวน. คอมพิวเตอร์}
+  \end{center}
+\end{frame}
+
+\end{document}

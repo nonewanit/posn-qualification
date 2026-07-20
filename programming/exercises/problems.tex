@@ -1,0 +1,414 @@
+% ============================================================================
+%  Problems: การโปรแกรมเบื้องต้น ภาษาไพธอน (Python Programming)
+%  Ordered from basic → POSN level.
+%  Shared by exercise.tex and answer-key.tex
+% ============================================================================
+
+% --- Part 1: พื้นฐาน (Basic) ---
+\examsection{ตอนที่ 1: พื้นฐาน — 10 ข้อ}
+
+\problem{
+  จงหาผลลัพธ์ของโปรแกรมต่อไปนี้
+
+  \begin{codeblock}
+
+x = 15 \\
+y = 7 \\
+z = x + y \\
+w = x // y \\
+r = x \% y \\
+print(z, w, r) \\
+
+\end{codeblock}
+}{
+  \texttt{22 2 1}
+
+  (15+7=22, 15//7=2, 15\%7=1)
+}
+
+\problem{
+  จงหาผลลัพธ์ของโปรแกรมต่อไปนี้
+
+  \begin{codeblock}
+
+a = 2 \\
+b = 3 \\
+c = 4 \\
+result = a + b * c \\
+print(result) \\
+
+\end{codeblock}
+}{
+  \texttt{14}
+
+  คูณก่อนบวก: \texttt{b * c = 12}, \texttt{a + 12 = 14}
+}
+
+\problem{
+  จงหาผลลัพธ์ของโปรแกรมต่อไปนี้
+
+  \begin{codeblock}
+
+x = 10 \\
+y = 3 \\
+print(x // y) \\
+print(x \% y) \\
+print(x ** y) \\
+
+\end{codeblock}
+}{
+  \texttt{3}
+
+  \texttt{1}
+
+  \texttt{1000}
+
+  (10//3=3, 10\%3=1, 10\textsuperscript{3}=1000)
+}
+
+\problem{
+  จงหาผลลัพธ์ของโปรแกรมต่อไปนี้
+
+  \begin{codeblock}
+
+a = 5 \\
+b = 5 \\
+print(a == b) \\
+print(a != b) \\
+print(a > 3 and b < 10) \\
+print(not (a > 10)) \\
+
+\end{codeblock}
+}{
+  \texttt{True}
+
+  \texttt{False}
+
+  \texttt{True}
+
+  \texttt{True}
+}
+
+\problem{
+  จงหาผลลัพธ์ของโปรแกรมต่อไปนี้ เมื่อ \texttt{n = 17}
+
+  \begin{codeblock}
+
+n = 17 \\
+if n \% 2 == 0: \\
+\quad print("even") \\
+else: \\
+\quad print("odd") \\
+
+\end{codeblock}
+}{
+  \texttt{odd}
+
+  (17\%2 = 1, \texttt{1 == 0} เป็น False จึงเข้า else)
+}
+
+\problem{
+  จงหาผลลัพธ์ของโปรแกรมต่อไปนี้
+
+  \begin{codeblock}
+
+i = 1 \\
+s = 0 \\
+while i <= 5: \\
+\quad s = s + i \\
+\quad i = i + 1 \\
+print(s) \\
+
+\end{codeblock}
+}{
+  \texttt{15}
+
+  (1+2+3+4+5 = 15)
+}
+
+\problem{
+  จงหาผลลัพธ์ของโปรแกรมต่อไปนี้
+
+  \begin{codeblock}
+
+n = 7 \\
+c = 0 \\
+while n > 0: \\
+\quad c = c + 1 \\
+\quad n = n - 1 \\
+print(c) \\
+
+\end{codeblock}
+}{
+  \texttt{7}
+
+  (วน 7 รอบ: n ลดจาก 7 ไปจนถึง 0)
+}
+
+\problem{
+  จงหาผลลัพธ์ของโปรแกรมต่อไปนี้
+
+  \begin{codeblock}
+
+s = "PYTHON" \\
+print(s[0]) \\
+print(s[3]) \\
+print(len(s)) \\
+
+\end{codeblock}
+}{
+  \texttt{P}
+
+  \texttt{H}
+
+  \texttt{6}
+}
+
+\problem{
+  จงหาผลลัพธ์ของโปรแกรมต่อไปนี้
+
+  \begin{codeblock}
+
+arr = [2, 4, 6, 8, 10] \\
+print(arr[0] + arr[2]) \\
+print(arr[4] - arr[1]) \\
+
+\end{codeblock}
+}{
+  \texttt{8}
+
+  \texttt{6}
+
+  (arr[0]=2, arr[2]=6, 2+6=8; arr[4]=10, arr[1]=4, 10-4=6)
+}
+
+\problem{
+  จงหาผลลัพธ์ของโปรแกรมต่อไปนี้ เมื่อ \texttt{a = 3} และ \texttt{b = 8}
+
+  \begin{codeblock}
+
+a = 3 \\
+b = 8 \\
+if a > b: \\
+\quad print(a) \\
+else: \\
+\quad print(b) \\
+
+\end{codeblock}
+}{
+  \texttt{8}
+}
+
+% --- Part 2: ระดับ สอวน. (POSN Level) ---
+\examsection{ตอนที่ 2: ระดับข้อสอบ สอวน. — 10 ข้อ}
+
+\problem{
+  จากโปรแกรมต่อไปนี้ ถ้า \texttt{score = 72} ผลลัพธ์คืออะไร?
+
+  \begin{codeblock}
+
+score = 72 \\
+if score >= 80: \\
+\quad print("A") \\
+elif score >= 70: \\
+\quad if score >= 75: \\
+\quad \quad print("B+") \\
+\quad else: \\
+\quad \quad print("B") \\
+elif score >= 60: \\
+\quad print("C") \\
+else: \\
+\quad print("F") \\
+
+\end{codeblock}
+}{
+  \texttt{B}
+
+  (score=72: เข้า elif score>=70, แต่ score>=75 เป็น False จึงเข้า else ของ nested if ได้ B)
+}
+
+\problem{
+  จากโปรแกรมต่อไปนี้ ถ้า \texttt{x = 13} ผลลัพธ์คืออะไร?
+
+  \begin{codeblock}
+
+x = 13 \\
+if x \% 3 == 0 and x \% 5 == 0: \\
+\quad print("A") \\
+elif x \% 3 == 0 or x \% 5 == 0: \\
+\quad print("B") \\
+else: \\
+\quad print("C") \\
+
+\end{codeblock}
+}{
+  \texttt{C}
+
+  (13\%3=1, 13\%5=3: and เป็น False, or ก็เป็น False ทั้งคู่ $\to$ เข้า else ได้ C)
+}
+
+\problem{
+  จงหาผลลัพธ์ของนิพจน์ต่อไปนี้ (ไม่ใช่โปรแกรม ให้คิดตามลำดับความสำคัญของตัวดำเนินการ)
+
+  \texttt{5 + 3 * 2 ** 2 - 6 // 2 \% 3}
+
+  \begin{enumerate}
+    \item[ก.] 16
+    \item[ข.] 17
+    \item[ค.] 26
+    \item[ง.] 32
+  \end{enumerate}
+}{
+  \textbf{ข. 17}
+
+  (2**2 = 4, 3*4 = 12, 6//2 = 3, 3\%3 = 0, 5+12-0 = 17)
+}
+
+\problem{
+  จากโปรแกรมต่อไปนี้ ถ้า \texttt{n = 345} ผลลัพธ์คืออะไร?
+
+  \begin{codeblock}
+
+n = 345 \\
+s = 0 \\
+while n > 0: \\
+\quad s = s + (n \% 10) \\
+\quad n = n // 10 \\
+print(s) \\
+
+\end{codeblock}
+}{
+  \texttt{12}
+
+  (3+4+5 = 12 — ผลรวมเลขโดด)
+}
+
+\problem{
+  จากโปรแกรมต่อไปนี้ ผลลัพธ์คืออะไร?
+
+  \begin{codeblock}
+
+i = 1 \\
+while i <= 3: \\
+\quad j = 1 \\
+\quad while j <= i: \\
+\quad \quad print(i + j) \\
+\quad \quad j = j + 1 \\
+\quad i = i + 1 \\
+
+\end{codeblock}
+}{
+  \texttt{2}
+
+  \texttt{3 4}
+
+  \texttt{4 5 6}
+
+  (i=1: j=1 $\to$ 2 ; i=2: j=1,2 $\to$ 3,4 ; i=3: j=1,2,3 $\to$ 4,5,6)
+}
+
+\problem{
+  จากโปรแกรมต่อไปนี้ ถ้า \texttt{x = 128} ผลลัพธ์คืออะไร?
+
+  \begin{codeblock}
+
+x = 128 \\
+c = 0 \\
+while x > 0: \\
+\quad if x \% 2 == 1: \\
+\quad \quad c = c + 1 \\
+\quad x = x // 2 \\
+print(c) \\
+
+\end{codeblock}
+}{
+  \texttt{1}
+
+  (128 = 10000000\textsubscript{2} มีเลข 1 ปรากฏเพียง 1 ตัว — นับจำนวน bit ที่เป็น 1)
+}
+
+\problem{
+  จากโปรแกรมต่อไปนี้ ผลลัพธ์คืออะไร?
+
+  \begin{codeblock}
+
+i = 0 \\
+while i < 10: \\
+\quad i = i + 1 \\
+\quad if i \% 3 == 0: \\
+\quad \quad continue \\
+\quad if i == 8: \\
+\quad \quad break \\
+\quad print(i) \\
+
+\end{codeblock}
+}{
+  \texttt{1 2 4 5 7}
+
+  (i=3,6,9: continue ข้าม print ; i=8: break หยุดเลย)
+}
+
+\problem{
+  จากโปรแกรมต่อไปนี้ ถ้า \texttt{s = "COMPUTER"} ผลลัพธ์คืออะไร?
+
+  \begin{codeblock}
+
+s = "COMPUTER" \\
+c = 0 \\
+i = 0 \\
+while i < len(s): \\
+\quad if s[i] == 'A' or s[i] == 'E' or s[i] == 'I': \\
+\quad \quad c = c + 1 \\
+\quad elif s[i] == 'O' or s[i] == 'U': \\
+\quad \quad c = c + 1 \\
+\quad i = i + 1 \\
+print(c) \\
+
+\end{codeblock}
+}{
+  \texttt{3}
+
+  (นับสระใน COMPUTER: O, U, E = 3 ตัว)
+}
+
+\problem{
+  จากโปรแกรมต่อไปนี้ ถ้า \texttt{arr = [12, 7, 9, 15, 4, 10]} ผลลัพธ์คืออะไร?
+
+  \begin{codeblock}
+
+arr = [12, 7, 9, 15, 4, 10] \\
+mx = arr[0] \\
+i = 1 \\
+while i < len(arr): \\
+\quad if arr[i] > mx: \\
+\quad \quad mx = arr[i] \\
+\quad i = i + 1 \\
+print(mx) \\
+
+\end{codeblock}
+}{
+  \texttt{15}
+
+  (หาค่าสูงสุดใน array)
+}
+
+\problem{
+  จากโปรแกรมต่อไปนี้ ถ้า \texttt{arr = [1, 2, 3, 4, 5, 6, 7, 8]} ผลลัพธ์คืออะไร?
+
+  \begin{codeblock}
+
+arr = [1, 2, 3, 4, 5, 6, 7, 8] \\
+s = 0 \\
+i = 0 \\
+while i < len(arr): \\
+\quad if i \% 2 == 1: \\
+\quad \quad s = s + arr[i] \\
+\quad i = i + 1 \\
+print(s) \\
+
+\end{codeblock}
+}{
+  \texttt{20}
+
+  (ผลรวมของ arr[1]+arr[3]+arr[5]+arr[7] = 2+4+6+8 = 20 — ผลรวมสมาชิกที่ index คี่)
+}

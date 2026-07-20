@@ -1,0 +1,867 @@
+% !TEX program = xelatex
+% ============================================================================
+%  POSN Computer Qualification — Programming (Python)
+%  Topic: การโปรแกรมเบื้องต้น ภาษาไพธอน
+% ============================================================================
+
+\documentclass[11pt, aspectratio=169]{beamer}
+\input{../../preamble.tex}
+
+% --- Code font: Courier New ---
+\setmonofont{Courier New}[
+  Path       = ../../fonts/CourierNew/,
+  Extension  = .ttf,
+  UprightFont = cour,
+  Scale       = 0.85
+]
+
+\newcommand{\py}[1]{\texttt{#1}}
+
+\title[การโปรแกรมเบื้องต้น]{การโปรแกรมเบื้องต้น ภาษาไพธอน}
+\subtitle{Introduction to Python Programming}
+\author[None W. (Yuan)]{None W. (Yuan)}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]\titlepage\end{frame}
+\begin{frame}{สารบัญ (Outline)}\tableofcontents\end{frame}
+
+\begin{frame}{ก่อนเรียน (Prerequisites)}
+  \begin{explanation}[สิ่งที่ควรรู้ก่อนเรียน]
+    \begin{itemize}
+      \item \textbf{คณิตศาสตร์พื้นฐาน} — การบวก ลบ คูณ หาร, การเปรียบเทียบ, ตรรกศาสตร์
+      \item \textbf{ตัวแปร} — แนวคิดเรื่องการเก็บค่า (เหมือนคณิตศาสตร์)
+      \item \textbf{คอมพิวเตอร์} — การใช้งานเครื่องคอมพิวเตอร์พื้นฐาน
+    \end{itemize}
+  \end{explanation}
+  \begin{intuition}[การเขียนโปรแกรมคืออะไร?]
+    การเขียนโปรแกรมคือการ \textbf{สั่งให้คอมพิวเตอร์ทำงานทีละขั้นตอน}
+    โดยใช้ภาษาที่คอมพิวเตอร์เข้าใจ — ในที่นี้คือ \highlight{ภาษาไพธอน (Python)}
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 1: ชนิดข้อมูลและตัวแปร
+% ===========================================================================
+\section{ชนิดข้อมูลและตัวแปร (Data Types \& Variables)}
+
+\begin{frame}{ชนิดข้อมูลพื้นฐาน (Basic Data Types)}
+  \begin{explanation}[4 ชนิดข้อมูลสำคัญ]
+    \begin{columns}[T]
+      \column{0.5\textwidth}
+        \begin{itemize}
+          \item \highlight{\py{int}} — จำนวนเต็ม (integer)
+          \begin{itemize}
+            \item เช่น \py{5}, \py{-3}, \py{0}, \py{100}
+          \end{itemize}
+          \item \highlight{\py{float}} — จำนวนจริง/ทศนิยม
+          \begin{itemize}
+            \item เช่น \py{3.14}, \py{-0.5}, \py{2.0}
+          \end{itemize}
+        \end{itemize}
+      \column{0.5\textwidth}
+        \begin{itemize}
+          \item \highlight{\py{bool}} — ค่าความจริง (Boolean)
+          \begin{itemize}
+            \item \py{True}, \py{False}
+          \end{itemize}
+          \item \highlight{\py{str}} — ข้อความ (string)
+          \begin{itemize}
+            \item เช่น \py{"Hello"}, \py{"123"}
+          \end{itemize}
+        \end{itemize}
+    \end{columns}
+  \end{explanation}
+  \begin{exambox}[ตัวอย่าง: การเช็คชนิดข้อมูล (ไม่ออกสอบ)]
+    \py{type(5)} $\rightarrow$ \py{<class 'int'>} \quad
+    \py{type(3.14)} $\rightarrow$ \py{<class 'float'>}
+
+    \py{type(True)} $\rightarrow$ \py{<class 'bool'>} \quad
+    \py{type("hello")} $\rightarrow$ \py{<class 'str'>}
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวแปรและการกำหนดค่า (Variables \& Assignment)}
+  \begin{explanation}[การกำหนดค่า]
+    \textbf{ตัวแปร} คือชื่อที่ใช้อ้างถึงค่าที่เก็บในหน่วยความจำ
+
+    ใช้เครื่องหมาย \py{=} ในการ \highlight{กำหนดค่า}: \py{x = 5} หมายถึง เก็บค่า $5$ ในตัวแปร \py{x}
+  \end{explanation}
+  \begin{columns}[T]
+    \column{0.45\textwidth}
+      \begin{exambox}[ตัวอย่าง: การกำหนดค่า]
+        \py{x = 5}
+
+        \py{y = 3}
+
+        \py{z = x + y} \qquad (ได้ \py{z = 8})
+
+        \py{name = "Yuan"}
+
+        \py{is\_valid = True}
+      \end{exambox}
+    \column{0.55\textwidth}
+      \begin{explanation}[กฎการตั้งชื่อตัวแปร]
+        \begin{itemize}
+          \item ขึ้นต้นด้วยตัวอักษร หรือ \texttt{\_} (underscore)
+          \item ประกอบด้วยตัวอักษร ตัวเลข และ \texttt{\_}
+          \item \textbf{ห้าม} ขึ้นต้นด้วยตัวเลข
+          \item \textbf{ห้าม} ใช้คำสงวน เช่น \py{if}, \py{while}
+          \item \textbf{Case-sensitive}: \py{x} กับ \py{X} เป็นคนละตัว
+        \end{itemize}
+      \end{explanation}
+  \end{columns}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 2: ตัวดำเนินการ
+% ===========================================================================
+\section{ตัวดำเนินการ (Operators)}
+
+\begin{frame}{ตัวดำเนินการทางคณิตศาสตร์ (Arithmetic Operators)}
+  \begin{columns}[T]
+    \column{0.52\textwidth}
+      \begin{explanation}[เครื่องหมายพื้นฐาน]
+        \begin{tabular}{c|l|l}
+          \textbf{เครื่องหมาย} & \textbf{ความหมาย} & \textbf{ตัวอย่าง} \\
+          \hline
+          \py{+}  & บวก     & \py{5 + 3} $\rightarrow$ \py{8} \\
+          \py{-}  & ลบ      & \py{5 - 3} $\rightarrow$ \py{2} \\
+          \py{*}  & คูณ     & \py{5 * 3} $\rightarrow$ \py{15} \\
+          \py{/}  & หาร      & \py{5 / 2} $\rightarrow$ \py{2.5} \\
+          \py{//} & หารปัดเศษ & \py{5 // 2} $\rightarrow$ \py{2} \\
+          \py{\%} & \textbf{มอดุโล (mod)} & \py{5 \% 2} $\rightarrow$ \py{1} \\
+          \py{**} & ยกกำลัง  & \py{2 ** 3} $\rightarrow$ \py{8} \\
+        \end{tabular}
+      \end{explanation}
+    \column{0.5\textwidth}
+      \begin{exambox}[ตัวอย่าง: mod (\%)]
+        \py{10 \% 3 = 1} \quad ($10 = 3\times3 + 1$)
+
+        \py{17 \% 5 = 2} \quad ($17 = 5\times3 + 2$)
+
+        \py{8 \% 2 = 0} \quad ($8 = 2\times4 + 0$)\\
+
+        \textbf{การใช้งาน:}
+        \begin{itemize}
+          \item เช็คเลขคู่/คี่: \py{n \% 2 == 0}
+          \item หลักหน่วย: \py{n \% 10}
+          \item การวนรอบ (cycle)
+        \end{itemize}
+      \end{exambox}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ตัวดำเนินการเปรียบเทียบและตรรกะ}
+  \begin{columns}[T]
+    \column{0.45\textwidth}
+      \begin{explanation}[Comparison]
+        \py{==} (เท่ากับ), \py{!=} (ไม่เท่ากับ), \py{<}, \py{>}, \py{<=}, \py{>=}
+        \medskip
+
+        \py{5 == 5} $\rightarrow$ \py{True}
+
+        \py{3 != 5} $\rightarrow$ \py{True}
+      \end{explanation}
+    \column{0.55\textwidth}
+      \begin{explanation}[Logical]
+        \py{and}, \py{or}, \py{not}
+        \medskip
+
+        \py{(5 > 3) and (2 < 4)} $\rightarrow$ \py{True}
+
+        \py{(5 > 3) or (2 > 4)} $\rightarrow$ \py{True}
+
+        \py{not (5 == 5)} $\rightarrow$ \py{False}
+      \end{explanation}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ลำดับความสำคัญของตัวดำเนินการ (Operator Precedence)}
+  \begin{explanation}[ลำดับจากสูงไปต่ำ (ทำก่อน $\rightarrow$ ทำหลัง)]
+    \begin{enumerate}
+      \item \py{()} — วงเล็บ (สำคัญที่สุด)
+      \item \py{**} — ยกกำลัง (ทำจาก\textbf{ขวาไปซ้าย})
+      \item \py{*}, \py{/}, \py{//}, \py{\%} — คูณ หาร มอดุโล
+      \item \py{+}, \py{-} — บวก ลบ
+      \item \py{==}, \py{!=}, \py{<}, \py{>}, \py{<=}, \py{>=} — เปรียบเทียบ
+      \item \py{not} — นิเสธ
+      \item \py{and} — และ
+      \item \py{or} — หรือ (สำคัญน้อยที่สุด)
+    \end{enumerate}
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{ลำดับความสำคัญของตัวดำเนินการ (Operator Precedence)}
+  \begin{exambox}[ตัวอย่าง]
+    \py{3 + 4 * 2 = 11} (คูณก่อนบวก) \qquad
+    \py{(3 + 4) * 2 = 14} (วงเล็บก่อน)
+
+    \py{10 / 2 ** 2 = 2.5} (ยกกำลังก่อนหาร) \qquad
+    \py{2 ** 3 ** 2 = 512} (ขวาไปซ้าย)
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 3: การแสดงผล
+% ===========================================================================
+\section{การแสดงผล (Output)}
+
+\begin{frame}{คำสั่ง \py{print()}}
+  \begin{explanation}[ใช้แสดงผลลัพธ์ออกทางหน้าจอ]
+    \py{print()} — แสดงค่าแล้วขึ้นบรรทัดใหม่
+  \end{explanation}
+  \begin{exambox}[ตัวอย่าง: การใช้ print()]
+    \py{print("Hello World")} \quad $\rightarrow$ \py{Hello World}
+
+    \py{print(3 + 5)} \quad $\rightarrow$ \py{8}
+
+    \py{x = 10}
+
+    \py{print(x)} \quad $\rightarrow$ \py{10}
+
+    \py{print("x =", x)} \quad $\rightarrow$ \texttt{x = 10}
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 4: เงื่อนไข
+% ===========================================================================
+\section{เงื่อนไข (Conditionals)}
+
+\begin{frame}{คำสั่ง \py{if} / \py{elif} / \py{else}}
+  \begin{explanation}[การตัดสินใจในโปรแกรม]
+    \highlight{\py{if} เงื่อนไข:} ทำเมื่อเงื่อนไขเป็นจริง
+
+    \highlight{\py{elif} เงื่อนไข:} เงื่อนไขรอง (else if) เมื่อเงื่อนไขข้างบนไม่เป็นจริง มีหลาย \py{elif} ได้
+
+    \highlight{\py{else}:} ทำเมื่อไม่มีเงื่อนไขใดเป็นจริงเลย
+  \end{explanation}
+
+  \begin{intuition}[สำคัญ!]
+    \py{if-elif-else} เป็นกลุ่มเดียวกันจะเข้าเงื่อนไขได้แค่เงื่อนไขเดียวในกลุ่ม หลังจากเข้าเงื่อนไขด้านบนแล้วจะไม่สนใจเงื่อนไขด้านล่างอีก
+    
+    ถ้าจะสร้างกลุ่มใหม่ต้องเริ่ม \py{if} ใหม่
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{ตัวอย่างและการเยื้อง}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{exambox}[ตัวอย่าง: เกรด]
+        \py{score = 85}
+
+        \py{if score >= 80:}
+
+        \qquad \py{print("A")}
+
+        \py{elif score >= 70:}
+
+        \qquad \py{print("B")}
+
+        \py{elif score >= 60:}
+
+        \qquad \py{print("C")}
+
+        \py{else:}
+
+        \qquad \py{print("F")}
+
+        \qquad \py{print("You failed!")}
+      \end{exambox}
+    \column{0.5\textwidth}
+      \begin{explanation}[การเยื้อง (Indentation)]
+        \highlight{การเยื้อง (indent) มีความหมาย!}
+
+        ในภาษา Python \textbf{การเว้นวรรคหน้าคำสั่ง}
+        เป็นตัวกำหนดว่าคำสั่งนั้นอยู่ในบล็อกใด
+
+        \medskip
+        \textbf{กฎ:}
+        \begin{itemize}
+          \item ใช้ 4 ช่องว่าง (space) หรือ 1 tab
+          \item \textbf{ห้ามปนกัน} ในบล็อกเดียวกัน
+          \item คำสั่งในบล็อกเดียวกันต้องเยื้องเท่ากัน
+        \end{itemize}
+      \end{explanation}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การตามรอยเงื่อนไข}
+  \begin{exambox}[โจทย์]
+    ถ้า \py{x = 5} และ \py{y = 12} ผลลัพธ์ของโปรแกรมเป็นเท่าใด?
+  \end{exambox}
+  \begin{columns}[T]
+    \column{0.45\textwidth}
+      \begin{exambox}[โปรแกรม]
+        \py{x = 5}
+
+        \py{y = 12}
+
+        \py{if x > 10:}
+
+        \qquad \py{print("A")}
+
+        \py{elif y > 10:}
+
+        \qquad \py{print("B")}
+
+        \py{else:}
+
+        \qquad \py{print("C")}
+      \end{exambox}
+    \column{0.55\textwidth}
+      \begin{solbox}[วิธีตามรอย]
+        \py{x = 5}: \py{x > 10} เป็น \py{False} $\rightarrow$ ไม่ทำ
+
+        \py{y = 12}: \py{y > 10} เป็น \py{True} $\rightarrow$ \highlight{ทำ \py{elif}}
+
+        แสดงผล \py{"B"} \quad (ข้าม \py{else})
+      \end{solbox}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การตามรอยเงื่อนไข}
+  \begin{exambox}[โจทย์]
+    ถ้า \py{x = 11} และ \py{y = 12} ผลลัพธ์ของโปรแกรมเป็นเท่าใด?
+  \end{exambox}
+  \begin{columns}[T]
+    \column{0.45\textwidth}
+      \begin{exambox}[โปรแกรม]
+        \py{x = 11}
+
+        \py{y = 12}
+
+        \py{if x > 10:}
+
+        \qquad \py{print("A")}
+
+        \py{elif y > 10:}
+
+        \qquad \py{print("B")}
+
+        \py{if x > 5:}
+
+        \qquad \py{print("C")}
+      \end{exambox}
+    \column{0.55\textwidth}
+      \begin{solbox}[วิธีตามรอย]
+        \py{x = 11}: \py{x > 10} เป็น \py{True} $\rightarrow$ ทำ \py{if} ด้านบน
+
+        แสดงผล \py{"A"} \quad (ข้าม \py{elif})
+
+        \py{x = 11}: \py{x > 5} เป็น \py{True} $\rightarrow$ ทำ \py{if} ด้านล่าง
+
+        แสดงผล \py{"C"}
+      \end{solbox}
+  \end{columns}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 5: การวนซ้ำ
+% ===========================================================================
+\section{การวนซ้ำ (While Loop)}
+
+\begin{frame}{คำสั่ง \py{while}}
+  \begin{explanation}[การทำซ้ำตราบเท่าที่เงื่อนไขเป็นจริง]
+    \highlight{\py{while} เงื่อนไข:} ทำคำสั่งในบล็อกซ้ำไปเรื่อย ๆ \textbf{ตราบเท่าที่} เงื่อนไขยังเป็นจริง
+  \end{explanation}
+  \begin{columns}[T]
+    \column{0.45\textwidth}
+      \begin{exambox}[ตัวอย่าง: นับ 1 ถึง 5]
+        \py{i = 1}
+
+        \py{while i <= 5:}
+
+        \qquad \py{print(i)}
+
+        \qquad \py{i = i + 1}
+      \end{exambox}
+      \textbf{ผลลัพธ์:} \py{1 2 3 4 5}
+    \column{0.55\textwidth}
+      \begin{explanation}[การทำงาน]
+        \begin{tabular}{c|c|c}
+          \textbf{รอบ} & \py{i} & \py{i <= 5?} \\
+          \hline
+          1 & 1 & True $\rightarrow$ print 1 \\
+          2 & 2 & True $\rightarrow$ print 2 \\
+          3 & 3 & True $\rightarrow$ print 3 \\
+          4 & 4 & True $\rightarrow$ print 4 \\
+          5 & 5 & True $\rightarrow$ print 5 \\
+          6 & 6 & False $\rightarrow$ \textbf{ออกจากวน} \\
+        \end{tabular}
+      \end{explanation}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{\py{break} และ \py{continue}}
+  \begin{explanation}[คำสั่งควบคุมการวนซ้ำ]
+    \highlight{\py{break}} — \textbf{ออกจาก} การวนซ้ำทันที (หยุดเลย)
+
+    \highlight{\py{continue}} — \textbf{ข้าม} คำสั่งที่เหลือ แล้วขึ้นรอบถัดไป
+  \end{explanation}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{exambox}[ตัวอย่าง: break]
+        \py{i = 1}
+
+        \py{while True:}
+
+        \qquad \py{print(i)}
+
+        \qquad \py{if i == 3: break}
+
+        \qquad \py{i = i + 1}
+      \end{exambox}
+      \textbf{ผลลัพธ์:} \py{1 2 3}
+    \column{0.5\textwidth}
+      \begin{exambox}[ตัวอย่าง: continue]
+        \py{i = 0}
+
+        \py{while i < 5:}
+
+        \qquad \py{i = i + 1}
+
+        \qquad \py{if i == 3: continue}
+
+        \qquad \py{print(i)}
+      \end{exambox}
+      \textbf{ผลลัพธ์:} \py{1 2 4 5}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การตามรอย while loop}
+  \begin{exambox}[โจทย์]
+    ถ้าเริ่มต้น \py{n = 10} ผลลัพธ์ของโปรแกรมเป็นเท่าใด?
+  \end{exambox}
+  \begin{columns}[T]
+    \column{0.4\textwidth}
+      \begin{exambox}[โปรแกรม]
+        \py{n = 10}
+
+        \py{s = 0}
+
+        \py{while n > 0:}
+
+        \qquad \py{s = s + (n \% 10)}
+
+        \qquad \py{n = n // 10}
+
+        \py{print(s)}
+      \end{exambox}
+    \column{0.6\textwidth}
+      \begin{solbox}[วิธีตามรอย]
+        \begin{tabular}{c|c|c|c}
+          \textbf{รอบ} & \py{n} & \py{n\%10} & \py{s} \\
+          \hline
+          เริ่ม & 10 & -- & 0 \\
+          1 & 10 & 0 & 0 \\
+          2 & 1 & 1 & 1 \\
+        \end{tabular}
+
+        \highlight{แสดงผล \py{1}} (ผลรวมเลขโดดของ 10 คือ $1+0=1$)
+      \end{solbox}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: while loop (ต่อ)}
+  \begin{exambox}[โจทย์]
+    ถ้า \py{x = 2} และ \py{y = 5} ผลลัพธ์ของโปรแกรมเป็นเท่าใด?
+  \end{exambox}
+  \begin{columns}[T]
+    \column{0.4\textwidth}
+      \begin{exambox}[โปรแกรม]
+        \py{x = 2}
+
+        \py{y = 5}
+
+        \py{c = 0}
+
+        \py{while x < y:}
+
+        \qquad \py{x = x + 1}
+
+        \qquad \py{y = y - 1}
+
+        \qquad \py{c = c + 1}
+
+        \py{print(c)}
+      \end{exambox}
+    \column{0.6\textwidth}
+      \begin{solbox}[วิธีตามรอย]
+        \begin{tabular}{c|c|c|c}
+          \textbf{รอบ} & \py{x} & \py{y} & \py{c} \\
+          \hline
+          เริ่ม & 2 & 5 & 0 \\
+          1 & 3 & 4 & 1 \\
+          2 & 4 & 3 & 2 \\
+        \end{tabular}
+
+        รอบ 3: \py{x = 4, y = 3} $\rightarrow$ \highlight{\py{x < y} = False} $\rightarrow$ จบ
+
+        \highlight{แสดงผล \py{2}}
+      \end{solbox}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{Nested While Loop (while ซ้อน while)}
+  \begin{explanation}[แนวคิด]
+    \textbf{while loop ซ้อนกัน}: loop ในอยู่ภายใน loop นอก
+
+    loop นอกวน 1 รอบ $\rightarrow$ loop ในวนจนครบ $\rightarrow$ loop นอกวนรอบถัดไป
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.55\textwidth}
+      \begin{exambox}[ตัวอย่าง: สูตรคูณ]
+        \py{i = 1}
+
+        \py{while i <= 3:}
+
+        \qquad \py{j = 1}
+
+        \qquad \py{while j <= 3:}
+
+        \qquad\quad \py{print(i, "x", j, "=", i*j)}
+
+        \qquad\quad \py{j = j + 1}
+
+        \qquad \py{i = i + 1}
+      \end{exambox}
+
+      ผลลัพธ์: \py{1x1=1}, \py{1x2=2}, \dots, \py{3x3=9} (9 บรรทัด)
+
+    \column{0.45\textwidth}
+      \begin{explanation}[การทำงาน]
+        \py{i=1}: \py{j=1,2,3} $\rightarrow$ 1x1, 1x2, 1x3
+
+        \py{i=2}: \py{j=1,2,3} $\rightarrow$ 2x1, 2x2, 2x3
+
+        \py{i=3}: \py{j=1,2,3} $\rightarrow$ 3x1, 3x2, 3x3
+
+        \highlight{รวม $3 \times 3 = 9$ รอบ!}
+      \end{explanation}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: Nested While Loop}
+  \begin{exambox}[โจทย์]
+    ถ้า \py{a = 2} และ \py{b = 3} ผลลัพธ์ของโปรแกรมเป็นเท่าใด?
+  \end{exambox}
+
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{exambox}
+        \py{s = 0}
+
+        \py{i = 1}
+
+        \py{while i <= 2:}
+
+        \qquad \py{j = 1}
+
+        \qquad \py{while j <= 3:}
+
+        \qquad\quad \py{s = s + i * j}
+
+        \qquad\quad \py{j = j + 1}
+
+        \qquad \py{i = i + 1}
+
+        \py{print(s)}
+      \end{exambox}
+    \column{0.5\textwidth}
+      \begin{solbox}[วิธีตามรอย]
+        \py{i=1}: \py{j=1} $\rightarrow$ \py{s = 0 + 1}
+
+        \qquad\; \py{j=2} $\rightarrow$ \py{s = 1 + 2 = 3}
+
+        \qquad\; \py{j=3} $\rightarrow$ \py{s = 3 + 3 = 6}
+
+        \py{i=2}: \py{j=1} $\rightarrow$ \py{s = 6 + 2 = 8}
+
+        \qquad\; \py{j=2} $\rightarrow$ \py{s = 8 + 4 = 12}
+
+        \qquad\; \py{j=3} $\rightarrow$ \py{s = 12 + 6 = 18}
+
+        \highlight{แสดงผล \py{18}}
+      \end{solbox}
+  \end{columns}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 6: แถวลำดับ
+% ===========================================================================
+\section{แถวลำดับ (1D Array / List)}
+
+\begin{frame}{List — แถวลำดับ 1 มิติ}
+  \begin{explanation}[นิยาม]
+    \py{list} คือโครงสร้างข้อมูลที่เก็บค่าหลาย ๆ ค่าเรียงต่อกันในตัวแปรเดียว
+
+    สร้างด้วย \py{[ ]} คั่นด้วย \py{,} \quad เช่น \py{arr = [10, 20, 30, 40]}
+  \end{explanation}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{explanation}[การเข้าถึงสมาชิก (Indexing)]
+        \textbf{ดัชนี (index)} เริ่มจาก \highlight{\py{0}}
+
+        \begin{tabular}{c|c|c|c|c}
+          ค่า   & 10 & 20 & 30 & 40 \\
+          \hline
+          index & \py{0} & \py{1} & \py{2} & \py{3} \\
+        \end{tabular}
+
+        \py{arr[0]} $\rightarrow$ \py{10} \qquad
+        \py{arr[2]} $\rightarrow$ \py{30}
+      \end{explanation}
+    \column{0.5\textwidth}
+      \begin{exambox}[ตัวอย่าง: list]
+        \py{arr = [10, 20, 30, 40]}
+
+        \py{print(arr[0])} \ \ {\small \# 10}
+
+        \py{arr[2] = 99}
+
+        \py{print(arr)} \ \ {\small \# [10, 20, 99, 40]}
+
+        \py{print(len(arr))} \ \ {\small \# 4}
+      \end{exambox}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การวน loop กับ list}
+  \begin{exambox}[โจทย์]
+    ถ้า \py{arr = [3, 7, 2, 8, 5]} ผลลัพธ์ของโปรแกรมเป็นเท่าใด?
+  \end{exambox}
+  \begin{columns}[T]
+    \column{0.45\textwidth}
+      \begin{exambox}[โปรแกรม]
+        \py{arr = [3, 7, 2, 8, 5]}
+
+        \py{s = 0}
+
+        \py{i = 0}
+
+        \py{while i < len(arr):}
+
+        \qquad \py{if arr[i] \% 2 == 1:}
+
+        \qquad\quad \py{s = s + arr[i]}
+
+        \qquad \py{i = i + 1}
+
+        \py{print(s)}
+      \end{exambox}
+    \column{0.55\textwidth}
+      \begin{solbox}[วิธีตามรอย]
+        \py{arr[0] = 3}: \py{3\%2 = 1} (คี่) $\rightarrow$ \py{s = 3}
+
+        \py{arr[1] = 7}: คี่ $\rightarrow$ \py{s = 10}
+
+        \py{arr[2] = 2}: คู่ $\rightarrow$ ข้าม
+
+        \py{arr[3] = 8}: คู่ $\rightarrow$ ข้าม
+
+        \py{arr[4] = 5}: คี่ $\rightarrow$ \py{s = 15}
+
+        \highlight{แสดงผล \py{15}}
+      \end{solbox}
+  \end{columns}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 7: สตริง
+% ===========================================================================
+\section{สตริง (String)}
+
+\begin{frame}{String — ข้อความ}
+  \begin{explanation}[นิยาม]
+    \py{str} คือข้อมูลประเภทข้อความ สร้างด้วย \py{" "} หรือ \py{' '}
+
+    String ก็คือ \highlight{list ของตัวอักษร} — ใช้ index ได้เหมือน list
+  \end{explanation}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{exambox}[ตัวอย่าง: string]
+        \py{s = "PYTHON"}
+
+        \py{print(s[0])} \ \ {\small \# P}
+
+        \py{print(s[2])} \ \ {\small \# T}
+
+        \py{print(len(s))} \ \ {\small \# 6}
+
+        \py{a = "Hello"; b = "World"}
+
+        \py{print(a + " " + b)} \ \ {\small \# Hello World}
+      \end{exambox}
+    \column{0.5\textwidth}
+      \begin{explanation}[การดำเนินการกับ string]
+        \begin{itemize}
+          \item \py{len(s)} — ความยาว
+          \item \py{s[i]} — ตัวอักษรที่ index \py{i}
+          \item \py{s1 + s2} — ต่อข้อความ
+          \item \py{s * 3} — ทำซ้ำ \\
+          (\py{"Hi"*3} $\rightarrow$ \py{"HiHiHi"})
+        \end{itemize}
+      \end{explanation}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การวน loop กับ string}
+  \begin{exambox}[โจทย์]
+    ถ้า \py{s = "COMPUTER"} ผลลัพธ์ของโปรแกรมเป็นเท่าใด?
+  \end{exambox}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{exambox}[โปรแกรม]
+        \py{s = "COMPUTER"}
+
+        \py{c = 0}
+
+        \py{i = 0}
+
+        \py{while i < len(s):}
+
+        \qquad \py{if s[i] == 'U': break}
+
+        \qquad \py{c = c + 1}
+
+        \qquad \py{i = i + 1}
+
+        \py{print(c)}
+      \end{exambox}
+    \column{0.5\textwidth}
+      \begin{solbox}[วิธีตามรอย]
+        \py{s[0] = 'C'} $\rightarrow$ \py{c = 1}
+
+        \py{s[1] = 'O'} $\rightarrow$ \py{c = 2}
+
+        \py{s[2] = 'M'} $\rightarrow$ \py{c = 3}
+
+        \py{s[3] = 'P'} $\rightarrow$ \py{c = 4}
+
+        \py{s[4] = 'U'} $\rightarrow$ \highlight{เจอ 'U', break!}
+
+        \highlight{แสดงผล \py{4}} (จำนวนตัวอักษรก่อนถึง U)
+      \end{solbox}
+  \end{columns}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 8: ตัวอย่างประยุกต์
+% ===========================================================================
+\section{ตัวอย่างประยุกต์}
+
+\begin{frame}{ตัวอย่าง: การนับเลขโดด}
+  \begin{exambox}[โจทย์]
+    ถ้า \py{n = 12345} ผลลัพธ์ของโปรแกรมเป็นเท่าใด?
+  \end{exambox}
+  \begin{columns}[T]
+    \column{0.4\textwidth}
+      \begin{exambox}[โปรแกรม]
+        \py{n = 12345}
+
+        \py{c = 0}
+
+        \py{while n > 0:}
+
+        \qquad \py{c = c + 1}
+
+        \qquad \py{n = n // 10}
+
+        \py{print(c)}
+      \end{exambox}
+    \column{0.6\textwidth}
+      \begin{solbox}[วิธีตามรอย]
+        \begin{tabular}{c|c|c}
+          \textbf{รอบ} & \py{n} & \py{c} \\
+          \hline
+          เริ่ม & 12345 & 0 \\
+          1 & 1234 & 1 \\
+          2 & 123 & 2 \\
+          3 & 12 & 3 \\
+          4 & 1 & 4 \\
+          5 & 0 & 5 \\
+        \end{tabular}
+
+        \highlight{แสดงผล \py{5}} (จำนวนเลขโดด)
+      \end{solbox}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การหาเลขคู่}
+  \begin{exambox}[โจทย์]
+    ถ้า \py{arr = [4, 7, 1, 8, 3]} ผลลัพธ์ของโปรแกรมเป็นเท่าใด?
+  \end{exambox}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{exambox}[โปรแกรม]
+        \py{arr = [4, 7, 1, 8, 3]}
+
+        \py{c = 0}
+
+        \py{i = 0}
+
+        \py{while i < 5:}
+
+        \qquad \py{if arr[i] \% 2 == 0:}
+
+        \qquad\quad \py{c = c + 1}
+
+        \qquad \py{i = i + 1}
+
+        \py{print(c)}
+      \end{exambox}
+    \column{0.5\textwidth}
+      \begin{solbox}[วิธีตามรอย]
+        \py{4 \% 2 = 0} $\rightarrow$ \py{c = 1}
+
+        \py{7 \% 2 = 1} $\rightarrow$ ข้าม
+
+        \py{1 \% 2 = 1} $\rightarrow$ ข้าม
+
+        \py{8 \% 2 = 0} $\rightarrow$ \py{c = 2}
+
+        \py{3 \% 2 = 1} $\rightarrow$ ข้าม
+
+        \highlight{แสดงผล \py{2}} (มีเลขคู่ 2 ตัว)
+      \end{solbox}
+  \end{columns}
+\end{frame}
+
+% ===========================================================================
+%  SUMMARY
+% ===========================================================================
+\section{สรุป}
+
+\begin{frame}{สรุปเนื้อหา}
+  \begin{explanation}[สิ่งที่ได้เรียนรู้]
+    \begin{columns}[T]
+      \column{0.5\textwidth}
+        \begin{itemize}
+          \item \textbf{ชนิดข้อมูล}: int, float, bool, str
+          \item \textbf{ตัวแปร}: \py{x = 5}, กฎการตั้งชื่อ
+          \item \textbf{ตัวดำเนินการ}: \py{+ - * / // \% **}
+          \item \textbf{เปรียบเทียบ}: \py{== != < > <= >=}
+          \item \textbf{ตรรกะ}: \py{and or not}
+          \item \textbf{ลำดับความสำคัญ}: วงเล็บ $\to$ \py{**} $\to$ \py{*/\%} $\to$ \py{+-}
+        \end{itemize}
+      \column{0.5\textwidth}
+        \begin{itemize}
+          \item \textbf{print()}: แสดงผลลัพธ์
+          \item \textbf{if/elif/else}: เงื่อนไข + การเยื้อง
+          \item \textbf{while}: วนซ้ำตามเงื่อนไข
+          \item \textbf{break/continue}: ควบคุมการวนซ้ำ
+          \item \textbf{list}: \py{arr[i]}, \py{len(arr)}
+          \item \textbf{string}: \py{s[i]}, \py{len(s)}, \py{s1 + s2}
+        \end{itemize}
+    \end{columns}
+  \end{explanation}
+  \begin{center}
+    \large เอกสารนี้เป็นส่วนหนึ่งของเนื้อหาเตรียมสอบ \textbf{สอวน. คอมพิวเตอร์}
+  \end{center}
+\end{frame}
+
+\end{document}

@@ -1,0 +1,176 @@
+% ============================================================================
+%  POSN Computer Qualification — Shared Beamer Preamble
+%  Used by all topic slide decks. Compile with XeLaTeX.
+% ============================================================================
+
+% ---------- Thai language & font ----------
+\usepackage{iftex}
+\usepackage{fontspec}
+
+% XeTeX-specific: enable Thai line breaking
+\ifXeTeX
+  \XeTeXlinebreaklocale{th}
+\fi
+% TH Sarabun New — primary Thai font (installed system-wide)
+% Bundled copy in ../../fonts/THSarabunNew/ is available as fallback on systems without it.
+\setmainfont{TH Sarabun New}[Scale=1.35]
+
+% Sans-serif (used by beamer for frame titles, headers, footers)
+% No explicit scale — let beamer handle sizing for structural elements
+\setsansfont{TH Sarabun New}[Scale=1.2]
+
+% Monospace font (for code/verbatim)
+\setmonofont{Latin Modern Mono}[Scale=0.9]
+
+% ---------- Math ----------
+\usepackage{amsmath, amssymb}
+
+% ---------- Graphics ----------
+\usepackage{graphicx}
+\usepackage{tikz}
+
+% ---------- Colored boxes ----------
+\usepackage[skins, breakable, xparse]{tcolorbox}
+% Note: we do NOT load the 'most' option — it predefines example/solution environments
+% that would conflict with our custom boxes.
+
+% --- Color definitions ---
+\definecolor{boxBlue}{RGB}{41, 128, 185}
+\definecolor{boxGreen}{RGB}{39, 174, 96}
+\definecolor{boxOrange}{RGB}{230, 126, 34}
+\definecolor{boxPurple}{RGB}{142, 68, 173}
+\definecolor{boxBlueBg}{RGB}{235, 245, 255}
+\definecolor{boxGreenBg}{RGB}{235, 255, 240}
+\definecolor{boxOrangeBg}{RGB}{255, 245, 235}
+\definecolor{boxPurpleBg}{RGB}{248, 240, 255}
+
+% --- Explanation box (blue) — for definitions, concepts, notes ---
+\newtcolorbox{explanation}[1][]{
+  enhanced,
+  breakable,
+  sharp corners,
+  colback  = boxBlueBg,
+  colframe = boxBlue,
+  leftrule = 5mm,
+  title    = #1,
+  fonttitle     = \bfseries\color{white},
+  coltitle      = white,
+  colbacktitle  = boxBlue,
+  attach boxed title to top left = {yshift=-2mm, xshift=2mm},
+  boxed title style = {sharp corners, size=small},
+  before skip = 8pt,
+  after skip  = 8pt
+}
+
+% --- Example box (green) — for worked examples ---
+\newtcolorbox{exambox}[1][]{
+  enhanced,
+  breakable,
+  sharp corners,
+  colback  = boxGreenBg,
+  colframe = boxGreen,
+  leftrule = 5mm,
+  title    = #1,
+  fonttitle     = \bfseries\color{white},
+  coltitle      = white,
+  colbacktitle  = boxGreen,
+  attach boxed title to top left = {yshift=-2mm, xshift=2mm},
+  boxed title style = {sharp corners, size=small},
+  before skip = 8pt,
+  after skip  = 8pt
+}
+
+% --- Solution box (orange) — for solutions and answers ---
+\newtcolorbox{solbox}[1][]{
+  enhanced,
+  breakable,
+  sharp corners,
+  colback  = boxOrangeBg,
+  colframe = boxOrange,
+  leftrule = 5mm,
+  title    = #1,
+  fonttitle     = \bfseries\color{white},
+  coltitle      = white,
+  colbacktitle  = boxOrange,
+  attach boxed title to top left = {yshift=-2mm, xshift=2mm},
+  boxed title style = {sharp corners, size=small},
+  before skip = 8pt,
+  after skip  = 8pt
+}
+
+% --- Intuition box (purple) — for plain-language explanations, analogies ---
+\newtcolorbox{intuition}[1][]{
+  enhanced,
+  breakable,
+  sharp corners,
+  colback  = boxPurpleBg,
+  colframe = boxPurple,
+  leftrule = 5mm,
+  title    = #1,
+  fonttitle     = \bfseries\color{white},
+  coltitle      = white,
+  colbacktitle  = boxPurple,
+  attach boxed title to top left = {yshift=-2mm, xshift=2mm},
+  boxed title style = {sharp corners, size=small},
+  before skip = 8pt,
+  after skip  = 8pt
+}
+
+% ---------- Beamer theme ----------
+\usetheme{Madrid}
+\usecolortheme{default}
+
+% --- Custom beamer colors (blue accent matching explanation boxes) ---
+\setbeamercolor{structure}{fg=boxBlue}
+\setbeamercolor{palette primary}{fg=white, bg=boxBlue}
+\setbeamercolor{palette secondary}{fg=white, bg=boxBlue!80}
+\setbeamercolor{palette tertiary}{fg=white, bg=boxBlue!60}
+\setbeamercolor{block title}{fg=white, bg=boxBlue}
+\setbeamercolor{block body}{fg=black, bg=boxBlueBg}
+
+% Remove navigation symbols for clean look
+\setbeamertemplate{navigation symbols}{}
+
+% Section header slides — styled like title page, section name only
+\AtBeginSection{
+  \begin{frame}[plain]{}
+    \vspace*{2cm}
+    \begin{beamercolorbox}[sep=12pt, center, rounded=true, shadow=true]{palette primary}
+      \usebeamerfont{title}\insertsectionhead\par
+    \end{beamercolorbox}
+    \vfill
+  \end{frame}
+}
+
+% Subsection header slides — smaller, centered
+\AtBeginSubsection{
+  \begin{frame}[plain]{}
+    \vfill
+    \centering
+    {\usebeamerfont{section title}\insertsubsectionhead\par}
+    \vfill
+  \end{frame}
+}
+
+% Minimal footer: page number only, right-aligned
+\setbeamertemplate{footline}{
+  \hfill\usebeamerfont{page number in head/foot}\insertframenumber{} / \inserttotalframenumber\hspace*{1em}\vspace*{0.5ex}
+}
+
+% ---------- Spacing & readability ----------
+\linespread{1.2}
+
+% ---------- Useful commands ----------
+
+% Highlight important text in blue
+\newcommand{\highlight}[1]{\textcolor{boxBlue}{\textbf{#1}}}
+
+% Math set notation helpers
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+% ============================================================================
+%  End of preamble
+% ============================================================================

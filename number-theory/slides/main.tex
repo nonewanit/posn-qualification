@@ -1,0 +1,473 @@
+% !TEX program = xelatex
+% ============================================================================
+%  POSN Computer Qualification — Number Theory
+%  Topic: ทฤษฎีจำนวน (Number Theory)
+% ============================================================================
+
+\documentclass[11pt, aspectratio=169]{beamer}
+\input{../../preamble.tex}
+
+\title[ทฤษฎีจำนวน]{ทฤษฎีจำนวน}
+\subtitle{Number Theory — การหารลงตัว, จำนวนเฉพาะ, ห.ร.ม./ค.ร.น., สมภาค}
+\author[None W. (Yuan)]{None W. (Yuan)}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]\titlepage\end{frame}
+\begin{frame}{สารบัญ (Outline)}\tableofcontents\end{frame}
+
+\begin{frame}{ก่อนเรียน (Prerequisites)}
+  \begin{explanation}[สิ่งที่ควรรู้ก่อนเรียน]
+    \begin{itemize}
+      \item \textbf{จำนวนเต็ม} — การบวก ลบ คูณ หาร, การหารเอาเศษ
+      \item \textbf{เลขยกกำลัง} — $a^n$, การคูณเลขยกกำลัง
+      \item \textbf{จำนวนจริง} — ความรู้พื้นฐานเกี่ยวกับจำนวน
+    \end{itemize}
+  \end{explanation}
+
+  \begin{intuition}[ทฤษฎีจำนวนคืออะไร?]
+    การศึกษาเกี่ยวกับ \textbf{จำนวนเต็ม} และสมบัติของมัน —
+    โดยเฉพาะการหารลงตัว จำนวนเฉพาะ และการหาเศษจากการหาร
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 1: การหารลงตัว
+% ===========================================================================
+\section{การหารลงตัว (Divisibility)}
+
+\begin{frame}{การหารลงตัว}
+  \begin{explanation}[นิยาม]
+    $a$ \textbf{หาร} $b$ \textbf{ลงตัว} เขียนแทนด้วย $a \mid b$
+    ก็ต่อเมื่อ มีจำนวนเต็ม $k$ ที่ทำให้ $b = ak$
+
+    \textbf{อ่านว่า}: ``$a$ divides $b$'' หรือ ``$a$ เป็นตัวหารของ $b$''
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $3 \mid 12$ เพราะ $12 = 3 \times 4$ \qquad $7 \mid 0$ เพราะ $0 = 7 \times 0$ \qquad $5 \nmid 13$
+  \end{exambox}
+
+  \begin{explanation}[ขั้นตอนการหาร (Division Algorithm)]
+    สำหรับ $a \in \Z$, $b > 0$: มี $q, r$ เพียงคู่เดียวที่ \highlight{$a = bq + r$}, $0 \leq r < b$
+
+    $q$ = ผลหาร, $r$ = เศษ
+
+    \textbf{ตัวอย่าง:} $17 = 5 \times 3 + 2$ \qquad $-13 = 5 \times (-3) + 2$ \quad (เศษ $\geq 0$ เสมอ!)
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{กฎการหารลงตัว (Divisibility Rules)}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{explanation}[หลักหน่วย/หลักสุดท้าย]
+        \textbf{2}: หลักหน่วย $0,2,4,6,8$ \\
+        \textbf{5}: หลักหน่วย $0$ หรือ $5$
+
+        \textbf{10}: หลักหน่วย $0$ \\
+        \textbf{4}: 2 หลักสุดท้าย $\div 4$ ลงตัว
+
+        \textbf{8}: 3 หลักสุดท้าย $\div 8$ ลงตัว
+      \end{explanation}
+    \column{0.5\textwidth}
+      \begin{explanation}[ผลรวมเลขโดด]
+        \textbf{3}: ผลรวมเลขโดด $\div 3$ ลงตัว
+
+        \textbf{9}: ผลรวมเลขโดด $\div 9$ ลงตัว
+      \end{explanation}
+  \end{columns}
+
+  \begin{exambox}[ตัวอย่าง]
+    $12345$: หารด้วย $5$ ลงตัว (หลักหน่วย $5$), หารด้วย $3$ ลงตัว ($1+2+3+4+5=15$)
+
+    $2024$: หารด้วย $4$ ลงตัว ($04 \div 4 = 1$)
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 2: จำนวนเฉพาะและจำนวนประกอบ
+% ===========================================================================
+\section{จำนวนเฉพาะและจำนวนประกอบ}
+
+\begin{frame}{จำนวนเฉพาะ (Prime Numbers)}
+  \begin{explanation}[นิยาม]
+    \textbf{จำนวนเฉพาะ} คือจำนวนเต็มบวกที่มากกว่า $1$ และมีตัวหารบวกเพียงสองตัวคือ $1$ และตัวมันเอง
+
+    \textbf{จำนวนประกอบ (Composite)} คือจำนวนเต็มบวกที่มากกว่า $1$ และไม่ใช่จำนวนเฉพาะ
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.4\textwidth}
+      \begin{exambox}[จำนวนเฉพาะ $< 50$]
+        $2, 3, 5, 7, 11, 13,$
+
+        $17, 19, 23, 29,$
+
+        $31, 37, 41, 43, 47$
+
+        \medskip
+        \highlight{$2$ เป็นจำนวนเฉพาะคู่เพียงตัวเดียว!}
+      \end{exambox}
+    \column{0.6\textwidth}
+      \begin{explanation}[หมายเหตุ]
+        \begin{itemize}
+          \item $1$ \textbf{ไม่ใช่} จำนวนเฉพาะ และ \textbf{ไม่ใช่} จำนวนประกอบ
+          \item จำนวนเฉพาะมี \textbf{ไม่จำกัด}
+        \end{itemize}
+      \end{explanation}
+
+      \begin{exambox}[ตัวอย่าง: จำนวนประกอบ]
+        $4 = 2 \times 2$ \qquad $30 = 2 \times 3 \times 5$
+
+        $91 = 7 \times 13$ \quad (91 ไม่ใช่จำนวนเฉพาะ!)
+      \end{exambox}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{การแยกตัวประกอบเฉพาะ (Prime Factorization)}
+  \begin{explanation}[ทฤษฎีบทหลักมูลของเลขคณิต]
+    จำนวนเต็มบวกทุกตัวที่มากกว่า $1$ สามารถเขียนในรูปผลคูณของจำนวนเฉพาะได้
+    \textbf{เพียงแบบเดียว} (ไม่นับลำดับ)
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $60 = 2^2 \times 3 \times 5$ \qquad $84 = 2^2 \times 3 \times 7$
+
+    $126 = 2 \times 3^2 \times 7$ \qquad $1000 = 2^3 \times 5^3$
+  \end{exambox}
+
+  \begin{exambox}[การตรวจสอบว่าเป็นจำนวนเฉพาะ]
+    ในการตรวจสอบว่า $n$ เป็นจำนวนเฉพาะหรือไม่
+    ทดลองหารด้วยจำนวนเฉพาะทุกตัวที่ $\leq \sqrt{n}$ ก็พอ
+
+    \textbf{ตัวอย่าง:} $101$ — ทดลอง $2, 3, 5, 7$ ($\sqrt{101} \approx 10$)
+
+    ไม่มีตัวใดหารลงตัว $\rightarrow$ $101$ เป็นจำนวนเฉพาะ $\checkmark$
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 3: ห.ร.ม. และ ค.ร.น.
+% ===========================================================================
+\section{ห.ร.ม. และ ค.ร.น. (GCD \& LCM)}
+
+\begin{frame}{ห.ร.ม. (GCD) และ ค.ร.น. (LCM)}
+  \begin{explanation}[นิยาม]
+    \textbf{ห.ร.ม.} ของ $a, b$ คือจำนวนเต็มบวกที่มากที่สุดที่หารทั้ง $a$ และ $b$ ลงตัว
+
+    \textbf{ค.ร.น.} ของ $a, b$ คือจำนวนเต็มบวกที่น้อยที่สุดที่ $a$ และ $b$ หารลงตัว
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{exambox}[วิธีแยกตัวประกอบ]
+        $12 = 2^2 \times 3$ \quad $18 = 2 \times 3^2$
+
+        GCD $= 2^{\min(2,1)} \times 3^{\min(1,2)} = 2 \times 3 = 6$
+
+        LCM $= 2^{\max(2,1)} \times 3^{\max(1,2)} = 2^2 \times 3^2 = 36$
+      \end{exambox}
+    \column{0.5\textwidth}
+      \begin{explanation}[สูตรสำคัญ]
+        \highlight{$ab = \text{GCD}(a,b) \times \text{LCM}(a,b)$}
+
+        $12 \times 18 = 6 \times 36 = 216$ \quad $\checkmark$
+      \end{explanation}
+  \end{columns}
+\end{frame}
+
+\begin{frame}{ขั้นตอนวิธีของยุคลิด (Euclidean Algorithm)}
+  \begin{explanation}[วิธีหา GCD โดยไม่ต้องแยกตัวประกอบ]
+    \textbf{หลักการ}: $\text{GCD}(a,b) = \text{GCD}(b, a \bmod b)$ \quad (ทำซ้ำจนเหลือ $0$)
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง: Euclidean Algorithm (252 กับ 105)]
+    $252 = 2 \times 105 + 42$ \quad $\rightarrow$ \quad GCD(105, 42)
+
+    $105 = 2 \times 42 + 21$ \quad $\rightarrow$ \quad GCD(42, 21)
+
+    $42 = 2 \times 21 + 0$ \quad $\rightarrow$ \quad \highlight{GCD = 21}
+  \end{exambox}
+
+  \begin{exambox}[ตัวอย่าง: Euclidean Algorithm (126 กับ 35)]
+    $126 = 3 \times 35 + 21$ \quad $\rightarrow$ \quad GCD(35, 21)
+
+    $35 = 1 \times 21 + 14$ \quad $\rightarrow$ \quad GCD(21, 14)
+
+    $21 = 1 \times 14 + 7$ \quad $\rightarrow$ \quad GCD(14, 7) \qquad $14 = 2 \times 7 + 0$ \quad $\rightarrow$ \quad \highlight{GCD = 7}
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 4: สมภาค (Modular Arithmetic)
+% ===========================================================================
+\section{สมภาค (Modular Arithmetic)}
+
+\begin{frame}{สมภาคคืออะไร?}
+  \begin{explanation}[นิยาม]
+    $a \equiv b \pmod{m}$ \quad ก็ต่อเมื่อ \quad $m \mid (a - b)$
+
+    \medskip
+    \textbf{อ่านว่า}: ``$a$ สมภาคกับ $b$ มอดุโล $m$'' (หรือ ``$a$ congruent to $b$ modulo $m$'')
+
+    \textbf{ความหมาย}: $a$ และ $b$ \highlight{เหลือเศษเท่ากัน} เมื่อหารด้วย $m$
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $17 \equiv 5 \pmod{12}$ \quad เพราะ \quad $17 - 5 = 12$ หารด้วย $12$ ลงตัว
+
+    $23 \equiv 3 \pmod{5}$ \quad เพราะ \quad $23 = 4\times5 + 3$ และ $3$ หารด้วย $5$ เหลือเศษ $3$
+
+    $-7 \equiv 3 \pmod{5}$ \quad เพราะ \quad $-7 - 3 = -10$ หารด้วย $5$ ลงตัว
+  \end{exambox}
+
+  \begin{intuition}[คิดง่าย ๆ]
+    ``mod $m$'' คือการวนรอบแบบนาฬิกา: นาฬิกามี $12$ ชั่วโมง
+    — $14$ นาฬิกา $\equiv$ $2$ นาฬิกา (mod $12$)
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{สมบัติของสมภาค}
+  \begin{explanation}[สมบัติพื้นฐาน]
+    ถ้า $a \equiv b \pmod{m}$ และ $c \equiv d \pmod{m}$ แล้ว:
+    \begin{enumerate}
+      \item $a + c \equiv b + d \pmod{m}$ \quad (บวกกันได้)
+      \item $a - c \equiv b - d \pmod{m}$ \quad (ลบกันได้)
+      \item $ac \equiv bd \pmod{m}$ \quad (คูณกันได้)
+      \item $a^n \equiv b^n \pmod{m}$ \quad (ยกกำลังได้)
+    \end{enumerate}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง: ลดทอนก่อนคำนวณ]
+    จงหา $23 \times 18 \pmod{5}$
+
+    \textbf{วิธีตรง:} $23 \times 18 = 414$, $414 \div 5 = 82$ เศษ $4$
+
+    \textbf{วิธีสมภาค:} $23 \equiv 3 \pmod{5}$, $18 \equiv 3 \pmod{5}$ \qquad $3 \times 3 = 9 \equiv 4 \pmod{5}$ \quad \highlight{เท่ากัน!}
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{การหาเศษจากเลขยกกำลัง: ดูแพทเทิร์น}
+  \begin{explanation}[แนวคิด]
+    หา \textbf{วัฏจักร (cycle)} ของเศษจากการยกกำลัง:
+    คำนวณ $a^1, a^2, a^3, \ldots \pmod{m}$ จนกว่าเศษจะซ้ำ
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง: เศษของ $7^{2025}$ หารด้วย $10$]
+    หลักหน่วยของ $7^n$ (mod $10$):
+
+    $7^1 = 7 \equiv 7$ \quad
+    $7^2 = 49 \equiv 9$ \quad
+    $7^3 = 343 \equiv 3$ \quad
+    $7^4 = 2401 \equiv 1$
+
+    $7^5 \equiv 7$ \quad $\rightarrow$ \highlight{วัฏจักรยาว 4: $\{7, 9, 3, 1\}$}
+
+    $2025 \div 4 = 506$ เศษ $1$ \quad $\rightarrow$ \quad $7^{2025} \equiv 7^1 \equiv 7 \pmod{10}$
+
+    \highlight{เศษ $= 7$ (หลักหน่วยของ $7^{2025}$ คือ $7$)}
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: เศษของเลขยกกำลังขนาดใหญ่ (ต่อ)}
+  \begin{exambox}[โจทย์ 1: $3^{100} \pmod{7}$]
+    $3^1 \equiv 3$,\; $3^2 \equiv 9 \equiv 2$,\;
+    $3^3 \equiv 6$,\; $3^4 \equiv 18 \equiv 4$,\;
+    $3^5 \equiv 12 \equiv 5$,\; $3^6 \equiv 15 \equiv 1$
+
+    วัฏจักรยาว $6$: $\{3, 2, 6, 4, 5, 1\}$ \quad
+    $100 \div 6 = 16$ เศษ $4$
+
+    $3^{100} \equiv 3^4 \equiv 4 \pmod{7}$
+  \end{exambox}
+
+  \begin{exambox}[โจทย์ 2: $2^{50} \pmod{13}$]
+    $2^1 \equiv 2$,\; $2^2 \equiv 4$,\; $2^3 \equiv 8$,\;
+    $2^4 \equiv 16 \equiv 3$,\; $2^5 \equiv 6$,\;
+    $2^6 \equiv 12 \equiv -1$
+
+    $2^{12} \equiv (-1)^2 \equiv 1$ \quad (วัฏจักรยาว $12$)
+
+    $50 \div 12 = 4$ เศษ $2$ \quad $\rightarrow$ \quad
+    $2^{50} \equiv 2^2 \equiv 4 \pmod{13}$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ผลรวมเลขยกกำลังขนาดใหญ่}
+  \begin{exambox}[โจทย์: เศษของ $2018^{2019} + 2019^{2020} + 2020^{2021}$ หารด้วย $13$]
+    \textbf{ลดทอนฐานก่อน:}
+
+    $2018 \div 13 = 155$ เศษ $3$ \quad $\rightarrow$ \quad $2018 \equiv 3 \pmod{13}$
+
+    $2019 \equiv 4 \pmod{13}$ \quad $2020 \equiv 5 \pmod{13}$
+
+    \textbf{หาเศษทีละพจน์:} ใช้ Fermat: $a^{12} \equiv 1 \pmod{13}$ ถ้า $13 \nmid a$
+
+    $3^{2019} = 3^{12\times168 + 3} \equiv 3^3 \equiv 27 \equiv 1 \pmod{13}$
+
+    $4^{2020} = 4^{12\times168 + 4} \equiv 4^4 = 256 \equiv 9 \pmod{13}$
+
+    $5^{2021} = 5^{12\times168 + 5} \equiv 5^5 = 3125 \equiv 5 \pmod{13}$
+
+    \highlight{เศษรวม $= 1 + 9 + 5 = 15 \equiv 2 \pmod{13}$}
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ทฤษฎีบทของแฟร์มาต์ (Fermat's Little Theorem)}
+  \begin{explanation}[Fermat's Little Theorem]
+    ถ้า $p$ เป็นจำนวนเฉพาะ และ $p \nmid a$ แล้ว:
+
+    \highlight{$a^{p-1} \equiv 1 \pmod{p}$}
+
+    หรือรูปทั่วไป: $a^p \equiv a \pmod{p}$
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    \textbf{1.} $2^{10} \equiv 1 \pmod{11}$ \quad (ตรวจสอบ: $1024 \div 11 = 93$ เศษ $1$)
+
+    \textbf{2.} $5^{6} \equiv 1 \pmod{7}$ \quad (ตรวจสอบ: $15625 \div 7 = 2232$ เศษ $1$)
+
+    \textbf{3.} หา $7^{100} \pmod{5}$:
+
+    $7^4 \equiv 1 \pmod{5}$ \quad (Fermat: $p=5$)
+
+    $100 = 4 \times 25$ \quad $\rightarrow$ \quad
+    $7^{100} = (7^4)^{25} \equiv 1^{25} \equiv 1 \pmod{5}$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: โจทย์วันในสัปดาห์}
+  \begin{exambox}[โจทย์]
+    วันนี้เป็นวันเสาร์ที่ 19 กรกฎาคม 2025 อยากทราบว่าอีก $1000$ วันข้างหน้าจะเป็นวันอะไร?
+  \end{exambox}
+
+  \begin{solbox}[วิธีทำ]
+    วันในสัปดาห์มี $7$ วัน — ใช้ mod $7$
+
+    กำหนด: เสาร์ $= 0$, อาทิตย์ $= 1$, จันทร์ $= 2$, อังคาร $= 3$, พุธ $= 4$, พฤหัส $= 5$, ศุกร์ $= 6$
+
+    $1000 \div 7 = 142$ เศษ $6$
+
+    $6$ วันหลังจากวันเสาร์: เสาร์ $(0) \rightarrow$ อาทิตย์ $(1) \rightarrow$ จันทร์ $(2) \rightarrow$ อังคาร $(3) \rightarrow$ พุธ $(4) \rightarrow$ พฤหัส $(5) \rightarrow$ \highlight{ศุกร์ $(6)$}
+
+    \highlight{ตอบ: วันศุกร์}
+  \end{solbox}
+\end{frame}
+
+\begin{frame}{ตัวอย่างเพิ่มเติม: สมภาค}
+  \begin{exambox}[โจทย์ 1: จำนวนที่หารด้วย 5 เหลือเศษ 3 และหารด้วย 7 เหลือเศษ 2]
+    $x \equiv 3 \pmod{5}$ \quad และ \quad $x \equiv 2 \pmod{7}$
+
+    จาก $x \equiv 3 \pmod{5}$: \quad $x = 5k + 3$
+
+    แทนในสมการที่สอง: \quad $5k + 3 \equiv 2 \pmod{7}$
+
+    $5k \equiv -1 \equiv 6 \pmod{7}$
+
+    คูณด้วยผกผันของ $5$ mod $7$: $5 \times 3 = 15 \equiv 1 \pmod{7}$ \quad $\rightarrow$ \quad $k \equiv 6 \times 3 \equiv 18 \equiv 4 \pmod{7}$
+
+    $k = 7t + 4$ \quad $\rightarrow$ \quad $x = 5(7t+4) + 3 = 35t + 23$
+
+    \highlight{$x \equiv 23 \pmod{35}$ \quad (คำตอบทั่วไป)}
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: หลักหน่วยของเลขยกกำลังซ้อน}
+  \begin{exambox}[โจทย์: จงหาหลักหน่วยของ $7^{7^{7}}$]
+    หลักหน่วยของ $7^n$ มีวัฏจักร $\{7, 9, 3, 1\}$ ขึ้นกับ $n \bmod 4$
+
+    หา $7^7 \bmod 4$: $7 \equiv 3 \pmod{4}$,
+    $3^2 = 9 \equiv 1 \pmod{4}$
+
+    $7^7 \equiv 3^7 = 3^{2\times 3 + 1} \equiv 1^3 \times 3 \equiv 3 \pmod{4}$
+
+    ดังนั้น $7^{7^7} \equiv 7^3 \equiv 343 \equiv 3 \pmod{10}$
+
+    \highlight{หลักหน่วยคือ $3$}
+  \end{exambox}
+
+  \begin{exambox}[โจทย์ 2: จงหาหลักหน่วยของ $2^{2024} + 3^{2024}$]
+    $2^n$ mod $10$: วัฏจักร $\{2,4,8,6\}$ \quad $2024 \div 4$ เศษ $0$ $\rightarrow$ $2^{2024} \equiv 6$
+
+    $3^n$ mod $10$: วัฏจักร $\{3,9,7,1\}$ \quad $2024 \div 4$ เศษ $0$ $\rightarrow$ $3^{2024} \equiv 1$
+
+    \highlight{$6 + 1 = 7$ \quad หลักหน่วยคือ $7$}
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 5: เลขฐาน
+% ===========================================================================
+\section{เลขฐาน (Number Bases)}
+
+\begin{frame}{เลขฐาน}
+  \begin{explanation}[แนวคิด]
+    ตัวเลขที่เราใช้ในชีวิตประจำวันเป็น \textbf{เลขฐานสิบ} (decimal)
+    แต่เราสามารถเขียนจำนวนในฐานอื่น ๆ ได้ เช่น ฐานสอง ฐานแปด ฐานสิบหก
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{exambox}[การเปลี่ยนฐาน $n$ เป็นฐานสิบ]
+        $(a_k a_{k-1} \ldots a_1 a_0)_n$
+
+        $= a_k n^k + a_{k-1} n^{k-1} + \cdots + a_1 n + a_0$
+
+        \textbf{ตัวอย่าง:}
+
+        $(1011)_2 = 1\cdot8 + 0\cdot4 + 1\cdot2 + 1 = 11$
+
+        $(2A)_{16} = 2 \times 16 + 10 = 42$
+      \end{exambox}
+    \column{0.5\textwidth}
+      \begin{exambox}[การเปลี่ยนฐานสิบเป็นฐาน $n$]
+        หารด้วย $n$ ซ้ำ ๆ เอาเศษมาเรียงจากล่างขึ้นบน
+
+        \textbf{ตัวอย่าง:} $12$ เป็นฐาน $2$ \\
+        $12 \div 2 = 6$ เศษ $0$
+
+        $6 \div 2 = 3$ เศษ $0$
+
+        $3 \div 2 = 1$ เศษ $1$
+
+        $1 \div 2 = 0$ เศษ $1$
+
+        $(12)_{10} = (1100)_2$
+      \end{exambox}
+  \end{columns}
+\end{frame}
+
+% ===========================================================================
+%  SUMMARY
+% ===========================================================================
+\section{สรุป}
+
+\begin{frame}{สรุปเนื้อหา}
+  \begin{explanation}[สิ่งที่ได้เรียนรู้]
+    \begin{columns}[T]
+      \column{0.5\textwidth}
+        \begin{itemize}
+          \item \textbf{การหารลงตัว}: $a \mid b$, กฎการหาร
+          \item \textbf{จำนวนเฉพาะ}: มีแค่ $1$ กับตัวมันเองที่หารลงตัว
+          \item \textbf{จำนวนประกอบ}: เขียนเป็นผลคูณของจำนวนเฉพาะได้
+          \item \textbf{GCD/LCM}: แยกตัวประกอบ, Euclidean algorithm
+          \item \textbf{GCD $\times$ LCM = $ab$}
+        \end{itemize}
+      \column{0.5\textwidth}
+        \begin{itemize}
+          \item \textbf{สมภาค}: $a \equiv b \pmod{m} \iff m \mid (a-b)$
+          \item \textbf{สมบัติ}: บวก ลบ คูณ ยกกำลัง ใน mod ได้
+          \item \textbf{Fermat}: $a^{p-1} \equiv 1 \pmod{p}$ ($p$ เฉพาะ)
+          \item \textbf{เลขยกกำลัง}: หาวัฏจักรของเศษ
+          \item \textbf{เลขฐาน}: เปลี่ยนไป-กลับระหว่างฐานต่าง ๆ
+        \end{itemize}
+    \end{columns}
+  \end{explanation}
+  \begin{center}
+    \large เอกสารนี้เป็นส่วนหนึ่งของเนื้อหาเตรียมสอบ \textbf{สอวน. คอมพิวเตอร์}\\
+    Special thanks to \textbf{Pana W.} for the original English-version slide.
+  \end{center}
+\end{frame}
+
+\end{document}

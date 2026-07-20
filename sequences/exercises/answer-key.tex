@@ -1,0 +1,29 @@
+% !TEX program = xelatex
+% ============================================================================
+%  POSN Computer Qualification — Answer Key: ลำดับ
+%  Answers only — no problems, no solutions.
+% ============================================================================
+
+\documentclass[16pt, a4paper]{article}
+
+% --- Load shared exercise preamble ---
+\input{../../exercise-preamble.tex}
+
+% --- Redefine \problem: show only question number + answer ---
+\renewcommand{\problem}[2]{%
+  \filbreak
+  \refstepcounter{qnum}
+  \par\medskip
+  \noindent\textbf{\theqnum.} #2
+  \par\medskip
+}
+
+\begin{document}
+
+\exerciseheader{เฉลย: ลำดับ}
+\vspace{0.5cm}
+
+% --- Include all problems (only answers will render) ---
+\input{problems.tex}
+
+\end{document}

@@ -1,0 +1,100 @@
+% ============================================================================
+%  POSN Computer Qualification — Shared Exercise Preamble
+%  Used by exercise.tex and answer-key.tex in each topic's exercises/ directory.
+%  Based on posn-mock-tests exam paper style: A4, 16pt, TH Sarabun New.
+% ============================================================================
+
+% ---------- Page geometry (matching real POSN exam paper) ----------
+\usepackage{geometry}
+\geometry{top=2.5cm, bottom=2.5cm, left=2.2cm, right=2.2cm}
+
+% ---------- Thai language & font ----------
+\usepackage{fontspec}
+\XeTeXlinebreaklocale{th}
+\setmainfont{TH Sarabun New}[Scale=1.5]
+
+% ---------- Math ----------
+\usepackage{amsmath, amssymb}
+
+% ---------- Graphics ----------
+\usepackage{graphicx}
+
+% ---------- Header / footer ----------
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[R]{\fontsize{12pt}{12pt}\selectfont หน้า \thepage}
+\fancyfoot[L]{\fontsize{10pt}{10pt}\selectfont แบบฝึกหัด สอวน. คอมฯ โดย None W. (Yuan)}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% ---------- Spacing ----------
+\linespread{1.25}
+\setlength{\emergencystretch}{1em}
+\tolerance=1000
+\hfuzz=3pt
+
+% ---------- Code blocks ----------
+\usepackage{fancyvrb}
+\RecustomVerbatimEnvironment{verbatim}{Verbatim}{frame=single, framesep=6pt, fontsize=\footnotesize}
+
+% ---------- Pseudocode environment ----------
+\newsavebox{\pseudobox}
+\newenvironment{pseudocode}{%
+  \begin{center}
+  \begin{lrbox}{\pseudobox}
+  \begin{minipage}{0.88\textwidth}
+  \small
+}{%
+  \end{minipage}
+  \end{lrbox}
+  \fbox{\usebox{\pseudobox}}
+  \end{center}
+  \par\medskip
+}
+
+% ---------- Math shortcuts ----------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+
+% ---------- Continuous question counter ----------
+\newcounter{qnum}
+\setcounter{qnum}{0}
+
+% ---------- Title header (bold, centered, large) ----------
+\newcommand{\exerciseheader}[1]{%
+  \begin{center}
+    {\fontsize{22pt}{26pt}\selectfont \textbf{#1}\par}
+    \vspace{0.5cm}
+  \end{center}
+}
+
+% ---------- Section header ----------
+\newcommand{\examsection}[1]{%
+  \vspace{0.4cm}
+  \noindent\textbf{\large #1}
+  \vspace{0.2cm}\par
+}
+
+% ---------- Default \problem: question + blank space for calculation ----------
+% Usage: \problem{question text}{answer}
+% In exercise.tex, only the question and blank space are shown.
+% In answer-key.tex, this is redefined to show only the answer.
+\newcommand{\problem}[2]{%
+  \filbreak
+  \refstepcounter{qnum}
+  \par\medskip
+  \noindent\textbf{\theqnum.} #1
+  \par
+  \vspace{4cm}
+  \hrule
+  \vspace{0.3cm}
+}
+
+% ============================================================================
+%  End of exercise preamble
+% ============================================================================

@@ -1,0 +1,574 @@
+% !TEX program = xelatex
+% ============================================================================
+%  POSN Computer Qualification — Equations Slide Deck
+%  Topic: สมการและอสมการ (Equations & Inequalities)
+% ============================================================================
+
+\documentclass[11pt, aspectratio=169]{beamer}
+
+% --- Load shared preamble ---
+\input{../../preamble.tex}
+
+% --- Document info ---
+\title[สมการและอสมการ]{สมการและอสมการ}
+\subtitle{Equations \& Inequalities — สมการ, ระบบสมการ, อสมการ, ค่าสัมบูรณ์}
+\author[None W. (Yuan)]{None W. (Yuan)}
+\date{}
+
+\begin{document}
+
+% ===========================================================================
+%  TITLE & OUTLINE
+% ===========================================================================
+\begin{frame}[plain]
+  \titlepage
+\end{frame}
+
+\begin{frame}{สารบัญ (Outline)}
+  \tableofcontents
+\end{frame}
+
+\begin{frame}{ก่อนเรียน (Prerequisites)}
+  \begin{explanation}[สิ่งที่ควรรู้ก่อนเรียน]
+    \begin{itemize}
+      \item \textbf{จำนวนจริง} — การดำเนินการพื้นฐาน, สมบัติของจำนวนจริง, ค่าสัมบูรณ์
+      \item \textbf{การแยกตัวประกอบ} — การแยกตัวประกอบพหุนาม (จากเรื่องพหุนาม)
+      \item \textbf{เลขยกกำลัง} — $a^2$, $\sqrt{a}$ และสมบัติ
+    \end{itemize}
+  \end{explanation}
+
+  \begin{intuition}[สมการคืออะไร?]
+    \textbf{สมการ} คือประโยคที่บอกความเท่ากันของสองนิพจน์
+    การแก้สมการคือการหาค่าตัวแปรที่ทำให้สมการเป็นจริง
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 1: สมการเชิงเส้นตัวแปรเดียว
+% ===========================================================================
+\section{สมการเชิงเส้นตัวแปรเดียว (Linear Equations)}
+
+\begin{frame}{สมการเชิงเส้นตัวแปรเดียว}
+  \begin{explanation}[รูปแบบทั่วไป]
+    $ax + b = 0$ \quad โดยที่ $a \neq 0$
+
+    \textbf{คำตอบ:} $x = -\dfrac{b}{a}$ \quad (มีคำตอบเดียวเสมอ)
+  \end{explanation}
+
+  \begin{exambox}
+    แก้สมการ $3x - 7 = 2x + 5$
+    \begin{align*}
+      3x - 7 &= 2x + 5 \\
+      3x - 2x &= 5 + 7 \\
+      x &= 12
+    \end{align*}
+    \textbf{ตรวจสอบ:} $3(12) - 7 = 29$, \; $2(12) + 5 = 29$ \quad $\checkmark$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{หลักการแก้สมการ}
+  \begin{intuition}[หลักการสำคัญ]
+    \begin{itemize}
+      \item ย้ายข้างตัวแปรไปไว้ด้านหนึ่ง ตัวเลขไปไว้อีกด้านหนึ่ง
+      \item \highlight{เครื่องหมายจะกลับเมื่อย้ายข้าง}
+      \item ถ้ามีวงเล็บ ให้กระจายวงเล็บก่อน
+      \item ถ้ามีเศษส่วน ให้คูณตลอดด้วย ค.ร.น. ของตัวส่วน
+    \end{itemize}
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: สมการที่มีวงเล็บ}
+  \begin{exambox}
+    โจทย์: $2(x - 3) = 4x + 2$
+    \begin{align*}
+      2x - 6 &= 4x + 2 \\
+      2x - 4x &= 2 + 6 \\
+      -2x &= 8 \\
+      x &= -4
+    \end{align*}
+    \textbf{ตรวจสอบ:} $2(-4-3) = -14$, \; $4(-4)+2 = -14$ \quad $\checkmark$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: สมการที่มีเศษส่วน}
+  \begin{exambox}
+    โจทย์: $\dfrac{x}{2} + \dfrac{x}{3} = 5$ \newline
+    คูณตลอดด้วย ค.ร.น. ของ 2 และ 3 = 6:
+    \begin{align*}
+      6\left(\frac{x}{2} + \frac{x}{3}\right) &= 6 \times 5 \\
+      3x + 2x &= 30 \\
+      5x &= 30 \quad \Rightarrow \quad x = 6
+    \end{align*}
+  \end{exambox}
+
+  \begin{intuition}[เทคนิค]
+    ถ้ามีเศษส่วน ให้คูณตลอดด้วย ค.ร.น. ของตัวส่วน เพื่อกำจัดเศษส่วนก่อน
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 2: สมการกำลังสอง
+% ===========================================================================
+\section{สมการกำลังสอง (Quadratic Equations)}
+
+\begin{frame}{สมการกำลังสอง}
+  \begin{explanation}[รูปแบบทั่วไป]
+    $ax^2 + bx + c = 0$ \quad โดยที่ $a \neq 0$
+    \textbf{วิธีแก้:}
+    \begin{enumerate}
+      \item \textbf{แยกตัวประกอบ} — ใช้เมื่อแยกได้ง่าย
+      \item \textbf{ทำให้เป็นกำลังสองสมบูรณ์}
+      \item \textbf{สูตรกำลังสอง} — ใช้ได้ทุกกรณี
+    \end{enumerate}
+  \end{explanation}
+
+  \begin{explanation}[สูตรกำลังสอง (Quadratic Formula)]
+    \[
+      x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}
+    \]
+
+    โดยที่ $b^2 - 4ac$ เรียกว่า \highlight{ดิสคริมิแนนต์ (Discriminant)}
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: การแยกตัวประกอบ}
+  \begin{exambox}
+    $x^2 + 5x + 6 = 0$
+    หา 2 จำนวนที่คูณกันได้ 6 บวกกันได้ 5: \quad 2 และ 3
+    \begin{align*}
+      (x + 2)(x + 3) &= 0 \\
+      x = -2 \quad &\text{หรือ} \quad x = -3
+    \end{align*}
+  \end{exambox}
+
+  \begin{exambox}
+    $x^2 - 9  0$
+    ผลต่างกำลังสอง: \quad $(x - 3)(x + 3) = 0$
+
+    $x = 3$ หรือ $x = -3$
+  \end{exambox}
+
+  \begin{intuition}[หลักการแยกตัวประกอบ]
+    ถ้า $A \times B = 0$ แล้ว $A = 0$ \textbf{หรือ} $B = 0$
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: สูตรกำลังสอง}
+  \begin{exambox}
+    โจทย์: $2x^2 + 3x - 2 = 0$
+    $a = 2$, $b = 3$, $c = -2$
+
+    \textbf{ดิสคริมิแนนต์:} $b^2 - 4ac = 9 - 4(2)(-2) = 9 + 16 = 25$
+
+    \textbf{สูตรกำลังสอง:}
+    \[
+      x = \frac{-3 \pm \sqrt{25}}{2 \times 2} = \frac{-3 \pm 5}{4}
+    \]
+    \[
+      x = \frac{2}{4} = \frac{1}{2} \quad \text{หรือ} \quad x = \frac{-8}{4} = -2
+    \]
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ความหมายของดิสคริมิแนนต์}
+  \begin{explanation}
+    Discriminant: $\Delta = b^2 - 4ac$
+    \begin{center}
+      \begin{tabular}{c|c|c}
+        $\Delta$ & จำนวนคำตอบ & ลักษณะ \\
+        \hline
+        $\Delta > 0$ & 2 คำตอบ (ต่างกัน) & กราฟตัดแกน $x$ 2 จุด \\
+        $\Delta = 0$ & 1 คำตอบ (ซ้ำ) & กราฟสัมผัสแกน $x$ \\
+        $\Delta < 0$ & ไม่มีคำตอบที่เป็นจำนวนจริง & กราฟไม่ตัดแกน $x$
+      \end{tabular}
+    \end{center}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    \begin{itemize}
+      \item $x^2 - 4x + 4 = 0$: $\Delta = 0$ $\rightarrow$ $x = 2$ (คำตอบเดียว)
+      \item $x^2 + x + 1 = 0$: $\Delta = -3 < 0$ $\rightarrow$ ไม่มีคำตอบใน $\R$
+    \end{itemize}
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+  \begin{exambox}[ข้อสอบปี 65 ข้อ 23]
+    คาใดคือผลบวกของค่า $a$ ทั้งหมดที่ทำให้สมการ $4x^2+(a+3)x+25=0$ มีคำตอบเดียว
+  \end{exambox}
+
+  \begin{solbox}
+      มีคำตอบเดียวเมื่อ Discriminant: $\Delta = b^2 - 4ac=0$ 
+      \begin{align*}
+        (a+3)^2-4(4)(25)&=0 \\
+        a^2+6x+9-400&=0 \\
+        a^2+6x+391&=0 \\
+        (a+23)(a-17)&=0
+      \end{align*}
+      $\therefore a=-23$ หรือ $a=17$ ผลรวมคือ $-6$ 
+  \end{solbox}
+\end{frame}
+
+
+% ===========================================================================
+%  SECTION 3: ระบบสมการ
+% ===========================================================================
+\section{ระบบสมการ (Systems of Equations)}
+
+\begin{frame}{ระบบสมการเชิงเส้น 2 ตัวแปร}
+  \begin{explanation}[รูปแบบ]
+    \[
+      \begin{cases}
+        a_1x + b_1y = c_1 \\
+        a_2x + b_2y = c_2
+      \end{cases}
+    \]
+
+    \textbf{วิธีแก้:}
+    \begin{enumerate}
+      \item \textbf{กำจัดตัวแปร (Elimination)} — บวก/ลบสมการเพื่อกำจัดตัวแปรหนึ่ง
+      \item \textbf{แทนค่า (Substitution)} — แก้ตัวแปรหนึ่งจากสมการหนึ่ง แล้วแทนในอีกสมการ
+    \end{enumerate}
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ระบบสมการ}
+  \begin{exambox}[โจทย์]
+    แก้ระบบสมการ:
+    \[
+      \begin{cases}
+        2x + y = 7 \\
+        x - y = 2
+      \end{cases}
+    \]
+  \end{exambox}
+
+  \begin{solbox}[วิธีที่ 1: กำจัดตัวแปร]
+    บวกสมการทั้งสอง: $(2x + y) + (x - y) = 7 + 2$
+
+    $3x = 9 \quad \Rightarrow \quad x = 3$
+
+    แทน $x = 3$ ใน $x - y = 2$: \; $3 - y = 2 \quad \Rightarrow \quad y = 1$
+
+    \textbf{คำตอบ:} $(x, y) = (3, 1)$
+  \end{solbox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ระบบสมการ — แทนค่า}
+  \begin{exambox}[โจทย์]
+    แก้ระบบสมการ: \quad $y = 2x - 1$, \;\; $3x + 2y = 12$
+  \end{exambox}
+
+  \begin{solbox}[วิธีทำ]
+    แทน $y = 2x - 1$ ลงใน $3x + 2y = 12$:
+    \begin{align*}
+      3x + 2(2x - 1) &= 12 \\
+      3x + 4x - 2 &= 12 \\
+      7x &= 14 \quad \Rightarrow \quad x = 2
+    \end{align*}
+    $y = 2(2) - 1 = 3$
+
+    \textbf{คำตอบ:} $(x, y) = (2, 3)$
+  \end{solbox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 4: อสมการพื้นฐาน
+% ===========================================================================
+\section{อสมการ (Inequalities)}
+
+\begin{frame}{อสมการคืออะไร?}
+  \begin{explanation}[สมบัติของอสมการ]
+    \begin{itemize}
+      \item \textbf{บวก/ลบ ทั้งสองข้าง:} เครื่องหมายอสมการไม่เปลี่ยน
+      \item \textbf{คูณ/หาร ด้วยจำนวนบวก:} เครื่องหมายอสมการไม่เปลี่ยน
+      \item \highlight{คูณ/หาร ด้วยจำนวนลบ:} \textbf{เครื่องหมายอสมการกลับด้าน!}
+    \end{itemize}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง: การกลับเครื่องหมาย]
+    \[
+      -2x > 6 \quad \Rightarrow \quad x < -3
+    \]
+
+    (หารด้วย $-2$ ทั้งสองข้าง — เครื่องหมายกลับจาก $>$ เป็น $<$)
+  \end{exambox}
+
+  \begin{intuition}
+    ถ้าคูณหรือหารด้วยจำนวนลบ \highlight{ต้องกลับเครื่องหมาย}
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: แก้อสมการเชิงเส้น}
+  \begin{exambox}[โจทย์ 1: $3x - 5 < 2x + 4$]
+    \begin{align*}
+      3x - 2x &< 4 + 5 \\
+      x &< 9
+    \end{align*}
+    \textbf{คำตอบ:} $x \in (-\infty, 9)$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: อสมการที่ต้องกลับเครื่องหมาย}
+  \begin{exambox}[โจทย์ 2: $5 - 2x \geq 3x + 10$]
+    \begin{align*}
+      -2x - 3x &\geq 10 - 5 \\
+      -5x &\geq 5 \\
+      x &\leq -1
+    \end{align*}
+    หารด้วย $-5$ — \highlight{กลับเครื่องหมายจาก $\geq$ เป็น $\leq$!}
+
+    \textbf{คำตอบ:} $x \in (-\infty, -1]$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+  \begin{exambox}[ข้อสอบปี 67 ข้อ 7]
+    จากอสมการ $-43<-3x+17 \leq 5$ ถ้า $a$ และ $b$ คือ ค่ามากที่สุดและน้อยที่สุดที่เป็นจำนวนเต็มของ $x$ แล้วผลต่างของ $a$ และ $b$ มีค่าตรงกับข้อใด
+  \end{exambox}
+
+  \begin{solbox}
+      $-43<-3x+17 \leq 5$\\
+      $-60<-3x \leq -12$\\
+      $20> x \geq 4$ หารด้วย $-3$ ต้องกลับเครื่องหมาย\\
+      $\therefore x$ ที่เป็นจำนวนเต็มที่มากที่สุดคือ $4$ และน้อยที่สุดคือ $19$ ผลต่างคือ $15$ 
+  \end{solbox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 5: อสมการดีกรี > 1
+% ===========================================================================
+\section{อสมการดีกรีมากกว่า 1}
+
+\begin{frame}{อสมการกำลังสอง: วิธีเส้นจำนวน (Sign Chart)}
+  \begin{explanation}[ขั้นตอนการแก้อสมการกำลังสอง]
+    \begin{enumerate}
+      \item \textbf{จัดรูป}ให้ข้างหนึ่งเป็น 0
+      \item \textbf{แยกตัวประกอบ}พหุนาม
+      \item \textbf{หาจุดวิกฤต} (ค่า $x$ ที่ทำให้นิพจน์ = 0)
+      \item \textbf{เขียนเส้นจำนวน} และทดสอบเครื่องหมายในแต่ละช่วง
+      \item \textbf{เลือกช่วง}ที่ตรงตามเงื่อนไขอสมการ
+    \end{enumerate}
+  \end{explanation}
+
+  \begin{intuition}[แนวคิด]
+    พหุนามเปลี่ยนเครื่องหมายได้ที่จุดที่มันเท่ากับ 0 เท่านั้น
+    ดังนั้นเราแบ่งเส้นจำนวนที่จุดวิกฤต แล้วทดสอบทีละช่วง
+  \end{intuition}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: อสมการกำลังสอง $x^2 - x - 6 > 0$}
+  \begin{exambox}[โจทย์]
+    แก้อสมการ $x^2 - x - 6 > 0$
+  \end{exambox}
+
+  \begin{solbox}[วิธีทำ]
+    \textbf{1. แยกตัวประกอบ:} $(x - 3)(x + 2) > 0$
+
+    \textbf{2. จุดวิกฤต:} $x = -2$ และ $x = 3$ \quad (จุดที่นิพจน์ = 0)
+
+    \textbf{3. ทดสอบเครื่องหมาย:}
+
+    \small
+    \begin{tabular}{c|ccc}
+                     & $x<-2$ & $-2<x<3$ & $x>3$ \\
+      \hline
+      $(x-3)$        & $-$    & $-$      & $+$   \\
+      $(x+2)$        & $-$    & $+$      & $+$   \\
+      \hline
+      ผลคูณ          & $+$    & $-$      & $+$
+    \end{tabular}
+    \normalsize
+
+    \textbf{4. ต้องการ $> 0$:} เลือก $+$
+
+    \textbf{คำตอบ:} $x \in (-\infty, -2) \cup (3, \infty)$
+  \end{solbox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: อสมการกำลังสอง $x^2 + 2x - 3 \leq 0$}
+  \begin{exambox}[โจทย์]
+    แก้อสมการ $x^2 + 2x - 3 \leq 0$
+  \end{exambox}
+
+  \begin{solbox}[วิธีทำ]
+    \textbf{1. แยกตัวประกอบ:} $(x + 3)(x - 1) \leq 0$
+
+    \textbf{2. จุดวิกฤต:} $x = -3$ และ $x = 1$
+
+    \textbf{3. ทดสอบเครื่องหมาย:}
+
+    \small
+    \begin{tabular}{c|ccc}
+                     & $x<-3$ & $-3<x<1$ & $x>1$ \\
+      \hline
+      $(x+3)$        & $-$    & $+$      & $+$   \\
+      $(x-1)$        & $-$    & $-$      & $+$   \\
+      \hline
+      ผลคูณ          & $+$    & $-$      & $+$
+    \end{tabular}
+    \normalsize
+
+    \textbf{4. ต้องการ $\leq 0$:} เลือก $-$ และ $= 0$
+
+    \textbf{คำตอบ:} $x \in [-3, 1]$
+  \end{solbox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: อสมการดีกรี 3 — $x^3 - 4x \geq 0$}
+  \begin{exambox}
+    แก้อสมการ $x^3 - 4x \geq 0$
+  \end{exambox}
+
+  \begin{solbox}
+    $x(x^2 - 4) \geq 0 \;\Rightarrow\; x(x-2)(x+2) \geq 0$
+
+    \textbf{จุดวิกฤต:} $x = -2, 0, 2$
+
+    \textbf{ทดสอบเครื่องหมาย (4 ช่วง):}
+
+    \small
+    \begin{tabular}{c|cccc}
+                     & $x<-2$ & $-2<x<0$ & $0<x<2$ & $x>2$ \\
+      \hline
+      $(x+2)$        & $-$    & $+$      & $+$     & $+$   \\
+      $x$            & $-$    & $-$      & $+$     & $+$   \\
+      $(x-2)$        & $-$    & $-$      & $-$     & $+$   \\
+      \hline
+      ผลคูณ          & $-$    & $+$      & $-$     & $+$
+    \end{tabular}
+    \normalsize
+
+    \textbf{ต้องการ $\geq 0$:} เลือก $+$ และจุดที่ $=0$
+
+    \textbf{คำตอบ:} $x \in [-2, 0] \cup [2, \infty)$
+  \end{solbox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+  \begin{exambox}[ข้อสอบปี 65 ข้อ 43]
+    จำนวนเต็มที่สอดคล้องกับ อสมการ $\dfrac{x(x-4)}{(x-1)(2x-1)} \leq 0$ มีทั้งหมดกี่จำนวน ($x$ เป็นจำนวนจริงใดๆ)
+  \end{exambox}
+  
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+  \begin{solbox}[วิธีทำ]
+      \textbf{จุดวิกฤต:} $x = 0, \dfrac{1}{2},1,4$
+      \textbf{ทดสอบเครื่องหมาย (5 ช่วง):}
+
+      \small
+      \begin{tabular}{c|ccccc}
+                      & $x<0$ & $0<x<\frac{1}{2}$ & $\frac{1}{2}<x<1$ & $1<x<4$ & $4<x$ \\
+        \hline
+        $x$          & $-$    & $+$      & $+$     & $+$     & $+$   \\
+        $2x-1$       & $-$    & $-$      & $+$     & $+$     & $+$   \\
+        $x-1$        & $-$    & $-$      & $-$     & $+$     & $+$   \\
+        $x-4$        & $-$    & $-$      & $-$     & $-$     & $+$   \\
+        \hline
+        ผลคูณ          & $+$    & $-$      & $+$     & $-$     & $+$
+      \end{tabular}
+      \normalsize
+
+      \textbf{ต้องการ $\leq 0$:} เลือก $-$
+      $\therefore$ จำนวนเต็มที่สอดคล้อง ได้แก่ $0,2,3,4$ ทั้งหมด $4$ จำนวน 
+      \\($\dfrac{1}{2},1$ ใช้ไม่ได้เนื่องจากจะทำให้ส่วนเป็น $0$) 
+  \end{solbox}  
+\end{frame}
+% ===========================================================================
+%  SECTION 6: ค่าสัมบูรณ์กับสมการ/อสมการ
+% ===========================================================================
+\section{ค่าสัมบูรณ์กับสมการและอสมการ}
+
+\begin{frame}{สมการค่าสัมบูรณ์}
+  \begin{explanation}[หลักการ]
+    $|X| = a$ \quad ($a \geq 0$) \quad $\iff$ \quad $X = a$ หรือ $X = -a$
+
+    \medskip
+    ถ้า $a < 0$: \textbf{ไม่มีคำตอบ} (ค่าสัมบูรณ์ $\geq 0$ เสมอ)
+  \end{explanation}
+
+  \begin{exambox}
+    ตัวอย่าง: $|2x - 5| = 7$
+    \begin{align*}
+      2x - 5 = 7 \quad &\Rightarrow \quad 2x = 12 \quad \Rightarrow \quad x = 6 \\
+      2x - 5 = -7 \quad &\Rightarrow \quad 2x = -2 \quad \Rightarrow \quad x = -1
+    \end{align*}
+    \textbf{คำตอบ:} $x = 6$ หรือ $x = -1$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{อสมการค่าสัมบูรณ์}
+  \begin{explanation}[แบบที่ 1: $|X| < a$ ($a > 0$)]
+    \[
+      -a < X < a
+    \]
+    (ระยะห่างจาก 0 น้อยกว่า $a$ — อยู่ระหว่าง $-a$ กับ $a$)
+  \end{explanation}
+
+  \begin{explanation}[แบบที่ 2: $|X| > a$ ($a > 0$)]
+    \[
+      X < -a \quad \textbf{หรือ} \quad X > a
+    \]
+    (ระยะห่างจาก 0 มากกว่า $a$ — อยู่ข้างนอก)
+  \end{explanation}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: อสมการค่าสัมบูรณ์}
+  \begin{exambox}
+    โจทย์ 1: $|x + 3| < 5$
+    \begin{align*}
+      -5 < x + 3 < 5 \\
+      -8 < x < 2
+    \end{align*}
+    \textbf{คำตอบ:} $x \in (-8, 2)$
+  \end{exambox}
+
+  \begin{exambox}
+    โจทย์ 2: $|2x - 1| \geq 3$
+    \begin{align*}
+      2x - 1 \leq -3 \quad &\Rightarrow \quad 2x \leq -2 \quad \Rightarrow \quad x \leq -1 \\
+      2x - 1 \geq 3 \quad &\Rightarrow \quad 2x \geq 4 \quad \Rightarrow \quad x \geq 2
+    \end{align*}
+    \textbf{คำตอบ:} $x \in (-\infty, -1] \cup [2, \infty)$
+  \end{exambox}
+\end{frame}
+
+\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+  \begin{exambox}[ข้อสอบปี 67 ข้อ 16]
+    ผลรวมของรากที่เป็นจำนวนเต็มของอสมการ $\lvert4x-5\rvert \leq 3x-2$ เท่ากับเท่าใด
+  \end{exambox}
+
+  \begin{solbox}
+    \textbf{ราก} คือ คำตอบของสมการ
+    \begin{align*}
+      -3x+2 \leq 4x-5 \quad &\Rightarrow \quad 7 \leq 7x \quad \Rightarrow \quad 1 \leq x \\
+      4x-5\leq 3x - 2 \quad &\Rightarrow \quad x \leq 3 \\
+      1 \leq x \leq 3
+    \end{align*}
+    $\therefore$ รากที่เป็นจำนวนเต๋ช็ม คือ $1,2,3$ ซึ่งได้ผลรสมเป็น $6$
+  \end{solbox}
+\end{frame}
+% ===========================================================================
+%  SUMMARY
+% ===========================================================================
+\section{สรุป}
+
+\begin{frame}{สรุปเนื้อหา}
+  \begin{explanation}[สิ่งที่ได้เรียนรู้]
+    \begin{enumerate}
+      \item \textbf{สมการเชิงเส้น}: $ax + b = 0$ $\rightarrow$ $x = -b/a$
+      \item \textbf{สมการกำลังสอง}: สูตร $x = \frac{-b \pm \sqrt{b^2-4ac}}{2a}$, ดิสคริมิแนนต์
+      \item \textbf{ระบบสมการ}: กำจัดตัวแปร หรือแทนค่า
+      \item \textbf{อสมการ}: คูณ/หารด้วยจำนวนลบ $\rightarrow$ \highlight{กลับเครื่องหมาย!}
+      \item \textbf{อสมการดีกรี > 1}: \highlight{Sign Chart} — แยกตัวประกอบ, หาจุดวิกฤต, ทดสอบช่วง
+      \item \textbf{ค่าสัมบูรณ์}: $|X| = a \iff X=\pm a$; \; $|X|<a \iff -a<X<a$
+    \end{enumerate}
+  \end{explanation}
+
+  \begin{center}
+    \large เอกสารนี้เป็นส่วนหนึ่งของเนื้อหาเตรียมสอบ \textbf{สอวน. คอมพิวเตอร์}
+  \end{center}
+\end{frame}
+
+\end{document}

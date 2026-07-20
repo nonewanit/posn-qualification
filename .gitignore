@@ -1,0 +1,27 @@
+# LaTeX build artifacts
+*.aux
+*.log
+*.out
+*.toc
+*.nav
+*.snm
+*.xdv
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+*.vrb
+*.listing
+
+# Build output directory
+build/
+
+# PDFs (compiled output — uncomment to ignore)
+# *.pdf
+
+# Editor files
+*.swp
+*.swo
+*~
+
+# Claude
+.claude
