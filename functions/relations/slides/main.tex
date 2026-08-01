@@ -569,17 +569,18 @@
     \node[font=\sffamily\small] at (0,-2.5) {$A$};
     \draw[boxGreen!30, very thick] (3.8,0) ellipse (1.2cm and 2.0cm);
     \node[font=\sffamily\small] at (3.8,-2.5) {$B$};
-    \node[elem] (a1) at (0,1.0) {1};
-    \node[elem] (a2) at (0,0.0) {2};
-    \node[elem] (a3) at (0,-1.0) {3};
+    \node[elem] (a1) at (0,1.1) {1};
+    \node[elem] (a2) at (0,0.2) {2};
+    \node[elem] (a3) at (0,-0.7) {3};
+    \node[elem] (a4) at (0,-1.6) {4};
     \node[elemused] (b1) at (3.8,1.3) {5};
     \node[elemused] (b2) at (3.8,-0.3) {6};
     \node[elemused] (b3) at (3.8,-1.3) {7};
     \draw[arr, boxGreen] (a1) -- (b1);
     \draw[arr, boxGreen] (a2) -- (b2);
-    \draw[arr, boxGreen] (a3) -- (b2);
-    \draw[arr, boxGreen] (a1) to[bend left=10] (b3);
-    \node[boxGreen, font=\sffamily\footnotesize] at (1.9,-3.3) {ทุกสมาชิกใน $B$ ถูกลูกศรชี้};
+    \draw[arr, boxGreen] (a3) -- (b3);
+    \draw[arr, boxGreen] (a4) -- (b2);
+    \node[boxGreen, font=\sffamily\footnotesize] at (1.9,-3.3) {ทุกสมาชิกใน $B$ ถูกลูกศรชี้ (แต่ละตัวใน $A$ มี 1 ลูกศร)};
 
     % Separator
     \draw[gray!50, thick] (5.5,-2.0) -- (5.5,2.8);
@@ -613,7 +614,7 @@
 
   \begin{itemize}
     \item ฟังก์ชัน bijective จะมี \textbf{ฟังก์ชันผกผัน} ($f^{-1}$) เสมอ
-    \item $|A| = |B|$ สำหรับฟังก์ชัน bijective บนเซตจำกัด
+    \item $|D_f| = |B|$ สำหรับฟังก์ชัน bijective บนเซตจำกัด
   \end{itemize}
 
   \begin{intuition}[สังเกต]
