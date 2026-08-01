@@ -1,0 +1,513 @@
+% !TEX program = xelatex
+% ============================================================================
+%  POSN Computer Qualification — Polynomials
+%  Topic: พหุนาม (Polynomials)
+% ============================================================================
+
+\documentclass[11pt, aspectratio=169]{beamer}
+\input{../../../preamble.tex}
+
+\title[พหุนาม]{\textcolor{white}{พหุนาม} \textcolor{boxBlue!60}{(Polynomials)}}
+\subtitle{การดำเนินการ • การหาร • ทฤษฎีบทเศษเหลือ • การแยกตัวประกอบ • ทฤษฎีบททวินาม }
+\author[None W. (Yuan)]{None W. (Yuan)}
+\date{}
+
+\begin{document}
+
+\begin{frame}[plain]\titlepage\end{frame}\begin{frame}{สารบัญ (Outline)}\tableofcontents\end{frame}\begin{frame}{ก่อนเรียน (Prerequisites)}
+  \begin{explanation}[สิ่งที่ควรรู้ก่อนเรียน]
+    \begin{itemize}
+      \item \textbf{จำนวนจริง} — การบวก ลบ คูณ หาร, สมบัติการแจกแจง
+      \item \textbf{เลขยกกำลัง} — $x^a \cdot x^b = x^{a+b}$, $(x^a)^b = x^{ab}$
+      \item \textbf{สมการ} — การแก้สมการเชิงเส้นและสมการกำลังสอง
+    \end{itemize}
+  \end{explanation}
+
+  \begin{intuition}[พหุนามคืออะไร?]
+    \textbf{พหุนาม} คือนิพจน์ที่ประกอบด้วยตัวแปรยกกำลังด้วยจำนวนเต็มที่ไม่เป็นลบ
+    คูณกับค่าคงที่ แล้วบวกกัน เช่น $3x^3 - 5x^2 + 2x - 7$
+  \end{intuition}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 1: นิยามและพื้นฐาน
+% ===========================================================================
+\section{นิยามและพื้นฐาน (Definition \& Basics)}
+
+\begin{frame}{พหุนามคืออะไร?}
+  \begin{explanation}[นิยาม: พหุนามตัวแปรเดียว (Polynomial in One Variable)]
+    \textbf{พหุนาม} คือนิพจน์ที่อยู่ในรูป
+    \[
+      P(x) = a_n x^n + a_{n-1} x^{n-1} + \cdots + a_1 x + a_0
+    \]
+    โดย $a_n, a_{n-1}, \ldots, a_0 \in \R$ (สัมประสิทธิ์), $a_n \neq 0$, และ $n$ เป็นจำนวนเต็มที่ไม่เป็นลบ
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{explanation}[คำศัพท์สำคัญ]
+        \begin{itemize}
+          \item \textbf{ดีกรี (Degree)}: เลขชี้กำลังสูงสุด = $n$
+          \item \textbf{สัมประสิทธิ์นำ}: $a_n$
+          \item \textbf{พจน์คงที่}: $a_0$
+        \end{itemize}
+      \end{explanation}
+    \column{0.5\textwidth}
+      \begin{exambox}[ตัวอย่าง]
+        $P(x) = 4x^5 - 3x^2 + 7x - 1$
+
+        ดีกรี $= 5$, สัมประสิทธิ์นำ $= 4$, พจน์คงที่ $= -1$
+      \end{exambox}
+  \end{columns}
+\end{frame}\begin{frame}{สิ่งที่ไม่ใช่พหุนาม}
+  \begin{explanation}[ข้อควรระวัง]
+    นิพจน์ต่อไปนี้ \textbf{ไม่ใช่} พหุนาม:
+    \begin{itemize}
+      \item $x^{-2} + 3x$ \quad — เลขชี้กำลังติดลบ
+      \item $2x^{1/2} + 5$ \quad — เลขชี้กำลังไม่เป็นจำนวนเต็ม
+      \item $\dfrac{1}{x} + x^2$ \quad — $x^{-1}$ คือเลขชี้กำลังติดลบ
+      \item $3^x + x$ \quad — ตัวแปรเป็นเลขชี้กำลัง (exponential)
+    \end{itemize}
+  \end{explanation}
+
+  \begin{intuition}[จำง่าย ๆ]
+    เลขชี้กำลังของ $x$ ต้องเป็น \highlight{จำนวนเต็มที่ไม่เป็นลบ} ($0, 1, 2, 3, \ldots$) เท่านั้น!
+  \end{intuition}
+\end{frame}\begin{frame}{การจำแนกพหุนามตามจำนวนพจน์}
+  \begin{columns}[T]
+    \column{0.33\textwidth}
+      \centering
+      \textbf{เอกนาม (Monomial)}
+
+      $5x^3$, \quad $-2x$, \quad $7$
+
+      1 พจน์
+
+    \column{0.33\textwidth}
+      \centering
+      \textbf{ทวินาม (Binomial)}
+
+      $x^2 + 4$, \quad $3x^3 - 2x$
+
+      2 พจน์
+
+    \column{0.33\textwidth}
+      \centering
+      \textbf{ไตรนาม (Trinomial)}
+
+      $x^2 + 5x + 6$
+
+      $2x^3 - x^2 + 3$
+
+      3 พจน์
+  \end{columns}
+
+  \medskip
+  \begin{explanation}[การจำแนกตามดีกรี]
+    \begin{itemize}
+      \item ดีกรี 0: \textbf{ค่าคงที่} (constant) — เช่น $5$, $-3$
+      \item ดีกรี 1: \textbf{เชิงเส้น} (linear) — เช่น $2x + 1$
+      \item ดีกรี 2: \textbf{กำลังสอง} (quadratic) — เช่น $x^2 - 4x + 3$
+      \item ดีกรี 3: \textbf{กำลังสาม} (cubic) — เช่น $x^3 + 2x^2 - x + 5$
+    \end{itemize}
+  \end{explanation}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 2: การดำเนินการของพหุนาม
+% ===========================================================================
+\section{การดำเนินการของพหุนาม (Polynomial Operations)}
+
+\begin{frame}{การบวกและการลบพหุนาม}
+  \begin{explanation}[วิธีทำ]
+    \textbf{บวก/ลบพจน์ที่เหมือนกัน} (พจน์ที่มีตัวแปรและเลขชี้กำลังเดียวกัน)
+    — บวกหรือลบสัมประสิทธิ์ของพจน์ที่เหมือนกัน
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    \textbf{การบวก:} $(3x^3 - 5x^2 + 2x - 1) + (2x^3 + 4x^2 - 3x + 6)
+    = 5x^3 - x^2 - x + 5$
+
+    \medskip
+    \textbf{การลบ:} $(4x^3 + 2x - 5) - (x^3 - 3x^2 + x + 2)
+    = 3x^3 + 3x^2 + x - 7$
+  \end{exambox}
+\end{frame}\begin{frame}{การคูณพหุนาม}
+  \begin{explanation}[วิธีทำ]
+    \textbf{ใช้สมบัติการแจกแจง (Distributive Property)}:
+    ทุกพจน์คูณกับทุกพจน์ของอีกพหุนาม แล้วรวมพจน์ที่เหมือนกัน
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    \textbf{เอกนาม $\times$ พหุนาม:}
+    $3x^2(2x^3 - 5x + 4) = 6x^5 - 15x^3 + 12x^2$
+
+    \medskip
+    \textbf{ทวินาม $\times$ ทวินาม:}
+    $(2x+3)(x^2-4x+5) = 2x^3 -8x^2 +10x +3x^2 -12x +15
+    = 2x^3 -5x^2 -2x +15$
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 3: การหารพหุนาม
+% ===========================================================================
+\section{การหารพหุนาม (Polynomial Division)}
+
+\begin{frame}{การหารยาว (Long Division)}
+  \begin{explanation}
+    หารพจน์แรก $\rightarrow$ คูณกลับ $\rightarrow$ ลบ $\rightarrow$ ดึงลงมา $\rightarrow$ ทำซํ้า
+  \end{explanation}
+  \begin{columns}[T]
+    \column{0.55\textwidth}
+        \begin{exambox}[ตัวอย่าง: การหารยาว]
+        \[
+        \begin{array}{rl}
+          & x^2 - 2x - 2 \\
+          \cline{2-2}
+          x - 2 \;\big)\; & x^3 - 4x^2 + 2x + 5 \\
+          & -(x^3 - 2x^2) \\
+          \cline{2-2}
+          & -2x^2 + 2x \\
+          & -(-2x^2 + 4x) \\
+          \cline{2-2}
+          & -2x + 5 \\
+          & -(-2x + 4) \\
+          \cline{2-2}
+          & 1
+        \end{array}
+        \]
+      \end{exambox}
+
+    \column{0.45\textwidth}
+    \begin{intuition}[ตรวจคำตอบ]
+      \highlight{ผลหาร $= x^2 - 2x - 2$ \\ เศษ $= 1$}
+
+        $(x-2)(x^2-2x-2) + 1$
+
+        $= x^3 - 2x^2 - 2x - 2x^2 + 4x + 4 + 1$
+
+        $= x^3 - 4x^2 + 2x + 5$ \quad $\checkmark$
+      \end{intuition}
+  \end{columns}
+\end{frame}\begin{frame}{การหารสังเคราะห์ (Synthetic Division)}
+  \begin{explanation}[ใช้เมื่อตัวหารอยู่ในรูป $x - c$]
+    วิธีลัดที่ใช้เฉพาะสัมประสิทธิ์ — เร็วกว่าการหารยาวเมื่อตัวหารเป็นเชิงเส้น
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่างเดิม: การหารสังเคราะห์]
+    \[
+    \begin{array}{c|cccc}
+      2 & 1 & -4 & 2 & 5 \\
+        &   & 2  & -4 & -4 \\
+      \hline
+        & 1 & -2 & -2 & \boxed{1}
+    \end{array}
+    \]
+
+    \textbf{ขั้นตอน:} ดึงลงมา $\rightarrow$ คูณด้วย $c$ $\rightarrow$ บวก $\rightarrow$ ทำซํ้า
+
+    \begin{center}
+    {\small $1 \xrightarrow{\times 2} 2 \xrightarrow{+(-4)} -2 \xrightarrow{\times 2} -4 \xrightarrow{+2} -2 \xrightarrow{\times 2} -4 \xrightarrow{+5} 1$}
+    \end{center}
+
+    \highlight{ผลหาร $= x^2 - 2x - 2$ เศษ $= 1$}
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 4: ทฤษฎีบทเศษเหลือ
+% ===========================================================================
+\section{ทฤษฎีบทเศษเหลือ (Remainder Theorem)}
+
+\begin{frame}{ทฤษฎีบทเศษเหลือ}
+  \begin{explanation}[ทฤษฎีบท]
+    เมื่อหารพหุนาม $P(x)$ ด้วย $(x - c)$ \highlight{เศษที่ได้เท่ากับ $P(c)$}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง]
+    $P(x) = x^3 - 4x^2 + 2x + 5$ หารด้วย $(x - 2)$
+
+    \textbf{วิธีที่ 1:} หารยาว/หารสังเคราะห์ $\rightarrow$ เศษ $= 1$
+
+    \textbf{วิธีที่ 2 (ทฤษฎีบทเศษเหลือ):}
+    $P(2) = 2^3 - 4(4) + 2(2) + 5 = 8 - 16 + 4 + 5 = 1$
+
+    \highlight{ได้เศษ $= 1$ เท่ากัน!}
+  \end{exambox}
+
+  \begin{intuition}[ประโยชน์]
+    ไม่ต้องหารจริง! แค่แทนค่า $c$ ลงใน $P(x)$ ก็รู้เศษทันที
+  \end{intuition}
+\end{frame}\begin{frame}[t]{ตัวอย่าง: ทฤษฎีบทเศษเหลือ}
+  \begin{exambox}[โจทย์]
+    จงหาเศษจากการหาร $P(x) = x^4 - 3x^3 + 2x^2 - x + 7$ ด้วย $x + 1$
+  \end{exambox}
+  \vspace{\fill}
+
+
+\end{frame}
+
+% ===========================================================================
+%  SECTION 5: ทฤษฎีบทตัวประกอบ
+% ===========================================================================
+\section{ทฤษฎีบทตัวประกอบ (Factor Theorem)}
+
+\begin{frame}{ทฤษฎีบทตัวประกอบ}
+  \begin{explanation}[ทฤษฎีบท]
+    $(x - c)$ เป็น \highlight{ตัวประกอบ} ของ $P(x)$ \textbf{ก็ต่อเมื่อ} $P(c) = 0$
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{exambox}[ตัวอย่าง: เป็นตัวประกอบ]
+        $P(x) = x^3 - 6x^2 + 11x - 6$
+
+        $P(1) = 1 - 6 + 11 - 6 = 0$
+
+        ดังนั้น $(x-1)$ เป็นตัวประกอบ $\checkmark$
+      \end{exambox}
+    \column{0.5\textwidth}
+      \begin{exambox}[ตัวอย่าง: ไม่เป็นตัวประกอบ]
+        $P(x) = x^3 - 2x^2 + x - 3$
+
+        $P(2) = 8 - 8 + 2 - 3 = -1 \neq 0$
+
+        ดังนั้น $(x-2)$ ไม่เป็นตัวประกอบ
+      \end{exambox}
+  \end{columns}
+
+  \begin{intuition}[ความสัมพันธ์กับทฤษฎีบทเศษเหลือ]
+    ถ้าเศษ $= 0$ แปลว่าหารลงตัว $\rightarrow$ ตัวหารเป็นตัวประกอบ
+  \end{intuition}
+\end{frame}\begin{frame}[t]{การใช้ทฤษฎีบทตัวประกอบหาค่า $k$}
+  \begin{exambox}[โจทย์]
+    กำหนด $P(x) = x^3 + kx^2 - 4x + 3$ ถ้า $(x+1)$ เป็นตัวประกอบของ $P(x)$
+    จงหาค่าของ $k$
+  \end{exambox}
+  \vspace{\fill}
+
+
+\end{frame}
+
+% ===========================================================================
+%  SECTION 6: การแยกตัวประกอบ
+% ===========================================================================
+\section{การแยกตัวประกอบ (Factorization)}
+
+\begin{frame}{การแยกตัวประกอบ: วิธีพื้นฐาน}
+  \begin{columns}[T]
+    \column{0.5\textwidth}
+      \begin{explanation}[1. ดึงตัวร่วม]
+        $6x^3 - 9x^2 + 3x = 3x(2x^2 - 3x + 1)$
+      \end{explanation}
+      \begin{explanation}[2. จับกลุ่ม (Grouping)]
+        $x^3 + 2x^2 + 3x + 6 = x^2(x+2) + 3(x+2) = (x+2)(x^2+3)$
+      \end{explanation}
+    \column{0.5\textwidth}
+      \begin{explanation}[3. ผลต่างกำลังสอง]
+        $x^2 - 25 = (x-5)(x+5)$
+
+        $4x^2 - 9y^2 = (2x-3y)(2x+3y)$
+      \end{explanation}
+      \begin{explanation}[4. กำลังสองสมบูรณ์]
+        $x^2 + 6x + 9 = (x+3)^2$ \quad
+        $x^2 - 10x + 25 = (x-5)^2$
+      \end{explanation}
+  \end{columns}
+\end{frame}\begin{frame}{การแยกตัวประกอบ: ผลบวก/ผลต่างกำลังสาม}
+  \begin{exambox}[สูตรและตัวอย่าง]
+    $a^3 + b^3 = (a+b)(a^2 - ab + b^2)$ \qquad
+    $a^3 - b^3 = (a-b)(a^2 + ab + b^2)$
+
+    $x^3-8=(x-2)(x^2+2x+4)$ \qquad
+    $8x^3+27=(2x+3)(4x^2-6x+9)$
+  \end{exambox}
+\end{frame}\begin{frame}{การแยกตัวประกอบ: $x^4+4$ และเทคนิคการจัดรูป}
+  \begin{exambox}[เทคนิค: $x^4+4$]
+    $x^4+4 = x^4 + 4x^2 + 4 - 4x^2 = (x^2+2)^2 - (2x)^2 = (x^2+2x+2)(x^2-2x+2)$
+  \end{exambox}
+
+  \begin{intuition}[แนวคิด]
+    \textbf{การทำเป็นกำลังสองสมบูรณ์แล้วใช้ผลต่างกำลังสอง}:
+    บวกและลบ $4x^2$ เพื่อสร้าง $(x^2+2)^2$ แล้วใช้ $A^2-B^2 = (A-B)(A+B)$
+  \end{intuition}
+\end{frame}\begin{frame}{การแยกตัวประกอบโดยใช้ทฤษฎีบทตัวประกอบ}
+  \begin{explanation}[แนวคิด]
+    \textbf{หาราก (root)} ของพหุนามก่อน — ใช้ทฤษฎีบทตัวประกอบ — แล้วหารเพื่อลดดีกรี
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง: หารากและแยกตัวประกอบ]
+    ทดลองแทนค่า: $P(-1) = -1-4-1+6 = 0$ $\rightarrow$ $(x+1)$ เป็นตัวประกอบ!
+
+    หาร $P(x)$ ด้วย $(x+1)$:
+    \[
+    \begin{array}{c|cccc}
+      -1 & 1 & -4 & 1 & 6 \\
+         &    & -1 & 5 & -6 \\
+      \hline
+         & 1 & -5 & 6 & \boxed{0}
+    \end{array}
+    \]
+
+    $P(x) = (x+1)(x^2 - 5x + 6) = (x+1)(x-2)(x-3)$
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 7: ทฤษฎีบททวินาม
+% ===========================================================================
+\section{ทฤษฎีบททวินาม (Binomial Theorem)}
+
+\begin{frame}{สัมประสิทธิ์ทวินามและสามเหลี่ยมปัสกาล}
+  \begin{explanation}[นิยาม: สัมประสิทธิ์ทวินาม]
+    $\displaystyle\binom{n}{r} = \frac{n!}{r!(n-r)!}$ \quad ($0 \leq r \leq n$)
+    \\ อ่านว่า ``$n$ choose $r$'' — จำนวนวิธีเลือกของ $r$ ชิ้นจาก $n$ ชิ้น
+  \end{explanation}
+
+  \begin{columns}[T]
+    \column{0.45\textwidth}
+      \centering
+      \textbf{สามเหลี่ยมปัสกาล (Pascal's Triangle)}
+
+      \begin{tabular}{c}
+        $n=0$: \quad $1$ \\
+        $n=1$: \quad $1 \quad 1$ \\
+        $n=2$: \quad $1 \quad 2 \quad 1$ \\
+        $n=3$: \quad $1 \quad 3 \quad 3 \quad 1$ \\
+        $n=4$: \quad $1 \quad 4 \quad 6 \quad 4 \quad 1$ \\
+        $n=5$: \quad $1 \quad 5 \quad 10 \quad 10 \quad 5 \quad 1$
+      \end{tabular}
+
+    \column{0.55\textwidth}
+      \begin{explanation}[สมบัติ]
+        \begin{itemize}
+          \item $\binom{n}{0} = \binom{n}{n} = 1$
+          \item $\binom{n}{r} = \binom{n}{n-r}$ \ (สมมาตร)
+          \item $\binom{n}{r} = \binom{n-1}{r-1} + \binom{n-1}{r}$
+          \item แต่ละแถวรวมกัน $= 2^n$
+        \end{itemize}
+      \end{explanation}
+  \end{columns}
+\end{frame}\begin{frame}{ทฤษฎีบททวินาม}
+  \begin{explanation}[ทฤษฎีบท]
+    \highlight{$(a+b)^n = \displaystyle\sum_{r=0}^{n} \binom{n}{r} a^{n-r} b^r$}
+
+    \medskip
+    $= \binom{n}{0}a^n + \binom{n}{1}a^{n-1}b + \binom{n}{2}a^{n-2}b^2 + \cdots + \binom{n}{n}b^n$
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง: $(x+y)^3$]
+    $(x+y)^3 = \binom{3}{0}x^3 + \binom{3}{1}x^2y + \binom{3}{2}xy^2 + \binom{3}{3}y^3$
+
+    $= 1 \cdot x^3 + 3x^2y + 3xy^2 + 1 \cdot y^3$
+
+    $= x^3 + 3x^2y + 3xy^2 + y^3$
+  \end{exambox}
+\end{frame}\begin{frame}[t]{ตัวอย่าง: ทฤษฎีบททวินาม}
+  \begin{exambox}[โจทย์ 1]
+    จงกระจาย $(2x - 3)^4$
+  \end{exambox}
+  \vspace{\fill}
+
+
+\end{frame}
+
+\begin{frame}[t]{ตัวอย่าง: การหาพจน์ที่ต้องการ}
+  \begin{exambox}[โจทย์]
+    จงหาพจน์ที่ $5$ ของการกระจาย $(x + 2)^{8}$
+  \end{exambox}
+  \vspace{\fill}
+
+
+  \begin{exambox}[โจทย์ 2]
+    จงหาพจน์กลางของการกระจาย $(2x - 1)^6$
+  \end{exambox}
+  \vspace{\fill}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 8: ทฤษฎีบทรากตรรกยะ
+% ===========================================================================
+\section{ทฤษฎีบทรากตรรกยะ (Rational Root Theorem)}
+
+\begin{frame}{ทฤษฎีบทรากตรรกยะ}
+  \begin{explanation}[ทฤษฎีบท]
+    ถ้าพหุนาม $P(x) = a_nx^n + \cdots + a_0$ มีสัมประสิทธิ์เป็นจำนวนเต็ม
+    และ $\frac{p}{q}$ เป็นรากตรรกยะในรูปเศษส่วนอย่างตํ่าแล้ว:
+
+    \highlight{$p$ หาร $a_0$ ลงตัว} \quad และ \quad \highlight{$q$ หาร $a_n$ ลงตัว}
+  \end{explanation}
+
+  \begin{exambox}[ตัวอย่าง: หารากตรรกยะ]
+    $P(x) = 2x^3 - 3x^2 - 3x + 2$: \quad $a_n = 2$, $a_0 = 2$
+
+    รากที่เป็นไปได้: $\pm 1, \pm 2, \pm \frac{1}{2}$
+
+    ทดสอบ: $P(1) \neq 0$, \quad $P(-1) = 0 \;\checkmark$, \quad $P(2) = 0 \;\checkmark$,
+    \quad $P(\frac{1}{2}) = 0 \;\checkmark$
+
+    \highlight{$P(x) = (x+1)(x-2)(2x-1)$}
+  \end{exambox}
+\end{frame}
+
+% ===========================================================================
+%  SECTION 9: ตัวอย่างโจทย์
+% ===========================================================================
+\section{ตัวอย่างโจทย์ประยุกต์}
+
+\begin{frame}[t]{ตัวอย่าง: หาพหุนามจากรากที่กำหนด}
+  \begin{exambox}[โจทย์]
+    จงสร้างพหุนามดีกรี $3$ ที่มีสัมประสิทธิ์นำ $= 1$ และมีรากเป็น $2, -1, 4$
+  \end{exambox}
+  \vspace{\fill}
+
+
+\end{frame}
+
+\begin{frame}[t]{ตัวอย่าง: หาค่า $k$ จากเงื่อนไขเศษเหลือ}
+  \begin{exambox}[โจทย์]
+    เมื่อหาร $P(x) = 2x^3 + kx^2 - 5x + 3$ ด้วย $(x-2)$ เหลือเศษ $7$
+    จงหาค่า $k$
+  \end{exambox}
+  \vspace{\fill}
+
+
+\end{frame}
+
+\begin{frame}[t]{ตัวอย่าง: แยกตัวประกอบพหุนามดีกรี 4}
+  \begin{exambox}[โจทย์]
+    จงแยกตัวประกอบของ $P(x) = x^4 - 5x^2 + 4$
+  \end{exambox}
+  \vspace{\fill}
+
+
+  \begin{intuition}[เทคนิค]
+    พหุนามในรูป $ax^{2n} + bx^n + c$ (quadratic in form) — ใช้การแทนค่าเพื่อลดดีกรี
+  \end{intuition}
+
+\end{frame}
+
+% ===========================================================================
+%  SUMMARY
+% ===========================================================================
+\section{สรุป}
+
+\begin{frame}{สรุปเนื้อหา}
+  \begin{explanation}[สิ่งที่ได้เรียนรู้]
+    \begin{enumerate}
+      \item \textbf{นิยาม}: $P(x) = a_nx^n + \cdots + a_0$, ดีกรี, สัมประสิทธิ์
+      \item \textbf{การดำเนินการ}: บวก/ลบ (รวมพจน์เหมือน), คูณ (แจกแจง)
+      \item \textbf{การหาร}: หารยาว, หารสังเคราะห์ (ตัวหาร $x-c$)
+      \item \textbf{ทฤษฎีบทเศษเหลือ}: เศษจาก $(x-c) = P(c)$
+      \item \textbf{ทฤษฎีบทตัวประกอบ}: $P(c)=0 \iff (x-c)$ เป็นตัวประกอบ
+      \item \textbf{การแยกตัวประกอบ}: ดึงตัวร่วม, จับกลุ่ม, ผลต่างกำลังสอง,
+            กำลังสองสมบูรณ์, ผลบวก/ผลต่างกำลังสาม, ใช้ทฤษฎีบทตัวประกอบ
+      \item \textbf{ทฤษฎีบททวินาม}: $(a+b)^n = \sum_{r=0}^{n} \binom{n}{r}a^{n-r}b^r$,
+            สามเหลี่ยมปัสกาล, $\binom{n}{r} = \frac{n!}{r!(n-r)!}$
+      \item \textbf{ทฤษฎีบทรากตรรกยะ}: $\frac{p}{q}$ โดย $p \mid a_0$, $q \mid a_n$
+    \end{enumerate}
+  \end{explanation}
+\end{frame}
+
+\end{document}
