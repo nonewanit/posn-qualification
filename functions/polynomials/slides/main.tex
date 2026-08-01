@@ -7,8 +7,8 @@
 \documentclass[11pt, aspectratio=169]{beamer}
 \input{../../../preamble.tex}
 
-\title[พหุนาม]{พหุนาม}
-\subtitle{Polynomials — การดำเนินการ, การหาร, ทฤษฎีบทเศษเหลือ, การแยกตัวประกอบ, ทฤษฎีบททวินาม}
+\title[พหุนาม]{\textcolor{white}{พหุนาม} \textcolor{boxBlue!60}{(Polynomials)}}
+\subtitle{การดำเนินการ • การหาร • ทฤษฎีบทเศษเหลือ • การแยกตัวประกอบ • ทฤษฎีบททวินาม }
 \author[None W. (Yuan)]{None W. (Yuan)}
 \date{}
 
@@ -164,10 +164,9 @@
 \section{การหารพหุนาม (Polynomial Division)}
 
 \begin{frame}{การหารยาว (Long Division)}
-  \begin{explanation}[แนวคิด]
-    หารพจน์แรก $\rightarrow$ คูณกลับ $\rightarrow$ ลบ $\rightarrow$ ดึงลงมา $\rightarrow$ ทำซ้ำ
+  \begin{explanation}
+    หารพจน์แรก $\rightarrow$ คูณกลับ $\rightarrow$ ลบ $\rightarrow$ ดึงลงมา $\rightarrow$ ทำซํ้า
   \end{explanation}
-
   \begin{columns}[T]
     \column{0.55\textwidth}
         \begin{exambox}[ตัวอย่าง: การหารยาว]
@@ -190,9 +189,9 @@
       \end{exambox}
 
     \column{0.45\textwidth}
+    \begin{intuition}[ตรวจคำตอบ]
       \highlight{ผลหาร $= x^2 - 2x - 2$ \\ เศษ $= 1$}
 
-      \begin{intuition}[ตรวจคำตอบ]
         $(x-2)(x^2-2x-2) + 1$
 
         $= x^3 - 2x^2 - 2x - 2x^2 + 4x + 4 + 1$
@@ -217,7 +216,7 @@
     \end{array}
     \]
 
-    \textbf{ขั้นตอน:} ดึงลงมา $\rightarrow$ คูณด้วย $c$ $\rightarrow$ บวก $\rightarrow$ ทำซ้ำ
+    \textbf{ขั้นตอน:} ดึงลงมา $\rightarrow$ คูณด้วย $c$ $\rightarrow$ บวก $\rightarrow$ ทำซํ้า
 
     \begin{center}
     {\small $1 \xrightarrow{\times 2} 2 \xrightarrow{+(-4)} -2 \xrightarrow{\times 2} -4 \xrightarrow{+2} -2 \xrightarrow{\times 2} -4 \xrightarrow{+5} 1$}
@@ -490,7 +489,7 @@
 \begin{frame}{ทฤษฎีบทรากตรรกยะ}
   \begin{explanation}[ทฤษฎีบท]
     ถ้าพหุนาม $P(x) = a_nx^n + \cdots + a_0$ มีสัมประสิทธิ์เป็นจำนวนเต็ม
-    และ $\frac{p}{q}$ เป็นรากตรรกยะในรูปเศษส่วนอย่างต่ำแล้ว:
+    และ $\frac{p}{q}$ เป็นรากตรรกยะในรูปเศษส่วนอย่างตํ่าแล้ว:
 
     \highlight{$p$ หาร $a_0$ ลงตัว} \quad และ \quad \highlight{$q$ หาร $a_n$ ลงตัว}
   \end{explanation}

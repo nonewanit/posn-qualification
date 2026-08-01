@@ -10,8 +10,8 @@
 \input{../../preamble.tex}
 
 % --- Document info ---
-\title[สมการและอสมการ]{สมการและอสมการ}
-\subtitle{Equations \& Inequalities — สมการ, ระบบสมการ, อสมการ, ค่าสัมบูรณ์}
+\title[สมการ]{\textcolor{white}{สมการและอสมการ} \textcolor{boxBlue!60}{(Equations \& Inequalities)}}
+\subtitle{สมการเชิงเส้น • สมการกำลังสอง • ระบบสมการ • อสมการ • Sign Chart • ค่าสัมบูรณ์ }
 \author[None W. (Yuan)]{None W. (Yuan)}
 \date{}
 
@@ -142,7 +142,7 @@
   \end{exambox}
 
   \begin{exambox}
-    $x^2 - 9  0$
+    $x^2 - 9 = 0$
     ผลต่างกำลังสอง: \quad $(x - 3)(x + 3) = 0$
 
     $x = 3$ หรือ $x = -3$
@@ -178,7 +178,7 @@
         $\Delta$ & จำนวนคำตอบ & ลักษณะ \\
         \hline
         $\Delta > 0$ & 2 คำตอบ (ต่างกัน) & กราฟตัดแกน $x$ 2 จุด \\
-        $\Delta = 0$ & 1 คำตอบ (ซ้ำ) & กราฟสัมผัสแกน $x$ \\
+        $\Delta = 0$ & 1 คำตอบ (ซํ้า) & กราฟสัมผัสแกน $x$ \\
         $\Delta < 0$ & ไม่มีคำตอบที่เป็นจำนวนจริง & กราฟไม่ตัดแกน $x$
       \end{tabular}
     \end{center}
@@ -515,23 +515,24 @@
 \end{frame}
 
 \begin{frame}{ตัวอย่าง: อสมการค่าสัมบูรณ์}
-  \begin{exambox}
-    โจทย์ 1: $|x + 3| < 5$
-    \begin{align*}
-      -5 < x + 3 < 5 \\
-      -8 < x < 2
-    \end{align*}
-    \textbf{คำตอบ:} $x \in (-8, 2)$
-  \end{exambox}
-
-  \begin{exambox}
-    โจทย์ 2: $|2x - 1| \geq 3$
-    \begin{align*}
-      2x - 1 \leq -3 \quad &\Rightarrow \quad 2x \leq -2 \quad \Rightarrow \quad x \leq -1 \\
-      2x - 1 \geq 3 \quad &\Rightarrow \quad 2x \geq 4 \quad \Rightarrow \quad x \geq 2
-    \end{align*}
-    \textbf{คำตอบ:} $x \in (-\infty, -1] \cup [2, \infty)$
-  \end{exambox}
+  \begin{columns}[T]
+    \column{0.4\textwidth}
+      \begin{exambox}[โจทย์ 1: $|x + 3| < 5$]
+        \begin{align*}
+          -5 < x + 3 < 5 \\
+          -8 < x < 2
+        \end{align*}
+        \textbf{คำตอบ:} $x \in (-8, 2)$
+      \end{exambox}
+    \column{0.6\textwidth}
+      \begin{exambox}[โจทย์ 2: $|2x - 1| \geq 3$]
+        \begin{align*}
+          2x - 1 \leq -3 \quad &\Rightarrow \quad 2x \leq -2 \quad \Rightarrow \quad x \leq -1 \\
+          2x - 1 \geq 3 \quad &\Rightarrow \quad 2x \geq 4 \quad \Rightarrow \quad x \geq 2
+        \end{align*}
+        \textbf{คำตอบ:} $x \in (-\infty, -1] \cup [2, \infty)$
+      \end{exambox}
+  \end{columns}
 \end{frame}
 
 \begin{frame}{ตัวอย่าง: ข้อสอบจริง}

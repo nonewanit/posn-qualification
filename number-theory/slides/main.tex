@@ -7,8 +7,8 @@
 \documentclass[11pt, aspectratio=169]{beamer}
 \input{../../preamble.tex}
 
-\title[ทฤษฎีจำนวน]{ทฤษฎีจำนวน}
-\subtitle{Number Theory — การหารลงตัว, จำนวนเฉพาะ, ห.ร.ม./ค.ร.น., สมภาค}
+\title[ทฤษฎีจำนวน]{\textcolor{white}{ทฤษฎีจำนวน} \textcolor{boxBlue!60}{(Number Theory)}}
+\subtitle{การหารลงตัว • จำนวนเฉพาะ • ห.ร.ม./ค.ร.น. • สมภาค (Modular Arithmetic) }
 \author[None W. (Yuan)]{None W. (Yuan)}
 \date{}
 
@@ -179,7 +179,7 @@
 
 \begin{frame}{ขั้นตอนวิธีของยุคลิด (Euclidean Algorithm)}
   \begin{explanation}[วิธีหา GCD โดยไม่ต้องแยกตัวประกอบ]
-    \textbf{หลักการ}: $\text{GCD}(a,b) = \text{GCD}(b, a \bmod b)$ \quad (ทำซ้ำจนเหลือ $0$)
+    \textbf{หลักการ}: $\text{GCD}(a,b) = \text{GCD}(b, a \bmod b)$ \quad (ทำซํ้าจนเหลือ $0$)
   \end{explanation}
 
   \begin{exambox}[ตัวอย่าง: Euclidean Algorithm (252 กับ 105)]
@@ -251,7 +251,7 @@
 \begin{frame}{การหาเศษจากเลขยกกำลัง: ดูแพทเทิร์น}
   \begin{explanation}[แนวคิด]
     หา \textbf{วัฏจักร (cycle)} ของเศษจากการยกกำลัง:
-    คำนวณ $a^1, a^2, a^3, \ldots \pmod{m}$ จนกว่าเศษจะซ้ำ
+    คำนวณ $a^1, a^2, a^3, \ldots \pmod{m}$ จนกว่าเศษจะซํ้า
   \end{explanation}
 
   \begin{exambox}[ตัวอย่าง: เศษของ $7^{2025}$ หารด้วย $10$]
@@ -404,7 +404,7 @@
 \begin{frame}{เลขฐาน}
   \begin{explanation}[แนวคิด]
     ตัวเลขที่เราใช้ในชีวิตประจำวันเป็น \textbf{เลขฐานสิบ} (decimal)
-    แต่เราสามารถเขียนจำนวนในฐานอื่น ๆ ได้ เช่น ฐานสอง ฐานแปด ฐานสิบหก
+    แต่เราสามารถเขียนจำนวนในฐานอื่น ๆ ได้
   \end{explanation}
 
   \begin{columns}[T]
@@ -422,7 +422,7 @@
       \end{exambox}
     \column{0.5\textwidth}
       \begin{exambox}[การเปลี่ยนฐานสิบเป็นฐาน $n$]
-        หารด้วย $n$ ซ้ำ ๆ เอาเศษมาเรียงจากล่างขึ้นบน
+        หารด้วย $n$ ซํ้า ๆ เอาเศษมาเรียงจากล่างขึ้นบน
 
         \textbf{ตัวอย่าง:} $12$ เป็นฐาน $2$ \\
         $12 \div 2 = 6$ เศษ $0$

@@ -17,8 +17,8 @@
 
 \newcommand{\py}[1]{\texttt{#1}}
 
-\title[การโปรแกรมเบื้องต้น]{การโปรแกรมเบื้องต้น ภาษาไพธอน}
-\subtitle{Introduction to Python Programming}
+\title[การโปรแกรม]{\textcolor{white}{การโปรแกรมเบื้องต้น} \textcolor{boxBlue!60}{(Python)}}
+\subtitle{Data Types • Operators • Conditionals • While Loop • List • String }
 \author[None W. (Yuan)]{None W. (Yuan)}
 \date{}
 
@@ -179,7 +179,7 @@
 \end{frame}
 
 \begin{frame}{ลำดับความสำคัญของตัวดำเนินการ (Operator Precedence)}
-  \begin{explanation}[ลำดับจากสูงไปต่ำ (ทำก่อน $\rightarrow$ ทำหลัง)]
+  \begin{explanation}[ลำดับจากสูงไปตํ่า (ทำก่อน $\rightarrow$ ทำหลัง)]
     \begin{enumerate}
       \item \py{()} — วงเล็บ (สำคัญที่สุด)
       \item \py{**} — ยกกำลัง (ทำจาก\textbf{ขวาไปซ้าย})
@@ -359,13 +359,13 @@
 \end{frame}
 
 % ===========================================================================
-%  SECTION 5: การวนซ้ำ
+%  SECTION 5: การวนซํ้า
 % ===========================================================================
-\section{การวนซ้ำ (While Loop)}
+\section{การวนซํ้า (While Loop)}
 
 \begin{frame}{คำสั่ง \py{while}}
-  \begin{explanation}[การทำซ้ำตราบเท่าที่เงื่อนไขเป็นจริง]
-    \highlight{\py{while} เงื่อนไข:} ทำคำสั่งในบล็อกซ้ำไปเรื่อย ๆ \textbf{ตราบเท่าที่} เงื่อนไขยังเป็นจริง
+  \begin{explanation}[การทำซํ้าตราบเท่าที่เงื่อนไขเป็นจริง]
+    \highlight{\py{while} เงื่อนไข:} ทำคำสั่งในบล็อกซํ้าไปเรื่อย ๆ \textbf{ตราบเท่าที่} เงื่อนไขยังเป็นจริง
   \end{explanation}
   \begin{columns}[T]
     \column{0.45\textwidth}
@@ -396,8 +396,8 @@
 \end{frame}
 
 \begin{frame}{\py{break} และ \py{continue}}
-  \begin{explanation}[คำสั่งควบคุมการวนซ้ำ]
-    \highlight{\py{break}} — \textbf{ออกจาก} การวนซ้ำทันที (หยุดเลย)
+  \begin{explanation}[คำสั่งควบคุมการวนซํ้า]
+    \highlight{\py{break}} — \textbf{ออกจาก} การวนซํ้าทันที (หยุดเลย)
 
     \highlight{\py{continue}} — \textbf{ข้าม} คำสั่งที่เหลือ แล้วขึ้นรอบถัดไป
   \end{explanation}
@@ -702,7 +702,7 @@
           \item \py{len(s)} — ความยาว
           \item \py{s[i]} — ตัวอักษรที่ index \py{i}
           \item \py{s1 + s2} — ต่อข้อความ
-          \item \py{s * 3} — ทำซ้ำ \\
+          \item \py{s * 3} — ทำซํ้า \\
           (\py{"Hi"*3} $\rightarrow$ \py{"HiHiHi"})
         \end{itemize}
       \end{explanation}
@@ -852,8 +852,8 @@
         \begin{itemize}
           \item \textbf{print()}: แสดงผลลัพธ์
           \item \textbf{if/elif/else}: เงื่อนไข + การเยื้อง
-          \item \textbf{while}: วนซ้ำตามเงื่อนไข
-          \item \textbf{break/continue}: ควบคุมการวนซ้ำ
+          \item \textbf{while}: วนซํ้าตามเงื่อนไข
+          \item \textbf{break/continue}: ควบคุมการวนซํ้า
           \item \textbf{list}: \py{arr[i]}, \py{len(arr)}
           \item \textbf{string}: \py{s[i]}, \py{len(s)}, \py{s1 + s2}
         \end{itemize}

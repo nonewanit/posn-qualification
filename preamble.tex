@@ -11,13 +11,56 @@
 \ifXeTeX
   \XeTeXlinebreaklocale{th}
 \fi
-% TH Sarabun New — primary Thai font (installed system-wide)
-% Bundled copy in ../../fonts/THSarabunNew/ is available as fallback on systems without it.
-\setmainfont{TH Sarabun New}[Scale=1.35]
+% Noto Sans Thai — body text (clean modern sans-serif, handles all Thai)
+\setmainfont{Noto Sans Thai}[
+  UprightFont = Noto Sans Thai Light,
+  BoldFont    = Noto Sans Thai Medium,
+  Scale       = 0.9
+]
+\setsansfont{Noto Sans Thai}[
+  UprightFont = Noto Sans Thai Light,
+  BoldFont    = Noto Sans Thai Medium,
+  Scale       = 0.9
+]
 
-% Sans-serif (used by beamer for frame titles, headers, footers)
-% No explicit scale — let beamer handle sizing for structural elements
-\setsansfont{TH Sarabun New}[Scale=1.2]
+% Noto Sans Thai — clean modern sans-serif for structural elements
+\newfontfamily\headingfont{Noto Sans Thai}[
+  UprightFont = Noto Sans Thai Medium,
+  BoldFont    = Noto Sans Thai Bold,
+  Scale       = 0.9
+]
+
+% --- Heading font for structural elements ---
+\setbeamerfont{title}{family=\headingfont, series=\bfseries, size=\huge}
+\setbeamerfont{subtitle}{family=\headingfont, series=\mdseries}
+\setbeamerfont{author}{family=\headingfont, series=\mdseries}
+
+% --- Custom Title Page ---
+\defbeamertemplate{title page}{custom}[1][]{%
+  \centering
+  \vspace*{2cm}
+  % Title — in white
+  {\usebeamerfont{title}\color{white}\inserttitle\par}
+  \vspace{0.6cm}
+  % Subtitle — in white
+  {\usebeamerfont{subtitle}\color{white}\insertsubtitle\par}
+  \vspace{2.5cm}
+  % Author — blue filled rounded box, white text
+  \begin{center}
+    \begin{tcolorbox}[arc=3mm, colback=boxBlue, colframe=boxBlue!80,
+                      width=0.42\textwidth, halign=center,
+                      left=1.5em, right=1.5em, top=0.8em, bottom=0.8em,
+                      boxrule=1.5pt, coltext=white]
+      \usebeamerfont{author}\insertauthor
+    \end{tcolorbox}
+  \end{center}
+}
+\setbeamertemplate{title page}[custom]
+\setbeamerfont{frametitle}{family=\headingfont, series=\bfseries}
+\setbeamerfont{section in toc}{family=\headingfont}
+\setbeamerfont{page number in head/foot}{family=\headingfont}
+\setbeamerfont{section title}{family=\headingfont, series=\bfseries}
+\setbeamerfont{subsection title}{family=\headingfont}
 
 % Monospace font (for code/verbatim)
 \setmonofont{Latin Modern Mono}[Scale=0.9]
@@ -28,6 +71,9 @@
 % ---------- Graphics ----------
 \usepackage{graphicx}
 \usepackage{tikz}
+
+% ---------- String parsing (for section headers) ----------
+\usepackage{xstring}
 
 % ---------- Colored boxes ----------
 \usepackage[skins, breakable, xparse]{tcolorbox}
@@ -48,16 +94,15 @@
 \newtcolorbox{explanation}[1][]{
   enhanced,
   breakable,
-  sharp corners,
-  colback  = boxBlueBg,
-  colframe = boxBlue,
-  leftrule = 5mm,
-  title    = #1,
-  fonttitle     = \bfseries\color{white},
-  coltitle      = white,
-  colbacktitle  = boxBlue,
+  arc         = 2mm,
+  colback     = boxBlueBg,
+  colframe    = boxBlue!50,
+  title       = #1,
+  fonttitle   = \bfseries\color{white},
+  coltitle    = white,
+  colbacktitle= boxBlue,
   attach boxed title to top left = {yshift=-2mm, xshift=2mm},
-  boxed title style = {sharp corners, size=small},
+  boxed title style = {arc=2mm, size=small},
   before skip = 8pt,
   after skip  = 8pt
 }
@@ -66,16 +111,15 @@
 \newtcolorbox{exambox}[1][]{
   enhanced,
   breakable,
-  sharp corners,
-  colback  = boxGreenBg,
-  colframe = boxGreen,
-  leftrule = 5mm,
-  title    = #1,
-  fonttitle     = \bfseries\color{white},
-  coltitle      = white,
-  colbacktitle  = boxGreen,
+  arc         = 2mm,
+  colback     = boxGreenBg,
+  colframe    = boxGreen!50,
+  title       = #1,
+  fonttitle   = \bfseries\color{white},
+  coltitle    = white,
+  colbacktitle= boxGreen,
   attach boxed title to top left = {yshift=-2mm, xshift=2mm},
-  boxed title style = {sharp corners, size=small},
+  boxed title style = {arc=2mm, size=small},
   before skip = 8pt,
   after skip  = 8pt
 }
@@ -84,16 +128,15 @@
 \newtcolorbox{solbox}[1][]{
   enhanced,
   breakable,
-  sharp corners,
-  colback  = boxOrangeBg,
-  colframe = boxOrange,
-  leftrule = 5mm,
-  title    = #1,
-  fonttitle     = \bfseries\color{white},
-  coltitle      = white,
-  colbacktitle  = boxOrange,
+  arc         = 2mm,
+  colback     = boxOrangeBg,
+  colframe    = boxOrange!50,
+  title       = #1,
+  fonttitle   = \bfseries\color{white},
+  coltitle    = white,
+  colbacktitle= boxOrange,
   attach boxed title to top left = {yshift=-2mm, xshift=2mm},
-  boxed title style = {sharp corners, size=small},
+  boxed title style = {arc=2mm, size=small},
   before skip = 8pt,
   after skip  = 8pt
 }
@@ -102,16 +145,15 @@
 \newtcolorbox{intuition}[1][]{
   enhanced,
   breakable,
-  sharp corners,
-  colback  = boxPurpleBg,
-  colframe = boxPurple,
-  leftrule = 5mm,
-  title    = #1,
-  fonttitle     = \bfseries\color{white},
-  coltitle      = white,
-  colbacktitle  = boxPurple,
+  arc         = 2mm,
+  colback     = boxPurpleBg,
+  colframe    = boxPurple!50,
+  title       = #1,
+  fonttitle   = \bfseries\color{white},
+  coltitle    = white,
+  colbacktitle= boxPurple,
   attach boxed title to top left = {yshift=-2mm, xshift=2mm},
-  boxed title style = {sharp corners, size=small},
+  boxed title style = {arc=2mm, size=small},
   before skip = 8pt,
   after skip  = 8pt
 }
@@ -131,12 +173,39 @@
 % Remove navigation symbols for clean look
 \setbeamertemplate{navigation symbols}{}
 
-% Section header slides — styled like title page, section name only
+% Note: Frame title prefix removed — \addtobeamertemplate conflicts with beamer internals
+
+% --- Outline (Table of Contents) styling ---
+\setbeamerfont{section in toc}{family=\headingfont, series=\mdseries}
+\setbeamerfont{subsection in toc}{family=\headingfont, series=\mdseries}
+\setbeamertemplate{section in toc}{%
+  \leavevmode\leftskip=1.5em
+  \textcolor{boxBlue}{\textbf{\large\inserttocsectionnumber.}}%
+  \quad\inserttocsection\par
+  \vspace{0.2em}
+}
+\setbeamertemplate{subsection in toc}{%
+  \leavevmode\leftskip=4em
+  \textcolor{boxBlue!60}{\small$\bullet$}%
+  \quad\inserttocsubsection\par
+  \vspace{0.1em}
+}
+
+% Section header slides — Thai in white, English in smaller light blue below
 \AtBeginSection{
   \begin{frame}[plain]{}
     \vspace*{2cm}
     \begin{beamercolorbox}[sep=12pt, center, rounded=true, shadow=true]{palette primary}
-      \usebeamerfont{title}\insertsectionhead\par
+      \IfSubStr{\secname}{(}{%
+        \StrBefore{\secname}{(}[\sectionthai]%
+        \StrBetween[1,1]{\secname}{(}{)}[\sectioneng]%
+        \begin{tabular}{@{}c@{}}
+          {\usebeamerfont{title}\sectionthai} \\[0.2em]
+          {\usebeamerfont{subtitle}\color{boxBlue!60}\sectioneng}
+        \end{tabular}%
+      }{%
+        {\usebeamerfont{title}\secname\par}%
+      }
     \end{beamercolorbox}
     \vfill
   \end{frame}

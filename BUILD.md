@@ -4,7 +4,8 @@
 
 - **XeLaTeX** (TeX Live 2025+) — จำเป็นสำหรับ Thai font ผ่าน `fontspec`
 - **latexmk** — build automation (มาพร้อม TeX Live)
-- **TH Sarabun New** — ฟอนต์ไทย (ติดตั้งใน `fonts/THSarabunNew/` แล้ว)
+- **TH Sarabun New** — ฟอนต์สำหรับแบบฝึกหัด (ติดตั้งใน `fonts/THSarabunNew/` แล้ว)
+- **Noto Sans Thai** — ฟอนต์หลักของสไลด์ (ติดตั้งใน `fonts/Noto_Sans_Thai/`)
 - **Courier New** — ฟอนต์โค้ดสำหรับหัวข้อ Programming (ติดตั้งใน `fonts/CourierNew/`)
 
 ตรวจสอบว่าติดตั้ง XeLaTeX แล้ว:
@@ -50,7 +51,7 @@ xdvipdfmx answer-key.xdv
 | `preamble.tex` | root | Shared preamble สำหรับสไลด์ทั้งหมด — Beamer theme, fonts, colored boxes, custom commands |
 | `exercise-preamble.tex` | root | Shared preamble สำหรับแบบฝึกหัด — A4, 16pt, headers, `\problem` command, `pseudocode` environment |
 | `.latexmkrc` | root | Config ให้ latexmk ใช้ `$pdf_mode = 5` (XeLaTeX → xdvipdfmx) |
-| `fonts/` | root | ฟอนต์ TH Sarabun New (4 `.ttf`) และ Courier New (`cour.ttf`) |
+| `fonts/` | root | ฟอนต์ Noto Sans Thai, TH Sarabun New (4 `.ttf`) และ Courier New (`cour.ttf`) |
 
 ### ไฟล์ `.latexmkrc` symlink
 
@@ -71,11 +72,11 @@ xdvipdfmx answer-key.xdv
 ```
 
 preamble นี้ setup:
-- **Beamer**: Madrid theme, 16:9, 11pt, สีฟ้า accent
-- **Fonts**: TH Sarabun New (main), Latin Modern Mono (code)
+- **Beamer**: Madrid theme, 16:9, 11pt, สีฟ้า accent, custom title page (dark background)
+- **Fonts**: Noto Sans Thai (main — Light/Medium/Bold), Latin Modern Mono (code)
 - **Box environments**: `explanation`, `exambox`, `solbox`, `intuition` (ดูรายละเอียดด้านล่าง)
 - **Commands**: `\highlight{text}`, `\R`, `\N`, `\Z`, `\Q`
-- **Section slides**: สร้างอัตโนมัติจาก `\section{}`
+- **Section slides**: สร้างอัตโนมัติจาก `\section{}` — ถ้ามี `(English)` ในชื่อ section จะแสดงเป็น 2 บรรทัด (ไทยสีขาว + อังกฤษสีฟ้าอ่อน) โดยใช้ `xstring` แยกข้อความอัตโนมัติ
 
 ### `exercise-preamble.tex` (สำหรับแบบฝึกหัด)
 
@@ -90,6 +91,28 @@ preamble นี้ setup:
 - **Headers/footers**: เลขหน้า + footer text
 - **Commands**: `\problem{question}{answer}`, `\exerciseheader{title}`, `\examsection{title}`
 - **Pseudocode**: `\begin{pseudocode}...\end{pseudocode}` (framed box)
+
+## รูปแบบ Section Header
+
+`preamble.tex` ใช้ `xstring` เพื่อแยกชื่อ section เป็น Thai และ English โดยอัตโนมัติ:
+
+```latex
+\section{ลำดับเลขคณิต (Arithmetic Sequence)}   % ✅ มี (English) → แสดง 2 บรรทัด
+\section{สรุป}                                   % ✅ ไม่มี (English) → แสดงบรรทัดเดียว
+```
+
+**การทำงาน**:
+- ถ้าชื่อ section มีวงเล็บ `(...)` → `\AtBeginSection` จะแสดง:
+  - บรรทัดที่ 1: ข้อความก่อน `(` — สีขาว, ฟอนต์ title
+  - บรรทัดที่ 2: ข้อความใน `(...)` — สีฟ้าอ่อน (`boxBlue!60`), ฟอนต์ subtitle
+- ถ้าไม่มีวงเล็บ → แสดงข้อความทั้งหมดเป็นบรรทัดเดียว (สีขาว, ฟอนต์ title)
+- **TOC (สารบัญ)**: แสดงชื่อ section แบบเดิมทั้งบรรทัด ไม่มีการเปลี่ยนแปลง
+
+**ข้อกำหนดในการเขียน `\section`**:
+- ใส่ชื่ออังกฤษในวงเล็บ `(...)` ต่อท้ายชื่อไทยเสมอ
+- ชื่อไทยห้ามมีวงเล็บ — `xstring` จะใช้ `(` แรกเป็นตัวแบ่ง
+- ตัวอย่างที่ถูกต้อง: `\section{การหารลงตัว (Divisibility)}`
+- ตัวอย่างที่ไม่ถูกต้อง: `\section{การหารลงตัว (Divisibility) (เพิ่มเติม)}`
 
 ## ระบบแบบฝึกหัด (3 ไฟล์)
 

@@ -7,26 +7,25 @@
 \documentclass[11pt, aspectratio=169]{beamer}
 \input{../../preamble.tex}
 
-% --- Pseudo code box (TH Sarabun New — main font, green theme) ---
+% --- Pseudo code box (matches main box style — green theme) ---
 \newtcolorbox{pseudobox}[1][]{
   enhanced,
   breakable,
-  sharp corners,
-  colback  = boxGreen!6,
-  colframe = boxGreen,
-  leftrule = 3mm,
-  title    = #1,
-  fonttitle     = \bfseries\color{white},
-  coltitle      = white,
-  colbacktitle  = boxGreen,
+  arc         = 2mm,
+  colback     = boxGreen!6,
+  colframe    = boxGreen!50,
+  title       = #1,
+  fonttitle   = \bfseries\color{white},
+  coltitle    = white,
+  colbacktitle= boxGreen,
   attach boxed title to top left = {yshift=-2mm, xshift=2mm},
-  boxed title style = {sharp corners, size=small},
+  boxed title style = {arc=2mm, size=small},
   before skip = 8pt,
   after skip  = 8pt
 }
 
-\title[ขั้นตอนวิธี]{ขั้นตอนวิธี}
-\subtitle{Algorithms — การติดตาม Pseudo Code และกลยุทธ์การทำโจทย์}
+\title[ขั้นตอนวิธี]{\textcolor{white}{ขั้นตอนวิธี} \textcolor{boxBlue!60}{(Algorithms)}}
+\subtitle{การติดตาม Pseudo Code • กลยุทธ์การทำโจทย์ 7 ประเภท • โจทย์ Fill-in }
 \author[None W. (Yuan)]{None W. (Yuan)}
 \date{}
 
@@ -61,7 +60,7 @@
     \begin{itemize}
       \item เขียนเป็น \textbf{ภาษาไทย} ใช้เลขกำกับขั้นตอน: 1., 2., 3.
       \item ขั้นตอนย่อยใช้เลขต่อท้าย: 1.1, 1.2, 3.1.1
-      \item การเยื้อง (indent) แสดงการอยู่ภายใต้เงื่อนไขหรือการวนซ้ำ
+      \item การเยื้อง (indent) แสดงการอยู่ภายใต้เงื่อนไขหรือการวนซํ้า
     \end{itemize}
   \end{explanation}
 
@@ -94,12 +93,11 @@
       \texttt{if} เงื่อนไข: & ถ้า เงื่อนไข แล้ว \\
       \texttt{elif} เงื่อนไข: & มิฉะนั้น ถ้า เงื่อนไข แล้ว \\
       \texttt{else}: & มิฉะนั้น \\
-      \texttt{while} เงื่อนไข: & ทำซ้ำเมื่อ เงื่อนไข \\
+      \texttt{while} เงื่อนไข: & ทำซํ้าเมื่อ เงื่อนไข \\
       \texttt{x = 5} & ให้ $x$ มีค่าเท่ากับ $5$ \\
       \texttt{print(x)} & พิมพ์ $x$ / แสดงผล $x$ \\
-      \texttt{break} & ออกจากการวนซ้ำ \\
+      \texttt{break} & ออกจากการวนซํ้า \\
       \texttt{continue} & ข้ามไปทำรอบถัดไป \\
-      รับค่า (\texttt{input}) & รับค่า / รับข้อมูลเข้า \\
       \texttt{n \% m} & เศษที่เหลือจากการหาร $n$ ด้วย $m$ \\
       \texttt{n // m} & ผลหารจำนวนเต็มของ $n$ หารด้วย $m$ \\
     \end{tabular}
@@ -148,7 +146,7 @@
       \begin{pseudobox}[Pseudo Code]
         \textbf{1.)} ให้ $i = 1$ \\
         \textbf{2.)} ให้ $s = 0$ \\
-        \textbf{3.)} ทำซ้ำเมื่อ $i \leq 4$ \\
+        \textbf{3.)} ทำซํ้าเมื่อ $i \leq 4$ \\
         \qquad \textbf{3.1)} $s = s + i$ \\
         \qquad \textbf{3.2)} $i = i + 1$ \\
         \textbf{4.)} พิมพ์ $s$
@@ -156,7 +154,7 @@
     \column{0.6\textwidth}
       \begin{solbox}
         \begin{tabular}{c|c|c|c}
-          \textbf{รอบ} & \textbf{i} & \textbf{i≤4?} & \textbf{s} \\
+          \textbf{รอบ} & \textbf{i} & \textbf{i <= 4?} & \textbf{s} \\
           \hline
           เริ่ม & 1 & -- & 0 \\
           1 & 1 & True & 1 \\
@@ -217,7 +215,7 @@
       \begin{pseudobox}[Pseudo Code]
         \textbf{1.)} ให้ $n = 10$ \\
         \textbf{2.)} ให้ $c = 0$ \\
-        \textbf{3.)} ทำซ้ำเมื่อ $n > 0$ \\
+        \textbf{3.)} ทำซํ้าเมื่อ $n > 0$ \\
         .\qquad \textbf{3.1)} $n = n - 2$ \\
         .\qquad \textbf{3.2)} $c = c + 1$ \\
         \textbf{4.)} พิมพ์ $c$
@@ -257,7 +255,7 @@
         \textbf{4.)} มิฉะนั้น \\
         .\qquad \textbf{4.1)} พิมพ์ ``C''
       \end{pseudobox}
-    \column{0.49\textwidth}
+    \column{0.45\textwidth}
       \begin{solbox}[เมื่อ n เป็น 50]
         $50 \bmod 3 = 2 \neq 0$ $\rightarrow$ เงื่อนไข 2 เป็นเท็จ
 
@@ -283,9 +281,9 @@
     \column{0.45\textwidth}
       \begin{pseudobox}
         \textbf{1.)} ให้ $c = 0$ และ ให้ $i = 1$ \\
-        \textbf{2.)} ทำซ้ำเมื่อ $i \leq 3$ \\
+        \textbf{2.)} ทำซํ้าเมื่อ $i \leq 3$ \\
         .\qquad \textbf{2.1)} ให้ $j = 1$ \\
-        .\qquad \textbf{2.2)} ทำซ้ำเมื่อ $j \leq 2$ \\
+        .\qquad \textbf{2.2)} ทำซํ้าเมื่อ $j \leq 2$ \\
         .\qquad\quad \textbf{2.2.1)} $c = c + 1$ \\
         .\qquad\quad \textbf{2.2.2)} $j = j + 1$ \\
         .\qquad \textbf{2.3)} $i = i + 1$ \\
@@ -317,7 +315,7 @@
       \begin{pseudobox}[Pseudo Code ในการหาผลรวม 1-4]
         \textbf{1.)} ให้ $i = 1$ \\
         \textbf{2.)} ให้ $s = 0$ \\
-        \textbf{3.)} ทำซ้ำเมื่อ $i < 5$ \\
+        \textbf{3.)} ทำซํ้าเมื่อ $i < 5$ \\
         .\qquad \textbf{3.1)} $s = s + i$ \\
         \textbf{4.)} พิมพ์ $s$
       \end{pseudobox}
@@ -345,7 +343,7 @@
         \textbf{1.)} ให้ $A = [2, 5, 8]$ \\
         \textbf{2.)} ให้ $B = [1, 3, 6]$ \\
         \textbf{3.)} ให้ $i = 1$ \\
-        \textbf{4.)} ทำซ้ำเมื่อ $i \leq 3$ \\
+        \textbf{4.)} ทำซํ้าเมื่อ $i \leq 3$ \\
         .\qquad \textbf{4.1)} ถ้า $i$ เป็นเลขคี่ แล้ว \\
         .\qquad\quad \textbf{4.1.1)} สลับ $A[i]$ กับ $B[i]$ \\
         .\qquad \textbf{4.2)} $i = i + 1$ \\
@@ -439,7 +437,7 @@
 % ===========================================================================
 \section{ตัวอย่างขั้นสูง (Advanced Tracing)}
 
-\begin{frame}{ตัวอย่าง: การวนซ้ำซับซ้อน}
+\begin{frame}{ตัวอย่าง: การวนซํ้าซับซ้อน}
   \begin{exambox}
     จากขั้นตอนวิธีต่อไปนี้ จะพิมพ์ค่าใดออกมา?
   \end{exambox}
@@ -449,7 +447,7 @@
       \begin{pseudobox}
         \textbf{1.)} ให้ $n = 25$ \\
         \textbf{2.)} ให้ $c = 0$ \\
-        \textbf{3.)} ทำซ้ำเมื่อ $n > 1$ \\
+        \textbf{3.)} ทำซํ้าเมื่อ $n > 1$ \\
         .\qquad \textbf{3.1)} ถ้า $n \bmod 2 = 0$ แล้ว \\
         .\qquad\quad \textbf{3.1.1)} $n = n // 2$ \\
         .\qquad \textbf{3.2)} มิฉะนั้น \\

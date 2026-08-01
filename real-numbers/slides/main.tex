@@ -10,8 +10,8 @@
 \input{../../preamble.tex}
 
 % --- Document info ---
-\title[จำนวนจริง]{จำนวนจริง}
-\subtitle{Real Numbers — ระบบจำนวน, เศษส่วน, ทศนิยม, สัดส่วน, สมบัติ, ค่าสัมบูรณ์, เลขยกกำลัง}
+\title[จำนวนจริง]{\textcolor{white}{จำนวนจริง} \textcolor{boxBlue!60}{(Real Numbers)}}
+\subtitle{เศษส่วน • ทศนิยม • อัตราส่วน • ร้อยละ • สมบัติจำนวนจริง • ค่าสัมบูรณ์ }
 \author[None W. (Yuan)]{None W. (Yuan)}
 \date{}
 
@@ -73,7 +73,7 @@
     เขียนในรูป \highlight{$\frac{a}{b}$} โดย $a, b \in \Z$ และ $b \neq 0$
     \begin{itemize}
       \item ทศนิยมรู้จบ: $0.5 = \frac{1}{2}$, $0.125 = \frac{1}{8}$
-      \item ทศนิยมซ้ำ: $0.\overline{3} = \frac{1}{3}$, $0.\overline{142857} = \frac{1}{7}$
+      \item ทศนิยมซํ้า: $0.\overline{3} = \frac{1}{3}$, $0.\overline{142857} = \frac{1}{7}$
     \end{itemize}
   \end{explanation}
 
@@ -87,7 +87,7 @@
   \end{explanation}
 \end{frame}
 
-\begin{frame}{กรณีพิเศษ: ทศนิยมซ้ำ $0.\overline{1}$}
+\begin{frame}{กรณีพิเศษ: ทศนิยมซํ้า $0.\overline{1}$}
   \begin{exambox}[ตัวอย่าง: เขียน $0.111\ldots$ เป็นเศษส่วน]
     ให้ $x = 0.111\ldots$
     \begin{align*}
@@ -98,11 +98,11 @@
     \end{align*}
   \end{exambox}
 
-  \begin{intuition}[เทคนิคการแปลงทศนิยมซ้ำ]
+  \begin{intuition}[เทคนิคการแปลงทศนิยมซํ้า]
     \begin{itemize}
-      \item ถ้าซ้ำ 1 หลัก $\rightarrow$ คูณด้วย $10^1 = 10$ แล้วลบ
-      \item ถ้าซ้ำ 2 หลัก $\rightarrow$ คูณด้วย $10^2 = 100$ แล้วลบ
-      \item ถ้าซ้ำ $n$ หลัก $\rightarrow$ คูณด้วย $10^{\,n}$ แล้วลบ
+      \item ถ้าซํ้า 1 หลัก $\rightarrow$ คูณด้วย $10^1 = 10$ แล้วลบ
+      \item ถ้าซํ้า 2 หลัก $\rightarrow$ คูณด้วย $10^2 = 100$ แล้วลบ
+      \item ถ้าซํ้า $n$ หลัก $\rightarrow$ คูณด้วย $10^{\,n}$ แล้วลบ
     \end{itemize}
   \end{intuition}
 \end{frame}
@@ -183,7 +183,7 @@
       \item หา ค.ร.น. ของตัวส่วน
       \item ทำตัวส่วนให้เท่ากัน
       \item บวก/ลบ ตัวเศษ (ตัวส่วนคงเดิม)
-      \item ทำเป็นเศษส่วนอย่างต่ำ
+      \item ทำเป็นเศษส่วนอย่างตํ่า
     \end{enumerate}
   \end{intuition}
 \end{frame}
@@ -206,7 +206,7 @@
   \end{intuition}
 \end{frame}
 
-\begin{frame}{การทำให้เศษส่วนเป็นอย่างต่ำ}
+\begin{frame}{การทำให้เศษส่วนเป็นอย่างตํ่า}
   \begin{explanation}[วิธีทำ]
     \textbf{หารทั้งเศษและส่วนด้วย ห.ร.ม.} (GCD — ตัวหารร่วมมาก)
   \end{explanation}
@@ -282,8 +282,8 @@
     \begin{itemize}
       \item ในห้องมีชาย 15 คน หญิง 10 คน
       \par อัตราส่วน ชาย : หญิง = $15 : 10 = 3 : 2$
-      \item น้ำเชื่อมใช้น้ำตาล 2 ส่วน น้ำ 5 ส่วน
-      \par อัตราส่วน น้ำตาล : น้ำ = $2 : 5$
+      \item นํ้าเชื่อมใช้นํ้าตาล 2 ส่วน นํ้า 5 ส่วน
+      \par อัตราส่วน นํ้าตาล : นํ้า = $2 : 5$
       \item แผนที่มาตราส่วน $1 : 50{,}000$
       \par 1 ซม. ในแผนที่ = 50,000 ซม. ในความเป็นจริง
     \end{itemize}
@@ -788,7 +788,7 @@
   \begin{explanation}[สิ่งที่ได้เรียนรู้]
     \begin{enumerate}
       \item \textbf{ระบบจำนวน}: $\N \subset \Z \subset \Q \subset \R$ — ตรรกยะ vs อตรรกยะ
-      \item \textbf{เศษส่วน}: การบวก ลบ คูณ หาร และการทำให้เป็นอย่างต่ำ
+      \item \textbf{เศษส่วน}: การบวก ลบ คูณ หาร และการทำให้เป็นอย่างตํ่า
       \item \textbf{ร้อยละ \& สัดส่วน}: การแปลงระหว่างเศษส่วน-ทศนิยม-ร้อยละ, สัดส่วนตรงและผกผัน
       \item \textbf{สมบัติของ $\R$}: Commutative, Associative, Distributive, Identity, Inverse
       \item \textbf{ตัวดำเนินการใหม่}: ต้องตรวจสอบสมบัติทีละข้อ — อย่าคิดว่าเป็นจริงเสมอ
