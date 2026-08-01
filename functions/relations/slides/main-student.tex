@@ -57,9 +57,7 @@
   \begin{exambox}[ตัวอย่าง]
     ความสัมพันธ์เหมือนกับการจับคู่ เช่น $r=\left\{(1,2),(1,-2),(3, 9)\right\} $ เป็นต้น
   \end{exambox}
-\end{frame}
-
-\begin{frame}{แผนภาพ: การจับคู่ของความสัมพันธ์}
+\end{frame}\begin{frame}{แผนภาพ: การจับคู่ของความสัมพันธ์}
   \begin{columns}[T]
     \column{0.5\textwidth}
       \centering
@@ -97,9 +95,7 @@
         \end{itemize}
       \end{intuition}
   \end{columns}
-\end{frame}
-
-\begin{frame}{ผลคูณคาร์ทีเซียน (Cartesian Product)}
+\end{frame}\begin{frame}{ผลคูณคาร์ทีเซียน (Cartesian Product)}
   \begin{explanation}[นิยาม: ผลคูณคาร์ทีเซียน]
     \textbf{ผลคูณคาร์ทีเซียน} ของเซต $A$ และ $B$ คือเซตของคู่อันดับ $(a, b)$ ทั้งหมด
     โดยที่ $a \in A$ และ $b \in B$
@@ -117,9 +113,7 @@
     \medskip
     $|A \times B| = |A| \times |B| = 2 \times 3 = 6$
   \end{exambox}
-\end{frame}
-
-\begin{frame}{โดเมนและเรนจ์ของความสัมพันธ์}
+\end{frame}\begin{frame}{โดเมนและเรนจ์ของความสัมพันธ์}
   \begin{explanation}[นิยาม]
     ให้ $r$ เป็นความสัมพันธ์จาก $A$ ไปยัง $B$
 
@@ -140,9 +134,7 @@
   \begin{intuition}[สังเกต]
     ง่าย ๆ โดเมน คือ ตัวหน้าของคู่ ($a$) เป็นอะไรได้บ้าง เรนจ์ คือ ตัวหน้าของคู่ ($b$) เป็นอะไรได้บ้าง
   \end{intuition}
-\end{frame}
-
-\begin{frame}{แผนภาพ: โดเมนและเรนจ์}
+\end{frame}\begin{frame}{แผนภาพ: โดเมนและเรนจ์}
   \begin{columns}[T]
     \column{0.5\textwidth}
       \centering
@@ -188,55 +180,28 @@
         \end{itemize}
       \end{intuition}
   \end{columns}
-\end{frame}
-
-\begin{frame}{ตัวอย่าง: การหาโดเมนและเรนจ์}
+\end{frame}\begin{frame}[t]{ตัวอย่าง: การหาโดเมนและเรนจ์}
   \begin{exambox}[โจทย์]
     กำหนด $r = \{(x, y) \mid y = x^2,\; x \in \{-2, -1, 0, 1, 2\}\}$
     จงหา $D_r$ และ $R_r$
   \end{exambox}
 
-  \begin{solbox}[วิธีทำ]
-    แทนค่า $x$ แต่ละตัวลงในสมการ $y = x^2$:
-    \begin{align*}
-      x = -2 &\Rightarrow y = 4 \\
-      x = -1 &\Rightarrow y = 1 \\
-      x = 0  &\Rightarrow y = 0 \\
-      x = 1  &\Rightarrow y = 1 \\
-      x = 2  &\Rightarrow y = 4
-    \end{align*}
-  \end{solbox}
-\end{frame}
-
-\begin{frame}{ตัวอย่าง: การหาโดเมนและเรนจ์ (ต่อ)}
-  \begin{solbox}[วิธีทำ (ต่อ)]
-    จะได้ $r = \{(-2,4), (-1,1), (0,0), (1,1), (2,4)\}$ \newline
-    รวบรวมผลลัพธ์:
-
-    $D_r = \{-2, -1, 0, 1, 2\}$ \quad (ค่า $x$ ทั้งหมดที่โจทย์กำหนด)
-
-    $R_r = \{0, 1, 4\}$ \quad (ค่า $y$ ที่เกิดขึ้น โดยไม่นับซํ้า)
-  \end{solbox}
+  \vspace{\fill}
 
   \medskip
   \begin{intuition}[สังเกต]
     โดเมนคือค่า $x$ ที่ใส่เข้าไป เรนจ์คือค่า $y$ ที่ได้ออกมา
   \end{intuition}
-\end{frame}
 
-\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+\end{frame}\begin{frame}[t]{ตัวอย่าง: ข้อสอบจริง}
   \begin{exambox}[โจทย์ปี 68 ข้อ 10]
     กำหนด $A=\{1,2,3\}, B=\{4,5\}$ และความสัมพันธ์ $r$ จากเซต $A$ ไปยังเซต $B$ โดย $r=\{(a,b)\in A\times B\mid a+b$ เป็นจำนวนคี่ $\}$ ข้อใดเป็นจริง \newline
     [ข. $r$ มีสมาชิก 6 คู่อันดับ]
     [ง. $r$ ไม่มีสมาชิกเลย]
   \end{exambox}
 
-  \begin{solbox}[วิธีทำ]
-    $A\times B = \{(1,4), (1,5), (2,4), (2,5), (3,4), (3,5)\}$ \newline
-    ในจำนวนนี้ที่มีผลรวม $(a+b)$ เป็นจำนวนคี่ ได้แก่ $(1,4), (2,5), (3,4)$ \newline
-    ดังนั้น $r = \{(1,4), (2,5), (3,4)\}$ \newline
-    \textbf{ข. และ ง. ผิด เพราะ $r$ มีสมาชิก 3 คู่อันดับ}
-  \end{solbox}
+  \vspace{\fill}
+
 \end{frame}
 
 % ===========================================================================
@@ -262,9 +227,7 @@
   \begin{intuition}[สังเกต]
     ง่าย ๆ ฟังก์ชัน คือ ความสัมพันธ์ที่จาก $x$ จับคู่ได้กับ $y$ ตัวเดียว เช่น $r = \left\{(x,y) \mid x = \left\lvert y\right\rvert \right\} $ ไม่ใช่ฟังก์ชัน เพราะ 1 มีความสัมพันธ์ $r$ กับทั้ง 1 และ -1
   \end{intuition}
-\end{frame}
-
-\begin{frame}{แผนภาพ: ฟังก์ชัน vs ไม่ใช่ฟังก์ชัน}
+\end{frame}\begin{frame}{แผนภาพ: ฟังก์ชัน vs ไม่ใช่ฟังก์ชัน}
   \begin{columns}[T]
     \column{0.48\textwidth}
       \centering
@@ -318,9 +281,7 @@
   \begin{center}
     \highlight{ฟังก์ชัน = ความสัมพันธ์ที่แต่ละ input มี output เพียงค่าเดียว}
   \end{center}
-\end{frame}
-
-\begin{frame}{การทดสอบว่าเป็นฟังก์ชันหรือไม่}
+\end{frame}\begin{frame}{การทดสอบว่าเป็นฟังก์ชันหรือไม่}
   \begin{explanation}[การทดสอบแนวดิ่ง (Vertical Line Test)]
     กราฟจะเป็นกราฟของฟังก์ชัน ก็ต่อเมื่อ
     \highlight{เส้นตรงแนวดิ่งทุกเส้นตัดกราฟได้ไม่เกิน 1 จุด}
@@ -350,21 +311,15 @@
       \end{tikzpicture}
       \par เส้นแนวดิ่งตัดกราฟ 2 จุด $\times$
   \end{columns}
-\end{frame}
-
-\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+\end{frame}\begin{frame}[t]{ตัวอย่าง: ข้อสอบจริง}
   \begin{exambox}[โจทย์ปี 68 ข้อ 10]
     กำหนด $A=\{1,2,3\}, B=\{4,5\}$ และความสัมพันธ์ $r$ จากเซต $A$ ไปยังเซต $B$ โดย $r=\{(a,b)\in A\times B\mid a+b$ เป็นจำนวนคี่ $\}$ ข้อใดเป็นจริง \newline
     [ก. $r$ เป็นฟังก์ชัน]
   \end{exambox}
 
-  \begin{solbox}[วิธีทำ]
-    จาก $r = \{(1,4), (2,5), (3,4)\}$ \newline
-    \textbf{ก. ถูก เพราะ ความสัมพันธ์ที่สมาชิกแต่ละตัวในโดเมน $\{1,2,3\}$ จับคู่กับสมาชิกในเรนจ์เพียงตัวเดียวเท่านั้น}
-  \end{solbox}
-\end{frame}
+  \vspace{\fill}
 
-\begin{frame}{สัญกรณ์ฟังก์ชัน (Function Notation)}
+\end{frame}\begin{frame}{สัญกรณ์ฟังก์ชัน (Function Notation)}
   \begin{explanation}[สัญกรณ์]
     $f: A \to B$ กำหนดโดย $f(x) = \text{นิพจน์ของ } x$
 
@@ -376,65 +331,39 @@
       \item $A$ คือ \highlight{โดเมน}, $B$ คือ \highlight{โคโดเมน}
     \end{itemize}
   \end{explanation}
-\end{frame}
+\end{frame}\begin{frame}[t]{ตัวอย่าง: การหาค่าฟังก์ชัน}
+  \begin{exambox}[โจทย์]
+    กำหนด $f(x) = x^2 + 3x - 1$ จงหา $f(2)$ และ $f(-1)$
+  \end{exambox}
 
-\begin{frame}{ตัวอย่าง: การหาค่าฟังก์ชัน}
   \begin{intuition}[สังเกต]
     ฟังก์ชันเหมือน \textbf{เครื่องผลิตนํ้าผลไม้}: \newline
     ใส่ส้ม ($x$) เข้าไป $\rightarrow$ ได้นํ้าส้ม ($f(x)$) ออกมา\newline 
     ใส่แอปเปิ้ล เข้าไป $\rightarrow$ ได้นํ้าแอปเปิ้ล ออกมา
   \end{intuition}
 
+  \vspace{\fill}
+
+\end{frame}\begin{frame}[t]{โดเมนและเรนจ์ของฟังก์ชัน}
   \begin{exambox}[โจทย์]
-    กำหนด $f(x) = x^2 + 3x - 1$ จงหา $f(2)$ และ $f(-1)$
+    จงหาโดเมนของ $f(x) = \dfrac{1}{x - 3}$
   \end{exambox}
 
-  \begin{solbox}[วิธีทำ]
-    แทนค่า $x$ ลงในฟังก์ชัน:
-
-    $f(2) = 2^2 + 3(2) - 1 = 4 + 6 - 1 = 9$
-
-    $f(-1) = (-1)^2 + 3(-1) - 1 = 1 - 3 - 1 = -3$
-  \end{solbox}
-\end{frame}
-
-\begin{frame}{โดเมนและเรนจ์ของฟังก์ชัน}
   \begin{itemize}
     \item \textbf{โดเมนของ $f$} คือเซตของค่า $x$ ทั้งหมดที่ทำให้ $f(x)$ หาค่าได้
     \item \textbf{เรนจ์ของ $f$} คือเซตของค่า $f(x)$ ทั้งหมดที่เกิดขึ้นจากทุก $x$ ในโดเมน
   \end{itemize}
 
-  \begin{exambox}[โจทย์]
-    จงหาโดเมนของ $f(x) = \dfrac{1}{x - 3}$
-  \end{exambox}
+  \vspace{\fill}
 
-  \begin{solbox}[วิธีทำ]
-    \textbf{วิธีคิด:} ตัวส่วนต้องไม่เป็นศูนย์
-    \begin{align*}
-      x - 3 &\neq 0 \\
-      x &\neq 3
-    \end{align*}
-
-    ดังนั้น $D_f = \R - \{3\} = \{x \in \R \mid x \neq 3\}$
-  \end{solbox}
-\end{frame}
-
-\begin{frame}{ตัวอย่าง: การหาเรนจ์}
+\end{frame}\begin{frame}[t]{ตัวอย่าง: การหาเรนจ์}
   \begin{exambox}[โจทย์]
     กำหนด $f(x) = x^2 + 2$ จงหาเรนจ์ของ $f$
   \end{exambox}
 
-  \begin{solbox}[วิธีทำ]
-    เนื่องจาก $x^2 \geq 0$ สำหรับทุกจำนวนจริง $x$
+  \vspace{\fill}
 
-    ดังนั้น $x^2 + 2 \geq 2$ สำหรับทุกจำนวนจริง $x$
-
-    \medskip
-    $R_f = \{y \in \R \mid y \geq 2\} = [2, \infty)$
-  \end{solbox}
-\end{frame}
-
-\begin{frame}{เทคนิคการหาโดเมนและเรนจ์เบื้องต้น}
+\end{frame}\begin{frame}{เทคนิคการหาโดเมนและเรนจ์เบื้องต้น}
   \begin{explanation}[โดเมน]
     \begin{itemize}
       \item ต้องไม่ทำให้ส่วนเป็น 0
@@ -448,19 +377,14 @@
       \item ค่าที่ออกจากการยกกำลังด้วยเลขคู่ จะมากกว่าหรือเท่ากับ 0
     \end{itemize}
   \end{explanation}
-\end{frame}
-
-\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+\end{frame}\begin{frame}[t]{ตัวอย่าง: ข้อสอบจริง}
   \begin{exambox}[โจทย์ปี 68 ข้อ 11]
     กำหนด ฟังก์ชัน $f: \mathbb{R} \rightarrow \mathbb{R}$ โดย $f(x)=\frac{2x+3}{x-1}$ ข้อใดกล่าว\textbf{ไม่ถูกต้อง} \newline
     [ก. โดเมนของ $f$ คือ $\mathbb{R} - \{1\}]$
   \end{exambox}
 
-  \begin{solbox}[วิธีทำ]
-    โดเมนคิดง่าย ๆ คือ $x$ มีค่าเป็นอะไรได้บ้าง ข้อจำกัดเดียวของกรณีนี้ คือ ตัวส่วนต้องไม่เป็นศูนย์\newline
-    ดังนั้น $x-1$ จึงเป็ฯศูนย์ไม่ได้ ทำให้ $x$ เป็น $1$ ไม่ได้เพียงค่าเดียว\newline
-    \textbf{ก. จึงถูกต้อง}
-  \end{solbox}
+  \vspace{\fill}
+
 \end{frame}
 
 % ===========================================================================
@@ -488,9 +412,7 @@
   \begin{intuition}[สังเกต]
     ง่าย ๆ คือห้ามคู่ใครซํ้ากับคู่อื่น
   \end{intuition}
-\end{frame}
-
-\begin{frame}{แผนภาพ: ฟังก์ชันหนึ่งต่อหนึ่ง (1-1)}
+\end{frame}\begin{frame}{แผนภาพ: ฟังก์ชันหนึ่งต่อหนึ่ง (1-1)}
   \centering
   \begin{tikzpicture}[scale=0.9,
     elem/.style={circle, draw, thick, fill=white, inner sep=0pt, minimum size=18pt, font=\sffamily},
@@ -533,9 +455,7 @@
     \draw[arr, red!70] (na3) -- (nb2);
     \node[red, font=\sffamily\footnotesize] at (8.9,-3.2) {$4$ โดนชี้ 2 ครั้ง $\rightarrow$ ไม่ 1-1};
   \end{tikzpicture}
-\end{frame}
-
-\begin{frame}{ฟังก์ชันทั่วถึง (Onto / Surjective)}
+\end{frame}\begin{frame}{ฟังก์ชันทั่วถึง (Onto / Surjective)}
   \begin{explanation}[นิยาม]
     ฟังก์ชัน $f: A \to B$ เป็นฟังก์ชัน \highlight{ทั่วถึง} (Onto) ก็ต่อเมื่อ
 
@@ -554,9 +474,7 @@
   \begin{intuition}[สังเกต]
     ง่าย ๆ คือ ฝั่งโคโดเมนต้องมีคู่ทั้งหมด
   \end{intuition}
-\end{frame}
-
-\begin{frame}{แผนภาพ: ฟังก์ชันทั่วถึง (Onto)}
+\end{frame}\begin{frame}{แผนภาพ: ฟังก์ชันทั่วถึง (Onto)}
   \centering
   \begin{tikzpicture}[scale=0.9,
     elem/.style={circle, draw, thick, fill=white, inner sep=0pt, minimum size=18pt, font=\sffamily},
@@ -601,9 +519,7 @@
     \draw[arr, red!70] (na3) -- (nb2);
     \node[red, font=\sffamily\footnotesize] at (8.9,-3.3) {$6$ ไม่มีลูกศรชี้ $\rightarrow$ ไม่ Onto};
   \end{tikzpicture}
-\end{frame}
-
-\begin{frame}{ฟังก์ชันหนึ่งต่อหนึ่งและทั่วถึง (Bijective)}
+\end{frame}\begin{frame}{ฟังก์ชันหนึ่งต่อหนึ่งและทั่วถึง (Bijective)}
   \begin{explanation}[นิยาม]
     ฟังก์ชัน $f: A \to B$ เป็นฟังก์ชัน \highlight{สมนัยหนึ่งต่อหนึ่ง} (Bijective) ก็ต่อเมื่อ
 
@@ -619,9 +535,7 @@
   \begin{intuition}[สังเกต]
     ง่าย ๆ คือ ฝั่งโคโดเมนต้องมีคู่ทั้งหมด และคู่ใครคู่มันห้ามซํ้า
   \end{intuition}
-\end{frame}
-
-\begin{frame}{แผนภาพ: ฟังก์ชันสมนัยหนึ่งต่อหนึ่ง (Bijective)}
+\end{frame}\begin{frame}{แผนภาพ: ฟังก์ชันสมนัยหนึ่งต่อหนึ่ง (Bijective)}
   \centering
   \begin{tikzpicture}[scale=0.9,
     elem/.style={circle, draw, thick, fill=white, inner sep=0pt, minimum size=18pt, font=\sffamily},
@@ -649,9 +563,7 @@
     \node[font=\sffamily\small\bfseries, boxBlue] at (2.25,2.5)
       {$\Rightarrow$ มีฟังก์ชันผกผัน $f^{-1}$ ได้};
   \end{tikzpicture}
-\end{frame}
-
-\begin{frame}{การดำเนินการของฟังก์ชัน}
+\end{frame}\begin{frame}{การดำเนินการของฟังก์ชัน}
   \begin{explanation}[นิยาม]
     กำหนด $f$ และ $g$ เป็นฟังก์ชันที่มีโดเมนร่วมกัน
   \end{explanation}
@@ -662,9 +574,7 @@
     (f \cdot g)(x) &= f(x) \cdot g(x) &&\text{ผลคูณ} \\
     \left(\frac{f}{g}\right)(x) &= \frac{f(x)}{g(x)}, \; g(x) \neq 0 &&\text{ผลหาร}
   \end{align*}
-\end{frame}
-
-\begin{frame}{ฟังก์ชันประกอบ (Composite Functions)}
+\end{frame}\begin{frame}{ฟังก์ชันประกอบ (Composite Functions)}
   \begin{explanation}[นิยาม]
     กำหนด $f: A \to B$ และ $g: B \to C$
 
@@ -686,9 +596,7 @@
 
     $(f \circ g)(x) = f(g(x)) = f(x^2) = 2x^2 + 1$
   \end{exambox}
-\end{frame}
-
-\begin{frame}{แผนภาพ: ฟังก์ชันประกอบ}
+\end{frame}\begin{frame}{แผนภาพ: ฟังก์ชันประกอบ}
   \centering
   \begin{tikzpicture}[scale=0.85,
     elem/.style={circle, draw, thick, fill=white, inner sep=0pt, minimum size=18pt, font=\sffamily},
@@ -731,9 +639,7 @@
     % Label
     \node[font=\sffamily\small, align=center] at (4,2.8) {$(g \circ f)(x) = g(f(x))$};
   \end{tikzpicture}
-\end{frame}
-
-\begin{frame}{ฟังก์ชันผกผัน (Inverse Functions)}
+\end{frame}\begin{frame}{ฟังก์ชันผกผัน (Inverse Functions)}
   \begin{explanation}[นิยาม]
     ให้ $f: A \to B$ เป็นฟังก์ชันหนึ่งต่อหนึ่งและทั่วถึง (bijective)
 
@@ -754,9 +660,7 @@
   \begin{intuition}[สังเกต]
     ง่าย ๆ คือ สลับฝั่ง $x$ และ $y$ จาก $(x, y)$ เป็น $(y, x)$
   \end{intuition}
-\end{frame}
-
-\begin{frame}{แผนภาพ: ฟังก์ชันผกผัน}
+\end{frame}\begin{frame}{แผนภาพ: ฟังก์ชันผกผัน}
   \begin{columns}[T]
     \column{0.5\textwidth}
       \centering
@@ -800,49 +704,20 @@
         \end{itemize}
       \end{intuition}
   \end{columns}
-\end{frame}
-
-\begin{frame}{ตัวอย่าง: การหาฟังก์ชันผกผัน}
+\end{frame}\begin{frame}[t]{ตัวอย่าง: การหาฟังก์ชันผกผัน}
   \begin{exambox}[โจทย์]
     กำหนด $f(x) = 2x - 5$ จงหา $f^{-1}(x)$
   \end{exambox}
 
-  \begin{solbox}[วิธีทำ]
-    \begin{enumerate}
-      \item ให้ $y = f(x)$: \quad $y = 2x - 5$
-      \item แก้สมการหา $x$ ในรูปของ $y$:
-        \quad $y + 5 = 2x \;\Rightarrow\; x = \frac{y + 5}{2}$
-      \item สลับ $x$ และ $y$: \quad $f^{-1}(x) = \dfrac{x + 5}{2}$
-    \end{enumerate}
-  \end{solbox}
-\end{frame}
+  \vspace{\fill}
 
-\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+\end{frame}\begin{frame}[t]{ตัวอย่าง: ข้อสอบจริง}
   \begin{exambox}[โจทย์ปี 67 ข้อ 5]
     สำหรับจำนวนจริง $x>1$ กำหนด $f(x)=2x+1$ และ $g(x)=x^2$ จงหาค่าของ $(f\circ g)^{-1}(x)$
   \end{exambox}
 
-  \begin{solbox}[วิธีทำ]
-    หา $(f\circ g)(x)$
-    \begin{align*}
-        (f\circ g)(x) &= f(g(x)) \\
-        &= f(x^2) \\
-        &= 2x^2+1 
-    \end{align*}
-  \end{solbox}
-\end{frame}
+  \vspace{\fill}
 
-\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
-  \begin{solbox}[วิธีทำ (ต่อ)]
-    หา $(f\circ g)^{-1}(x)$
-    \begin{align*}
-        y &= 2x^2+1 \\
-        y-1 &= 2x^2 \\
-        \frac{y-1}{2} &= x^2 \\
-        \pm \sqrt{\frac{y-1}{2}} &= x \\ 
-    \end{align*}
-    ดังนััน $(f\circ g)^{-1}(x) = \pm \sqrt{\frac{x-1}{2}}$
-  \end{solbox}
 \end{frame}
 
 % ===========================================================================
@@ -863,9 +738,7 @@
     $r = \{(1,1), (2,2), (3,3), (1,2), (2,3)\}$
     \par $\rightarrow$ reflexive เพราะมี $(1,1), (2,2), (3,3)$ ครบทุกตัว
   \end{exambox}
-\end{frame}
-
-\begin{frame}{สมบัติสะท้อน (ต่อ)}
+\end{frame}\begin{frame}{สมบัติสะท้อน (ต่อ)}
   \begin{exambox}[ตัวอย่างที่ไม่ใช่]
     $r = \{(1,1), (2,2), (1,2)\}$ บน $A = \{1, 2, 3\}$
     \par $\rightarrow$ \textbf{ไม่} reflexive เพราะขาด $(3,3)$
@@ -877,9 +750,7 @@
     ทุกสมาชิกต้องมีลูกศรชี้กลับมาหาตัวเองครบทุกตัว
     ถ้าขาดแม้แต่ตัวเดียว จะไม่ใช่ reflexive ทันที
   \end{intuition}
-\end{frame}
-
-\begin{frame}{แผนภาพ: สมบัติสะท้อน}
+\end{frame}\begin{frame}{แผนภาพ: สมบัติสะท้อน}
   \begin{columns}[T]
     \column{0.48\textwidth}
       \centering
@@ -934,9 +805,7 @@
           {ขาด $3\!\to\!3$! $\rightarrow$ ไม่สะท้อน};
       \end{tikzpicture}
   \end{columns}
-\end{frame}
-
-\begin{frame}{สมบัติสมมาตร (Symmetric)}
+\end{frame}\begin{frame}{สมบัติสมมาตร (Symmetric)}
   \begin{explanation}[นิยาม]
     ความสัมพันธ์ $r$ บนเซต $A$ มีสมบัติ \highlight{สมมาตร} (Symmetric) ก็ต่อเมื่อ
 
@@ -951,9 +820,7 @@
     $r = \{(1,2), (2,1), (1,3), (3,1)\}$
     \par $\rightarrow$ symmetric: ทุกคู่มีคู่สลับใน $r$
   \end{exambox}
-\end{frame}
-
-\begin{frame}{สมบัติสมมาตร (ต่อ)}
+\end{frame}\begin{frame}{สมบัติสมมาตร (ต่อ)}
   \begin{exambox}[ตัวอย่างที่ไม่ใช่]
     $r = \{(1,2), (2,3)\}$
     \par $\rightarrow$ \textbf{ไม่} symmetric เพราะมี $(1,2)$ แต่ไม่มี $(2,1)$
@@ -965,9 +832,7 @@
     ถ้ามีลูกศรจาก $a$ ไป $b$ ต้องมีลูกศรย้อนกลับจาก $b$ ไป $a$ ด้วย
     ถ้าขาดแม้แต่คู่เดียว จะไม่ใช่ symmetric
   \end{intuition}
-\end{frame}
-
-\begin{frame}{แผนภาพ: สมบัติสมมาตร}
+\end{frame}\begin{frame}{แผนภาพ: สมบัติสมมาตร}
   \begin{columns}[T]
     \column{0.48\textwidth}
       \centering
@@ -1017,9 +882,7 @@
           {มี $(1,2)$ แต่\textbf{ขาด} $(2,1)$!};
       \end{tikzpicture}
   \end{columns}
-\end{frame}
-
-\begin{frame}{สมบัติถ่ายทอด (Transitive)}
+\end{frame}\begin{frame}{สมบัติถ่ายทอด (Transitive)}
   \begin{explanation}[นิยาม]
     ความสัมพันธ์ $r$ บนเซต $A$ มีสมบัติ \highlight{ถ่ายทอด} (Transitive) ก็ต่อเมื่อ
 
@@ -1034,9 +897,7 @@
     $r = \{(1,2), (2,3), (1,3), (3,4), (2,4), (1,4)\}$
     \par $\rightarrow$ transitive: ทุกกรณีที่มี $(a,b)$ และ $(b,c)$ จะต้องมี $(a,c)$ ด้วย
   \end{exambox}
-\end{frame}
-
-\begin{frame}{แผนภาพ: สมบัติถ่ายทอด}
+\end{frame}\begin{frame}{แผนภาพ: สมบัติถ่ายทอด}
   \begin{columns}[T]
     \column{0.48\textwidth}
       \centering
@@ -1088,9 +949,7 @@
           {มี $1\!\to\!2$, $2\!\to\!3$ แต่\textbf{ขาด} $1\!\to\!3$};
       \end{tikzpicture}
   \end{columns}
-\end{frame}
-
-\begin{frame}{ความสัมพันธ์สมมูล (Equivalence Relation)}
+\end{frame}\begin{frame}{ความสัมพันธ์สมมูล (Equivalence Relation)}
   \begin{explanation}[นิยาม]
     ความสัมพันธ์ $r$ บนเซต $A$ เป็น \highlight{ความสัมพันธ์สมมูล} (Equivalence Relation)
     ก็ต่อเมื่อ $r$ มีสมบัติครบทั้งสามข้อ:
@@ -1102,9 +961,7 @@
       \item \textbf{ถ่ายทอด} (Transitive)
     \end{enumerate}
   \end{explanation}
-\end{frame}
-
-\begin{frame}{แผนภาพ: ความสัมพันธ์สมมูล}
+\end{frame}\begin{frame}{แผนภาพ: ความสัมพันธ์สมมูล}
   \begin{columns}[T]
     \column{0.5\textwidth}
       \centering
@@ -1151,9 +1008,7 @@
         \end{itemize}
       \end{intuition}
   \end{columns}
-\end{frame}
-
-\begin{frame}{ตัวอย่าง: ความสัมพันธ์สมมูล}
+\end{frame}\begin{frame}{ตัวอย่าง: ความสัมพันธ์สมมูล}
 
   \begin{exambox}[ตัวอย่าง]
     ความสัมพันธ์ ``เท่ากัน'' ($=$) บนเซตของจำนวนจริง
@@ -1164,30 +1019,14 @@
     \end{itemize}
     ดังนั้น $=$ เป็น equivalence relation
   \end{exambox}
-\end{frame}
-
-\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
+\end{frame}\begin{frame}[t]{ตัวอย่าง: ข้อสอบจริง}
   \begin{exambox}[โจทย์ปี 68 ข้อ 9]
     กำหนด $r=\{(a,b) \in A \times  A \mid 4a \leq 5b\}$ แทนความสัมพันธ์ \newline
     โดยที่ $A=\{1,2,3,4,5\}$ ให้ $m$ เป็นจำนวนสมาชิกในเซต $r$ และให้ $n$ เป็นจำนวนสมาชิกอย่างน้อยจาก $A \times A$ ที่ต้องเพิ่มเข้าไปใน $r$ ซึ่งทำให้ $r$ มีสมบัติสมมาตร จงหาว่า $m+n$ มีค่าเท่าใด
   \end{exambox}
 
-  \begin{solbox}[วิธีทำ]
-    จากโจทย์ สมาชิกจาก $A \times A$ ที่ทำให้เงื่อนไข $4a \leq 5b$ เป็นจริง ซึ่งคือ $r$ มีดังนี้ \newline
-    $r=\{(1,1),(1,2),(1,3),(1,4),(1,5),(2,2),(2,3),(2,4),(2,5),(3,3),(3,4)$\newline
-    $,(3,5),(4,4),(4,5),(5,4),(5,5)\}$ \newline
-    จะได้ $m = 16$
-  \end{solbox}
-\end{frame}
+  \vspace{\fill}
 
-\begin{frame}{ตัวอย่าง: ข้อสอบจริง}
-  \begin{solbox}[วิธีทำ (ต่อ)]
-    การที่จะมีสมบัติสมมาตรได้ ถ้า $a$ สัมพันธ์กับ $b$ แล้ว $b$ จะสัมพันธ์กับ $a$ ด้วย\newline
-    โดยคู่อันดับที่ไม่ตรงเงื่อนไข ได้แก่ $(1,2),(1,3),(1,4),(1,5),(2,3),(2,4),(2,5),(3,4),(3,5)$ \newline
-    คู่อันดับเหล่านี้ต้องเพิ่ม คู่อันดับที่สลับตัวหน้าและตัวหลังจึงจะทำให้เกิดสมบัติสมมาตร \newline
-    ดังนั้น $n = 9$
-    \textbf{$m+n=25$}
-  \end{solbox}
 \end{frame}
 
 % ===========================================================================
